@@ -1,0 +1,31 @@
+include:
+  - Tools/XCodeGen/Application.yml
+  - Tools/XCodeGen/Core.yml
+  - Tools/XCodeGen/Home.yml
+  - Tools/XCodeGen/Profile.yml
+  - Tools/XCodeGen/Introduction.yml
+  - Tools/XCodeGen/TapClient.yml
+  - Tools/XCodeGen/Tab2.yml
+name: Starter
+fileGroups: [Tools/Carthage/Cartfile, Tools/Carthage/Cartfile.resolved, Tools/SwiftGen, Tools/XcodeGen, Documentation, project.yml, README.md]
+options:
+  bundleIdPrefix: fr.alexisschultz
+  carthageBuildPath: Tools/Carthage/Carthage/Build
+  createIntermediateGroups: true
+  usesTabs: true
+  tabWidth: 4
+  indentWidth: 4
+  groupSortPosition: bottom
+  transitivelyLinkDependencies: true
+  deploymentTarget:
+    iOS: "11.0"
+settings:
+      TARGETED_DEVICE_FAMILY: 1
+configs:
+  Debug: debug
+  Beta: release
+  AppStore: release
+configFiles:
+  Debug: Sources/Application/SupportingFiles/Debug.xcconfig
+  Beta: Sources/Application/SupportingFiles/Beta.xcconfig
+  AppStore: Sources/Application/SupportingFiles/AppStore.xcconfig

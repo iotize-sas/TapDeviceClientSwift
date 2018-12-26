@@ -1,0 +1,3 @@
+class TapStreamReader: KaitaiStream{
+    
+}

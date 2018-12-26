@@ -1,0 +1,24 @@
+targets: 
+  Profile:
+    type: framework
+    platform: iOS
+    sources: [Sources/Features/Profile/Sources]
+    info:
+      path: Sources/Features/Profile/SupportingFiles/Info.plist
+    dependencies:
+      - target: Core
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      - carthage: RxReduce
+    scheme:
+      testTargets:
+        - ProfileUnitTests
+      gatherCoverageData: true
+  ProfileUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Features/Profile/Tests]
+    info:
+      path: Sources/Features/Profile/SupportingFiles/InfoUnitTests.plist
+    dependencies:
+      - target: Profile

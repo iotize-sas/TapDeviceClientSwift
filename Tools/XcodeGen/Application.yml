@@ -1,0 +1,41 @@
+targets:
+  Starter:
+    type: application
+    platform: iOS
+    sources: [Sources/Application/Sources, Sources/Application/Resources]
+    info:
+      path: Sources/Application/SupportingFiles/Info.plist
+      properties:
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UILaunchStoryboardName: LaunchScreen
+    dependencies:
+      - target: Core
+      - target: Home
+      - target: Profile
+      - target: Introduction
+      - target: TapClient
+      - target: Tab2
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      - carthage: RxReduce
+    scheme:
+      testTargets:
+        - StarterUnitTests
+        - StarterUITests
+      gatherCoverageData: true
+  StarterUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Application/Tests/Unit]
+    info:
+      path: Sources/Application/SupportingFiles/InfoUnitTests.plist
+    dependencies:
+      - target: Starter
+  StarterUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [Sources/Application/Tests/UI]
+    info:
+      path: Sources/Application/SupportingFiles/InfoUITests.plist
+    dependencies:
+      - target: Starter

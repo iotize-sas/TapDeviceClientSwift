@@ -1,0 +1,23 @@
+targets: 
+  Core:
+    type: framework
+    platform: iOS
+    sources: [Sources/Core/Sources, Sources/Core/Resources, Sources/Core/Generated]
+    info:
+      path: Sources/Core/SupportingFiles/Info.plist
+    dependencies: 
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      - carthage: RxReduce
+    scheme:
+      testTargets:
+        - StarterUnitTests
+      gatherCoverageData: true
+  CoreUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Core/Tests]
+    info:
+      path: Sources/Core/SupportingFiles/InfoUnitTests.plist
+    dependencies:
+      - target: Core

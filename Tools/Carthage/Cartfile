@@ -1,0 +1,4 @@
+github "ReactiveX/RxSwift"
+github "RxSwiftCommunity/RxDataSources"
+github "RxSwiftCommunity/RxSwiftExt"
+github "RxSwiftCommunity/RxReduce"

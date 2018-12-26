@@ -1,0 +1,24 @@
+targets: 
+  TapClient:
+    type: framework
+    platform: iOS
+    sources: [Sources/Features/TapClient/Sources]
+    info:
+      path: Sources/Features/TapClient/SupportingFiles/Info.plist
+    dependencies:
+      - target: Core
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      - carthage: RxReduce
+    scheme:
+      testTargets:
+        - TapClientUnitTests
+      gatherCoverageData: true
+  TapClientUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Features/TapClient/Tests]
+    info:
+      path: Sources/Features/TapClient/SupportingFiles/InfoUnitTests.plist
+    dependencies:
+      - target: TapClient

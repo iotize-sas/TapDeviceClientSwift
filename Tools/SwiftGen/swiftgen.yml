@@ -1,0 +1,8 @@
+xcassets:
+  inputs:
+    - ../../Sources/Core/Resources/Assets.xcassets
+  outputs:
+    - templateName: swift4
+      output: ../../Sources/Core/Generated/CoreAssets.swift
+      params:
+        publicAccess: true

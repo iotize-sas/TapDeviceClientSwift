@@ -1,0 +1,24 @@
+targets: 
+  Tab2:
+    type: framework
+    platform: iOS
+    sources: [Sources/Features/Tab2/Sources]
+    info:
+      path: Sources/Features/Tab2/SupportingFiles/Info.plist
+    dependencies:
+      - target: Core
+      - carthage: RxSwift
+      - carthage: RxCocoa
+      - carthage: RxReduce
+    scheme:
+      testTargets:
+        - Tab2UnitTests
+      gatherCoverageData: true
+  Tab2UnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Features/Tab2/Tests]
+    info:
+      path: Sources/Features/Tab2/SupportingFiles/InfoUnitTests.plist
+    dependencies:
+      - target: Tab2
