@@ -10,10 +10,10 @@ open class ClientAPI {
     open static var basePath = "https://localhost"
     //open static var credential: URLCredential?
     open static var customHeaders: [String:String] = [:]
-    open static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()
+    // open static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()
 }
 
-open enum MethodType {
+public enum MethodType {
     case get, put, post
 }
 

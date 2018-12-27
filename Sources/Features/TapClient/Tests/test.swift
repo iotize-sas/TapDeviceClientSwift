@@ -6,7 +6,10 @@
 //
 
 import XCTest
-@testable import TapClient
+//@testable import TapClient
+
+import Tab2
+import Core
 
 class test: XCTestCase {
 
@@ -19,11 +22,13 @@ class test: XCTestCase {
     }
 
     func testExample() {
-        var client = TapClient()
+//        var client = TapClient()
 		
-		client.GET("/3//3")
-        
-		XCTAssert(Hello().world() == 1)
+//		var tab2 = Tab2()
+		
+//		client.GET("/3//3")
+		
+		XCTAssert(CoreClass().test() == 2)
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

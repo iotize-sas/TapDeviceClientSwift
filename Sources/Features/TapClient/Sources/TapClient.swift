@@ -14,9 +14,46 @@ import Foundation
 //
 //}
 
-typealias Bytes = [UInt8]
+public typealias Bytes = [UInt8]
 
-class TapClient {
+public protocol ComProtocol{
+	
+	func connect()
+	func disconnect()
+	
+	func read() -> Bytes
+	func write(data: Bytes)
+	
+}
+
+public protocol ITapClient{
+	
+	func connect()
+	func disconnect()
+	
+	// func send(Command)
+	
+	func GET(at path: String, _ data: Bytes?)
+	func PUT(at path: String, _ data: Bytes?)
+	func POST(at path: String, _ data: Bytes?)
+	
+	func setProtocol(_ _protocol: ComProtocol)
+}
+
+
+public enum TapClientError: Error {
+	case invalidMethodType
+}
+
+
+public class ApiRequest<DataType> {
+	
+	init( method: TapRequestHeader.MethodType, path: String, body: Any? = nil){
+		
+	}
+}
+
+public class TapClient {
 	
 	var _protocol: ComProtocol
 	
@@ -32,79 +69,81 @@ class TapClient {
 		_protocol.disconnect()
 	}
 	
-	func GET(at path: String, _ data: Bytes){
-		return self.send(createRequest(MethodType.GET, path, data))
+	func GET(at path: String, _ data: Bytes) throws -> TapResponse {
+		return try self.send(self.createRequest(.GET, path, data))
 	}
 	
-	func PUT(at path: String, _ data: Bytes){
-		return self.send(createRequest(MethodType.PUT, path, data))
+	func PUT(at path: String, _ data: Bytes) throws -> TapResponse {
+		return try self.send(self.createRequest(.PUT, path, data))
 	}
 	
-	func POST(at path: String, _ data: Bytes){
-		return self.send(createRequest(MethodType.POST, path, data))
+	func POST(at path: String, _ data: Bytes) throws  -> TapResponse {
+		return try self.send(self.createRequest(.POST, path, data))
 	}
 	
-	func send(_ request: TapRequest) -> TapResponse{
-		var requestBytes = self._encodeRequest(request)
-		_protocol.write(requestBytes)
-		var responseBytes = _protocol.read()
-		var tapResponse = self._decodeResponse(responseBytes)
+	func send(_ request: TapRequest) throws -> TapResponse {
+		let requestBytes = try self._encodeRequest(request)
+		_protocol.write(data: requestBytes)
+		let responseBytes = _protocol.read()
+		let tapResponse = self._decodeResponse(responseBytes)
 		return tapResponse
 	}
 	
-	func _encodeRequest(_ request: TapRequest) -> Bytes{
-		if (streamWriter == null){
-			streamWriter = KaitaiStreamWriter()
-		}
-		let tapRequestBytes = streamWriter.writeTapRequest(tapRequest).toBytes()
+	func _encodeRequest(_ request: TapRequest) throws -> Bytes {
+		let streamWriter = TapStreamWriter()
+		let tapRequestBytes = streamWriter.writeTapRequest(model: request).toBytes()
 		
 		var apduRequest = ApduRequest()
 		apduRequest.header = ApduRequestHeader()
-		apduRequest.header.cla = TapApduRequest.Default.Cla
+		apduRequest.header.cla = TapApduRequest.Default.CLA.rawValue
 		apduRequest.header.p1 = 0
 		apduRequest.header.p2 = 0
 		
-		switch method {
-		case MethodType.GET:
-			apduRequest.header.ins = TapApduRequest.MethodType.GET
-		case MethodType.PUT:
-		case MethodType.POST:
-			apduRequest.header.ins = TapApduRequest.MethodType.PUT_OR_POST
+		switch request.header.methodType! {
+		case .GET:
+			apduRequest.header.ins = TapApduRequest.MethodType.GET.rawValue
+			break
+		case .PUT:
+			apduRequest.header.ins = TapApduRequest.MethodType.PUT_OR_POST.rawValue
+			break
+		case .POST:
+			apduRequest.header.ins = TapApduRequest.MethodType.PUT_OR_POST.rawValue
+			break
 		default:
-			throw Error("Invalid method type ")
+			throw TapClientError.invalidMethodType
 		}
 		apduRequest.header.lc = 0
-		apduRequest.data = streamWriter.getBytes()
+		apduRequest.data = streamWriter.toBytes()
 		
-		streamWriter.seek(0)
-		return streamWriter.writeApduRequest(apduRequest).getBytes()
+		streamWriter.seek(toPosition: 0)
+		return streamWriter.writeApduRequest(apduRequest).toBytes()
 	}
 	
 	func _decodeResponse(_ data: Bytes) -> TapResponse{
-		var apduResponse = KaitaiStreamReader(data).readApduResponse()
-		if (apduResponse.status){
+		var apduResponse = TapStreamReader(withBytes: data).readApduResponse()
+		if ((apduResponse.status) != nil){
 			// TODO check valid APDU
 		}
-		return KaitaiStreamReader(apduResponse.data).readTapResponse()
+		return KaitaiStreamReader(data: apduResponse.data!).readTapResponse()
 	}
 	
-	func createRequest(_ method: MethodType, _ path: String, _ data: Bytes){
-		return TapRequest(
-			method,
-			self.createPathFromString(path),
-			data
-		)
+	func createRequest(_ method: TapRequestHeader.MethodType, _ path: String, _ data: Bytes) -> TapRequest {
+		let request = TapRequest()
+		request.header.path = self.createPathFromString(path)
+		request.header.methodType = method
+		request.payload = data
+		return request
 	}
 	
-	func createPathFromString(_ path: String) -> TapRequestPath{
-		let parts = path.split("/")
-		if (parts.length != 4){
+	func createPathFromString(_ path: String) -> TapRequestHeader.Path{
+		let parts = path.split(separator: "/")
+		if (parts.count != 4){
 			
 		}
-		let objectId = parts[1].toInt()
-		let objectInstanceId = parts[2].toInt()
-		let resourceId = parts[3].toInt()
-		let tapRequestPath = TapRequestPath(objectId, objectInstanceId, resourceId)
+		let objectId = Int(parts[1])
+		let objectInstanceId = Int(parts[2])
+		let resourceId = Int(parts[3])
+		let tapRequestPath = TapRequestHeader.Path(objectId, objectInstanceId, resourceId)
 		return tapRequestPath
 	}
 	

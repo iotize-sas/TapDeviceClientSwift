@@ -1,13 +1,17 @@
-import TapResponse
 
-extension TapRespone {
-    func successful(): Bool {
+extension TapResponse {
+    func successful() -> Bool {
         return self.codeRet & 0b1000000
     }
 
 }
 
-class TapClient(): ITapClient{
+protocol RequestBuilder{
+	
+	func build() -> Bytes
+}
+
+class TapClient: ITapClient{
 
     var _protocol: ComProtocol
 
@@ -31,7 +35,7 @@ class TapClient(): ITapClient{
         return self.send(createRequest(MethodType.POST, path, data))
     }
 
-    func send(_ request: TapRequest): TapResponse{
+    func send(_ request: TapRequest) -> TapResponse{
         var requestBytes = self._encodeRequest(request)
         _protocol.write(requestBytes)
         var responseBytes = _protocol.read()
@@ -39,7 +43,7 @@ class TapClient(): ITapClient{
         return tapResponse
     }
 
-    func _encodeRequest(_ request: TapRequest): Bytes{
+    func _encodeRequest(_ request: TapRequest) -> Bytes{
         if (streamWriter == null){
             streamWriter = KaitaiStreamWriter()
         }
@@ -54,9 +58,13 @@ class TapClient(): ITapClient{
         switch method {
         case MethodType.GET:
             apduRequest.header.ins = TapApduRequest.MethodType.GET
+			break
         case MethodType.PUT:
+			apduRequest.header.ins = TapApduRequest.MethodType.PUT_OR_POST
+			break
         case MethodType.POST:
             apduRequest.header.ins = TapApduRequest.MethodType.PUT_OR_POST
+			break
         default:
             throw Error("Invalid method type ")
         }
@@ -67,7 +75,7 @@ class TapClient(): ITapClient{
         return streamWriter.writeApduRequest(apduRequest).getBytes()
     }
 
-    func _decodeResponse(_ data: Bytes): TapResponse{
+    func _decodeResponse(_ data: Bytes) -> TapResponse{
         var apduResponse = KaitaiStreamReader(data).readApduResponse()
         if (apduResponse.status){
             // TODO check valid APDU
@@ -83,7 +91,7 @@ class TapClient(): ITapClient{
         )
     }
 
-    func createPathFromString(_ path: String): TapRequestPath{
+    func createPathFromString(_ path: String) -> TapRequestPath{
         let parts = path.split("/")
         if (parts.length != 4){
 
@@ -95,7 +103,7 @@ class TapClient(): ITapClient{
         return tapRequestPath
     }
 
-    func setProtocol(_ _protocol ComProtocol){
+	func setProtocol(_ _protocol: ComProtocol){
         self._protocol = _protocol
     }
 }

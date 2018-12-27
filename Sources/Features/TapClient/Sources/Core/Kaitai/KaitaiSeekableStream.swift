@@ -84,7 +84,7 @@ class NSDataSeekableStream:KaitaiSeekableStream {
             return nil
         }
 
-        var bytes = [UInt8](count: 1, repeatedValue: 0)
+		var bytes = [UInt8](repeating: 0, count: 1)
 
         data.getBytes(&bytes, length: 1)
 
@@ -102,7 +102,7 @@ class NSDataSeekableStream:KaitaiSeekableStream {
             return nil
         }
 
-        var bytes = [UInt8](count: length, repeatedValue: 0)
+		var bytes = [UInt8](repeating: 0, count: length)
 
         if position == 0 {
             data.getBytes(&bytes, length: length)
@@ -118,7 +118,7 @@ class NSDataSeekableStream:KaitaiSeekableStream {
 }
 
 class NSFileHandleSeekableStream:KaitaiSeekableStream {
-    private let file:NSFileHandle
+	private let file:FileHandle
 
     private(set) var position:Int = 0
 
@@ -126,14 +126,14 @@ class NSFileHandleSeekableStream:KaitaiSeekableStream {
         let byte = read()
 
         if byte != nil {
-            seek(position-1)
+			seek(position: position-1)
         }
 
         return byte == nil
     }
 
     init?(path:String) {
-        guard let file = NSFileHandle(forReadingAtPath: path) else {
+		guard let file = FileHandle(forReadingAtPath: path) else {
             return nil
         }
 
@@ -141,7 +141,7 @@ class NSFileHandleSeekableStream:KaitaiSeekableStream {
     }
 
     init?(url:NSURL) {
-        guard let file = try? NSFileHandle(forReadingFromURL:url) else {
+		guard let file = try? FileHandle(forReadingFrom:url as URL) else {
             return nil
         }
 
@@ -154,20 +154,20 @@ class NSFileHandleSeekableStream:KaitaiSeekableStream {
 
     func seek(position: Int) {
         self.position = position
-        file.seekToFileOffset(UInt64(position))
+		file.seek(toFileOffset: UInt64(position))
     }
 
     func read() -> UInt8? {
-        let data = file.readDataOfLength(1)
+		let data = file.readData(ofLength: 1)
 
-        guard data.length == 1 else {
-            seek(position)
+		guard data.count == 1 else {
+			seek(position: position)
 
             return nil
         }
 
-        var bytes = [UInt8](count: 1, repeatedValue: 0)
-        data.getBytes(&bytes, length: 1)
+		var bytes = [UInt8](repeating: 0, count: 1)
+		copyBytes.getBytes(&bytes, length: 1)
 
         position += 1
 
@@ -175,16 +175,16 @@ class NSFileHandleSeekableStream:KaitaiSeekableStream {
     }
 
     func read(length: Int) -> [UInt8]? {
-        let data = file.readDataOfLength(length)
+		let data = file.readData(ofLength: length)
 
-        guard data.length == length else {
-            seek(position)
+		guard data.count == length else {
+			seek(position: position)
 
             return nil
         }
         
-        var bytes = [UInt8](count: length, repeatedValue: 0)
-        data.getBytes(&bytes, length: length)
+		var bytes = [UInt8](repeating: 0, count: length)
+		copyBytes.getBytes(&bytes, length: length)
         
         position += length
         

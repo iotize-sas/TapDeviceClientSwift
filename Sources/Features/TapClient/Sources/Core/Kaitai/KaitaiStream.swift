@@ -52,8 +52,8 @@ public class KaitaiStream {
         return isEOF
     }
 
-    public func seek(position:Int) {
-        stream.seek(position)
+    public func seek(toPosition position:Int) {
+		stream.seek(position: position)
     }
 
     public func readS1() -> Int8? {
@@ -282,8 +282,12 @@ public class KaitaiStream {
         return (value1 << 32) + (value2 << 0)
     }
 
+	public func readBytes() -> [UInt8]? {
+		return self.readBytesFull()
+	}
+	
     public func readBytes(length:Int) -> [UInt8]? {
-        guard let bytes = stream.read(length) else {
+		guard let bytes = stream.read(length: length) else {
             return nil
         }
 
@@ -305,7 +309,7 @@ public class KaitaiStream {
     }
 
     public func ensureFixedContents(length:Int,bytes:[UInt8]) -> [UInt8]? {
-        guard let actualBytes = readBytes(length) else {
+		guard let actualBytes = readBytes(length: length) else {
             return nil
         }
 
@@ -316,7 +320,7 @@ public class KaitaiStream {
         return actualBytes
     }
 
-    public func readStrEos(encoding: NSStringEncoding) -> String? {
+	public func readStrEos(encoding: String.Encoding) -> String? {
         guard let bytes = readBytesFull() else {
             return nil
         }
@@ -326,8 +330,8 @@ public class KaitaiStream {
         return string
     }
 
-    public func readStrByteLimit(length:Int, encoding: NSStringEncoding) -> String? {
-        guard let bytes = readBytes(length) else {
+	public func readStrByteLimit(length:Int, encoding: String.Encoding) -> String? {
+		guard let bytes = readBytes(length: length) else {
             return nil
         }
 
@@ -336,7 +340,7 @@ public class KaitaiStream {
         return string
     }
 
-    public func readStrz(encoding:NSStringEncoding, termination:UInt8, includeTermination:Bool=false,consumeTermination:Bool=true) -> String? {
+	public func readStrz(encoding:String.Encoding, termination:UInt8, includeTermination:Bool=false,consumeTermination:Bool=true) -> String? {
         var bytes = [UInt8]()
 
         while true {
@@ -350,7 +354,7 @@ public class KaitaiStream {
                 }
 
                 if !consumeTermination {
-                    stream.seek(stream.position - 1)
+					stream.seek(position: stream.position - 1)
                 }
 
                 let string = String(bytes: bytes, encoding: encoding)
@@ -362,21 +366,21 @@ public class KaitaiStream {
         }
     }
 
-    public func processZlib(bytes:[UInt8]) -> [UInt8]? {
-        let inflater = InflateStream()
-
-        var bytes = Array(bytes)
-        let (inflated,err) = inflater.write(&bytes, flush: true)
-
-        guard err == nil else {
-            return nil
-        }
-
-        return inflated
-    }
+//    public func processZlib(bytes:[UInt8]) -> [UInt8]? {
+//        let inflater = InflateStream()
+//
+//        var bytes = Array(bytes)
+//        let (inflated,err) = inflater.write(&bytes, flush: true)
+//
+//        guard err == nil else {
+//            return nil
+//        }
+//
+//        return inflated
+//    }
 
     public func processRotateLeft(bytes:[UInt8],amount:UInt,groupSize:Int=1) -> [UInt8]? {
-        var r = [UInt8](count:0, repeatedValue:0)
+		var r = [UInt8](repeating:0, count:0)
 
         switch groupSize {
         case 1:
