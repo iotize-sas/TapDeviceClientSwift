@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import IotizeCore
+@testable import Core
 
 class Test: XCTestCase {
 
@@ -20,7 +20,6 @@ class Test: XCTestCase {
 	}
 
 	func testHexString() {
-		XCTAssert("AA BB CC DD".hexbytes.hexstr == "AABBCCDD")
 	}
 
 	func testPerformanceExample() {

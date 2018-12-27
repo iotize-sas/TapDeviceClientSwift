@@ -6,10 +6,12 @@ targets:
     info:
       path: Sources/Features/TapClient/SupportingFiles/Info.plist
     dependencies:
-      - target: Core
+      - target: IotizeCore
+      - target: TapClientApi
       - carthage: RxSwift
       - carthage: RxCocoa
       - carthage: RxReduce
+      - carthage: CryptoSwift
     scheme:
       testTargets:
         - TapClientUnitTests
@@ -22,3 +24,4 @@ targets:
       path: Sources/Features/TapClient/SupportingFiles/InfoUnitTests.plist
     dependencies:
       - target: TapClient
+# - target: SocketProtocol TODO add integration test

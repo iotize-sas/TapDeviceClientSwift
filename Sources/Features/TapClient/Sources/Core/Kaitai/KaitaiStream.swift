@@ -9,7 +9,7 @@ import Foundation
 
 // #pragma mark - KaitaiStream
 public class KaitaiStream {
-    private var stream:KaitaiSeekableStream
+	var stream:KaitaiSeekableStream
 
     public var position:Int {
         return stream.position
@@ -27,21 +27,21 @@ public class KaitaiStream {
         stream = NSDataSeekableStream(data: data);
     }
 
-    public init?(path:String) {
-        guard let filestream = NSFileHandleSeekableStream(path: path) else {
-            return nil
-        }
-
-        stream = filestream
-    }
-
-    public init?(url:NSURL) {
-        guard let filestream = NSFileHandleSeekableStream(url: url) else {
-            return nil
-        }
-
-        stream = filestream
-    }
+//    public init?(path:String) {
+//        guard let filestream = NSFileHandleSeekableStream(path: path) else {
+//            return nil
+//        }
+//
+//        stream = filestream
+//    }
+//
+//    public init?(url:NSURL) {
+//        guard let filestream = NSFileHandleSeekableStream(url: url) else {
+//            return nil
+//        }
+//
+//        stream = filestream
+//    }
 
     // methods
     public func pos() -> Int {

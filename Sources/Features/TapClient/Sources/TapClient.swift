@@ -6,148 +6,203 @@
 //
 
 import Foundation
+import TapClientApi
+import IotizeCore
 
-//extension TapRespone {
-//	func successful() -> Bool {
-//		return self.codeRet & 0b1000000
+public extension ConnectionStateAware {
+	
+	func getConnectionState() -> ConnectionState {
+		return self.connectionState
+	}
+}
+
+
+
+//public class QueueComProtocol: ComProtocol, ConnectionStateAware {
+//	public func connect(timeout: UInt? = nil) {
+//
 //	}
 //
+//	public func disconnect(timeout: UInt? = nil) {
+//
+//	}
+//
+//	public func read(timeout: UInt? = nil) -> Bytes {
+//		<#code#>
+//	}
+//
+//	public func write(data: Bytes, timeout: UInt? = nil) {
+//		<#code#>
+//	}
+//
+//	public var connectionState: ConnectionState
 //}
-
-public typealias Bytes = [UInt8]
-
-public protocol ComProtocol{
-	
-	func connect()
-	func disconnect()
-	
-	func read() -> Bytes
-	func write(data: Bytes)
-	
-}
-
-public protocol ITapClient{
-	
-	func connect()
-	func disconnect()
-	
-	// func send(Command)
-	
-	func GET(at path: String, _ data: Bytes?)
-	func PUT(at path: String, _ data: Bytes?)
-	func POST(at path: String, _ data: Bytes?)
-	
-	func setProtocol(_ _protocol: ComProtocol)
-}
 
 
 public enum TapClientError: Error {
 	case invalidMethodType
+	case invalidPathFormat
 }
 
-
-public class ApiRequest<DataType> {
+public class ApiRequest<BodyType> { // : Encodable
 	
-	init( method: TapRequestHeader.MethodType, path: String, body: Any? = nil){
-		
+	public var method: TapRequestHeader.MethodType
+	public var path : String
+	public var body : BodyType?
+	public var bodyEncoder: TapConverterContainer<BodyType>?
+//	public var returnType: ReturnType.Type?
+	
+	init(method: TapRequestHeader.MethodType, path: String){
+		self.method = method
+		self.path = path
+		self.body = nil
+		self.bodyEncoder = nil
+	}
+	
+	init( method: TapRequestHeader.MethodType, path: String, body: BodyType
+		, bodyEncoder: TapConverterContainer<BodyType>? = nil
+		){
+		self.method = method
+		self.path = path
+		self.body = body
+		self.bodyEncoder = bodyEncoder
+	}
+}
+
+public enum TapError<T>: Error {
+	case tapRespondedWithError(response: ApiResponse<T>)
+}
+public class ApiResponse<DataType>{
+	
+	var response: TapResponse
+//	var dataType: DataType.Type?
+	var converter: TapConverterContainer<DataType>?
+	
+	init(response: TapResponse, converter: TapConverterContainer<DataType>? = nil){
+		self.response = response
+//		self.dataType = dataType
+		self.converter = converter
+	}
+	
+	public func successful() throws {
+		if (!self.response.successful()){
+			throw TapError.tapRespondedWithError(response: self)
+		}
+	}
+	
+	public func body() throws -> DataType {
+		try self.successful()
+//		return try TapStreamDecoder().decode(self.dataType!, from: self.response.data)
+		if (self.converter != nil){
+			return self.converter!.decode(stream: TapStreamReader(withBytes: self.response.data!))
+		}
+//		else if (self.response.data is Bytes){
+//			return self.response.data as! DataType // TODO check it's Bytes
+//		}
+		else {
+			throw IotizeError.notImplemented // TODO illegal argument
+		}
 	}
 }
 
 public class TapClient {
 	
-	var _protocol: ComProtocol
+	var comProtocol: ComProtocol
+	var _requestInterceptor: TapRequestInterceptor
+	var encoder = TapStreamEncoder()
 	
-	init() {
-		
+	init(withProtocol p: ComProtocol, requestInterceptor: TapRequestInterceptor = ApduRequestInterceptor()) {
+		self.comProtocol = p
+		self._requestInterceptor = requestInterceptor
 	}
 	
 	func connect(){
-		_protocol.connect()
+		comProtocol.connect()
 	}
 	
 	func disconnect(){
-		_protocol.disconnect()
+		comProtocol.disconnect()
 	}
 	
-	func GET(at path: String, _ data: Bytes) throws -> TapResponse {
-		return try self.send(self.createRequest(.GET, path, data))
+	func GET(path: String, body data: Bytes? = nil) throws -> TapResponse {
+		return try self.COMMAND(type: .GET, path: path, body: data)
 	}
 	
-	func PUT(at path: String, _ data: Bytes) throws -> TapResponse {
-		return try self.send(self.createRequest(.PUT, path, data))
+	func PUT(path: String, body data: Bytes? = nil) throws -> TapResponse {
+		return try self.COMMAND(type: .PUT, path: path, body: data)
 	}
 	
-	func POST(at path: String, _ data: Bytes) throws  -> TapResponse {
-		return try self.send(self.createRequest(.POST, path, data))
+	func POST(path: String, body data: Bytes? = nil) throws  -> TapResponse {
+		return try self.COMMAND(type: .POST, path: path, body: data)
 	}
 	
-	func send(_ request: TapRequest) throws -> TapResponse {
-		let requestBytes = try self._encodeRequest(request)
-		_protocol.write(data: requestBytes)
-		let responseBytes = _protocol.read()
-		let tapResponse = self._decodeResponse(responseBytes)
-		return tapResponse
+	func COMMAND(type: TapRequestHeader.MethodType, path: String, body: Bytes? = nil) throws  -> TapResponse {
+		return try self.send(self.createRequest(type, path, body)).response
 	}
 	
-	func _encodeRequest(_ request: TapRequest) throws -> Bytes {
-		let streamWriter = TapStreamWriter()
-		let tapRequestBytes = streamWriter.writeTapRequest(model: request).toBytes()
-		
-		var apduRequest = ApduRequest()
-		apduRequest.header = ApduRequestHeader()
-		apduRequest.header.cla = TapApduRequest.Default.CLA.rawValue
-		apduRequest.header.p1 = 0
-		apduRequest.header.p2 = 0
-		
-		switch request.header.methodType! {
-		case .GET:
-			apduRequest.header.ins = TapApduRequest.MethodType.GET.rawValue
-			break
-		case .PUT:
-			apduRequest.header.ins = TapApduRequest.MethodType.PUT_OR_POST.rawValue
-			break
-		case .POST:
-			apduRequest.header.ins = TapApduRequest.MethodType.PUT_OR_POST.rawValue
-			break
-		default:
-			throw TapClientError.invalidMethodType
+	func execute<BodyType, ReturnType>(request: ApiRequest<BodyType>, converter: TapConverterContainer<ReturnType>? = nil) throws -> ApiResponse<ReturnType> {
+		var rawBody: Bytes? = nil
+		if (request.body != nil && request.bodyEncoder != nil){
+//			rawBody = try encoder.encode(request.body!)
+			rawBody = request.bodyEncoder!.encode(model: request.body!).toBytes()
 		}
-		apduRequest.header.lc = 0
-		apduRequest.data = streamWriter.toBytes()
-		
-		streamWriter.seek(toPosition: 0)
-		return streamWriter.writeApduRequest(apduRequest).toBytes()
+		let response = try self.COMMAND(type: request.method, path: request.path, body: rawBody)
+		return ApiResponse(response: response, converter: converter)
 	}
 	
-	func _decodeResponse(_ data: Bytes) -> TapResponse{
-		var apduResponse = TapStreamReader(withBytes: data).readApduResponse()
-		if ((apduResponse.status) != nil){
-			// TODO check valid APDU
-		}
-		return KaitaiStreamReader(data: apduResponse.data!).readTapResponse()
+	func send(_ request: TapRequest) throws -> ApiResponse<Any> {
+		let baseInterceptor = SendFrameHandler(client: self)
+		return try self._requestInterceptor.intercept(request: request, next: baseInterceptor)
+//		_protocol.write(data: requestBytes)
+//		let responseBytes = _protocol.read()
+//		let responseBytes = _protocol.send(data: requestBytes)
+//		let tapResponse = self._decodeResponse(responseBytes)
+//		return tapResponse
+//		throw IotizeError.notImplemented
 	}
 	
-	func createRequest(_ method: TapRequestHeader.MethodType, _ path: String, _ data: Bytes) -> TapRequest {
+	
+	func createRequest(_ method: TapRequestHeader.MethodType, _ path: String, _ data: Bytes? = nil) throws -> TapRequest {
 		let request = TapRequest()
-		request.header.path = self.createPathFromString(path)
+		request.header = TapRequestHeader()
+		request.header.path = try self.createPathFromString(path)
 		request.header.methodType = method
-		request.payload = data
+		request.payload = data ?? [UInt8]()
 		return request
 	}
 	
-	func createPathFromString(_ path: String) -> TapRequestHeader.Path{
-		let parts = path.split(separator: "/")
+	func createPathFromString(_ path: String) throws -> TapRequestHeader.Path{
+//		if (path.starts(with: "/")){
+//			path = path.substring(to: 1)
+//		}
+		let parts = path.components(separatedBy: "/")
 		if (parts.count != 4){
-			
+			throw TapClientError.invalidPathFormat
 		}
-		let objectId = Int(parts[1])
-		let objectInstanceId = Int(parts[2])
-		let resourceId = Int(parts[3])
-		let tapRequestPath = TapRequestHeader.Path(objectId, objectInstanceId, resourceId)
-		return tapRequestPath
+		let objectId: UInt16 = UInt16(parts[1]) ?? 0xFFFF
+		let objectInstanceId: UInt16 = UInt16(parts[2]) ?? 0xFFFF
+		let resourceId: UInt16 = UInt16(parts[3]) ?? 0xFFFF
+		return TapRequestHeader.Path(objectId: objectId, objectInstanceId: objectInstanceId, resourceId: resourceId)
 	}
 	
 	func setProtocol(_ p: ComProtocol){
-		self._protocol = p
+		self.comProtocol = p
 	}
+	
+	
+	class SendFrameHandler: TapRequestHandler {
+		
+		var client: TapClient
+		
+		init(client: TapClient){
+			self.client = client;
+		}
+		
+		func handle(bytes: Bytes) -> Bytes {
+			return self.client.comProtocol.send(data: bytes)
+		}
+		
+		
+	}
+
 }

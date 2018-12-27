@@ -10,11 +10,10 @@ targets:
         UILaunchStoryboardName: LaunchScreen
     dependencies:
       - target: Core
-      - target: Home
-      - target: Profile
-      - target: Introduction
+      - target: TapClientApi
+      - target: BLEProtocol_iOS
       - target: TapClient
-      - target: Tab2
+      - target: SocketProtocol
       - carthage: RxSwift
       - carthage: RxCocoa
       - carthage: RxReduce

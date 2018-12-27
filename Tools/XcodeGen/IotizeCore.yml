@@ -1,0 +1,21 @@
+targets: 
+  IotizeCore:
+    type: framework
+    platform: iOS
+    sources: [Sources/Features/IotizeCore/Sources]
+    info:
+      path: Sources/Features/IotizeCore/SupportingFiles/Info.plist
+    # dependencies: 
+    #   - carthage: RxSwift
+    scheme:
+      testTargets:
+        - IotizeCoreUnitTests
+      gatherCoverageData: true
+  IotizeCoreUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Features/IotizeCore/Tests]
+    info:
+      path: Sources/Features/IotizeCore/SupportingFiles/InfoUnitTests.plist
+    dependencies:
+      - target: IotizeCore

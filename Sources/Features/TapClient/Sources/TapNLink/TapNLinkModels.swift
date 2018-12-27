@@ -1,11 +1,21 @@
+import TapClientApi
 
 
-public class Types {
+
+public class Types: Codable, TapCodable {
+    
+
     
 
     public init(){
         
     }
+
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
 
     
 
@@ -114,32 +124,36 @@ public enum TargetCoreType: UInt8, Codable {
 
 
 
-public class AclEntry {
+public class AclEntry: Codable, TapCodable {
     // unamed
 
-    var create: Int!
-    var delete: Int!
-    var execute: Int!
-    var write: Int!
-    var read: Int!
+    var create: Bool!
+    var delete: Bool!
+    var execute: Bool!
+    var write: Bool!
+    var read: Bool!
     
 
-    public init(){
-        // unamed
+    
+    public init(){}
+    
 
+    public init(create: Bool, delete: Bool, execute: Bool, write: Bool, read: Bool){
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
+        self.create = create
+        self.delete = delete
+        self.execute = execute
+        self.write = write
+        self.read = read
         
     }
 
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
     
 
     
@@ -147,22 +161,29 @@ public class AclEntry {
 
 
 
-public class MemoryInfo {
+public class MemoryInfo: Codable, TapCodable {
     var address: UInt32!
     var length: UInt32!
     var sizeInBytes: UInt32!
     
 
-    public init(){
-        
     
-        
+    public init(){}
     
-        
-    
+
+    public init(address: UInt32, length: UInt32, sizeInBytes: UInt32){
+        self.address = address
+        self.length = length
+        self.sizeInBytes = sizeInBytes
         
     }
 
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
     
 
     
@@ -170,25 +191,31 @@ public class MemoryInfo {
 
 
 
-public class MemoryWriteInfo {
+public class MemoryWriteInfo: Codable, TapCodable {
     var address: UInt32!
     var length: UInt32!
     var itemSize: UInt8!
     var value: Bytes!
     
 
-    public init(){
-        
     
-        
+    public init(){}
     
-        
-    
-        
-    
+
+    public init(address: UInt32, length: UInt32, itemSize: UInt8, value: Bytes){
+        self.address = address
+        self.length = length
+        self.itemSize = itemSize
+        self.value = value
         
     }
 
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
     
 
     
@@ -196,23 +223,30 @@ public class MemoryWriteInfo {
 
 
 
-public class ReadWriteRights {
+public class ReadWriteRights: Codable, TapCodable {
     // unamed
 
-    var write: Int!
-    var read: Int!
+    var write: Bool!
+    var read: Bool!
     
 
-    public init(){
-        // unamed
+    
+    public init(){}
+    
 
+    public init(write: Bool, read: Bool){
         
-    
-        
-    
+        self.write = write
+        self.read = read
         
     }
 
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
     
 
     
@@ -220,36 +254,39 @@ public class ReadWriteRights {
 
 
 
-public class DatalogOption {
+public class DatalogOption: Codable, TapCodable {
     // unamed
 
-    var security: Int!
-    var qos: Int!
+    var security: Bool!
+    var qos: Bool!
     // unamed
 
-    var logOnChange: Int!
-    var rollingMode: Int!
-    var autoorun: Int!
+    var logOnChange: Bool!
+    var rollingMode: Bool!
+    var autoorun: Bool!
     
 
-    public init(){
-        // unamed
+    
+    public init(){}
+    
 
+    public init(security: Bool, qos: Bool, logOnChange: Bool, rollingMode: Bool, autoorun: Bool){
         
-    
+        self.security = security
+        self.qos = qos
         
-    
-        // unamed
-
-        
-    
-        
-    
-        
-    
+        self.logOnChange = logOnChange
+        self.rollingMode = rollingMode
+        self.autoorun = autoorun
         
     }
 
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
     
 
     
@@ -257,36 +294,76 @@ public class DatalogOption {
 
 
 
-public class UartSettings {
+public class UartSettings: Codable, TapCodable {
     var ctr2: Ctr2!
     var ctr1: Ctr1!
     
 
-    public init(){
-        
     
-        
+    public init(){}
     
+
+    public init(ctr2: Ctr2, ctr1: Ctr1){
+        self.ctr2 = ctr2
+        self.ctr1 = ctr1
         
     }
 
-    public class Ctr1 {
-        var skip: Int!
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
+    public class Ctr1: Codable, TapCodable {
+        var skip: UInt8!
         var physicalPort: PhysicalPort!
         var stopBit: StopBit!
         var parity: BitParity!
-        var dataLength: Int!
+        var dataLength: UInt8!
         var handshakeDelimiter: HandshakeDelimiter!
-        var handshakeValue: Int!
+        var handshakeValue: UInt8!
         var timeout: UInt8!
         
+
+
+        
+        public init(){}
+        
+
+        public init(skip: UInt8, physicalPort: PhysicalPort, stopBit: StopBit, parity: BitParity, dataLength: UInt8, handshakeDelimiter: HandshakeDelimiter, handshakeValue: UInt8, timeout: UInt8){
+            self.skip = skip
+            self.physicalPort = physicalPort
+            self.stopBit = stopBit
+            self.parity = parity
+            self.dataLength = dataLength
+            self.handshakeDelimiter = handshakeDelimiter
+            self.handshakeValue = handshakeValue
+            self.timeout = timeout
+            
+        }
+
     }
-    public class Ctr2 {
+    public class Ctr2: Codable, TapCodable {
         var slv: UInt8!
-        var skip: Int!
-        var ofs: Int!
+        var skip: UInt8!
+        var ofs: Bool!
         var baudrate: Int!
         
+
+
+        
+        public init(){}
+        
+
+        public init(slv: UInt8, skip: UInt8, ofs: Bool, baudrate: Int){
+            self.slv = slv
+            self.skip = skip
+            self.ofs = ofs
+            self.baudrate = baudrate
+            
+        }
+
     }
     
 
@@ -324,34 +401,37 @@ public enum HandshakeDelimiter: UInt8, Codable {
 
 
 
-public class Lwm2mTlv {
-    var identifierType: Int!
-    var identifierLength: Int!
-    var lengthType: Int!
-    var other: Int!
+public class Lwm2mTlv: Codable, TapCodable {
+    var identifierType: UInt8!
+    var identifierLength: Bool!
+    var lengthType: UInt8!
+    var other: UInt8!
     var identifier: Bytes!
     var len: UInt16!
     var value: Bytes!
     
 
-    public init(){
-        
     
-        
+    public init(){}
     
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
+
+    public init(identifierType: UInt8, identifierLength: Bool, lengthType: UInt8, other: UInt8, identifier: Bytes, len: UInt16, value: Bytes){
+        self.identifierType = identifierType
+        self.identifierLength = identifierLength
+        self.lengthType = lengthType
+        self.other = other
+        self.identifier = identifier
+        self.len = len
+        self.value = value
         
     }
 
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
     
 
     
@@ -359,37 +439,39 @@ public class Lwm2mTlv {
 
 
 
-
-public class InterfaceLock {
+public class InterfaceLock: Codable, TapCodable {
     // unamed
 
     // unamed
 
-    var scramActivated: Int!
-    var hashPassword: Int!
-    var factoryReset: Int!
-    var resourceLogUid: Int!
-    var resouceFactory: Int!
+    var scramActivated: Bool!
+    var hashPassword: Bool!
+    var factoryReset: Bool!
+    var resourceLogUid: Bool!
+    var resouceFactory: Bool!
     
 
-    public init(){
-        // unamed
+    
+    public init(){}
+    
 
-        // unamed
-
+    public init(scramActivated: Bool, hashPassword: Bool, factoryReset: Bool, resourceLogUid: Bool, resouceFactory: Bool){
         
-    
         
-    
-        
-    
-        
-    
-        
-    
+        self.scramActivated = scramActivated
+        self.hashPassword = hashPassword
+        self.factoryReset = factoryReset
+        self.resourceLogUid = resourceLogUid
+        self.resouceFactory = resouceFactory
         
     }
 
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
     
 
     
@@ -397,19 +479,55 @@ public class InterfaceLock {
 
 
 
-public class ScramLoginParams {
+public class LoginCredential: Codable, TapCodable {
+    var username: String!
+    var password: String!
+    
+
+    
+    public init(){}
+    
+
+    public init(username: String, password: String){
+        self.username = username
+        self.password = password
+        
+    }
+
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
+    
+
+    
+    }
+
+
+
+public class ScramLoginParams: Codable, TapCodable {
     var username: String!
     var clientNonce: UInt32!
     
 
-    public init(){
-        
     
-        
+    public init(){}
     
+
+    public init(username: String, clientNonce: UInt32){
+        self.username = username
+        self.clientNonce = clientNonce
         
     }
 
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
     
 
     
@@ -417,21 +535,117 @@ public class ScramLoginParams {
 
 
 
-public class ScramLoginResponseBody {
+public class ScramLoginResponseBody: Codable, TapCodable {
     var servernonce: UInt32!
     var salt: Bytes!
     var iterationNumber: UInt32!
     
 
-    public init(){
-        
     
-        
+    public init(){}
     
-        
-    
+
+    public init(servernonce: UInt32, salt: Bytes, iterationNumber: UInt32){
+        self.servernonce = servernonce
+        self.salt = salt
+        self.iterationNumber = iterationNumber
         
     }
+
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
+    
+
+    
+    }
+
+
+
+public class TargetComStats: Codable, TapCodable {
+    var nbFailCom: UInt32!
+    var nbSuccessfulCom: UInt32!
+    
+
+    
+    public init(){}
+    
+
+    public init(nbFailCom: UInt32, nbSuccessfulCom: UInt32){
+        self.nbFailCom = nbFailCom
+        self.nbSuccessfulCom = nbSuccessfulCom
+        
+    }
+
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
+    
+
+    
+    }
+
+
+
+public class AvailableFunction: Codable, TapCodable {
+    // unamed
+
+    var debug: Bool!
+    var datalog: Bool!
+    
+
+    
+    public init(){}
+    
+
+    public init(debug: Bool, datalog: Bool){
+        
+        self.debug = debug
+        self.datalog = datalog
+        
+    }
+
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
+    
+
+    
+    }
+
+
+
+public class CrcCheckBody: Codable, TapCodable {
+    var address: UInt32!
+    var size: UInt32!
+    var crc: UInt32!
+    
+
+    
+    public init(){}
+    
+
+    public init(address: UInt32, size: UInt32, crc: UInt32){
+        self.address = address
+        self.size = size
+        self.crc = crc
+        
+    }
+
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
 
     
 

@@ -1,0 +1,22 @@
+targets: 
+  TapClientApi:
+    type: framework
+    platform: iOS
+    sources: [Sources/Features/TapClientApi/Sources]
+    info:
+      path: Sources/Features/TapClientApi/SupportingFiles/Info.plist
+    dependencies:
+      - target: IotizeCore
+      - carthage: RxSwift
+    scheme:
+      testTargets:
+        - TapClientApiUnitTests
+      gatherCoverageData: true
+  TapClientApiUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Features/TapClientApi/Tests]
+    info:
+      path: Sources/Features/TapClientApi/SupportingFiles/InfoUnitTests.plist
+    dependencies:
+      - target: TapClientApi

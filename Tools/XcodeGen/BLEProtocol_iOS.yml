@@ -1,0 +1,24 @@
+targets: 
+  BLEProtocol_iOS:
+    type: framework
+    platform: iOS
+    sources: [Sources/Features/BLEProtocol_iOS/Sources]
+    info:
+      path: Sources/Features/BLEProtocol_iOS/SupportingFiles/Info.plist
+    dependencies:
+      - target: IotizeCore
+      - target: TapClientApi
+      - carthage: RxSwift
+    scheme:
+      testTargets:
+        - BLEProtocol_iOSUnitTests
+      gatherCoverageData: true
+  BLEProtocol_iOSUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Features/BLEProtocol_iOS/Tests]
+    info:
+      path: Sources/Features/BLEProtocol_iOS/SupportingFiles/InfoUnitTests.plist
+    dependencies:
+      - target: BLEProtocol_iOS
+      - target: IotizeTestCore

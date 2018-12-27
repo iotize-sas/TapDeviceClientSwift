@@ -1,11 +1,12 @@
 include:
   - Tools/XCodeGen/Application.yml
   - Tools/XCodeGen/Core.yml
-  - Tools/XCodeGen/Home.yml
-  - Tools/XCodeGen/Profile.yml
-  - Tools/XCodeGen/Introduction.yml
+  - Tools/XCodeGen/TapClientApi.yml
+  - Tools/XCodeGen/BLEProtocol_iOS.yml
   - Tools/XCodeGen/TapClient.yml
-  - Tools/XCodeGen/Tab2.yml
+  - Tools/XCodeGen/SocketProtocol.yml
+  - Tools/XCodeGen/IotizeCore.yml
+  - Tools/XCodeGen/IotizeTestCore.yml
 name: Starter
 fileGroups: [Tools/Carthage/Cartfile, Tools/Carthage/Cartfile.resolved, Tools/SwiftGen, Tools/XcodeGen, Documentation, project.yml, README.md]
 options:

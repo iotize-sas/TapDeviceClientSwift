@@ -9,6 +9,11 @@
 import Foundation
 
 
-class SinglePacket {
+public class SinglePacket {
+	
+}
+
+
+public class ListAclEntry {
 	
 }
