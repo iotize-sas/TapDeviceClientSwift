@@ -2,3 +2,5 @@ github "ReactiveX/RxSwift"
 github "RxSwiftCommunity/RxDataSources"
 github "RxSwiftCommunity/RxSwiftExt"
 github "RxSwiftCommunity/RxReduce"
+github "socketio/socket.io-client-swift" ~> 13.3.0
+
