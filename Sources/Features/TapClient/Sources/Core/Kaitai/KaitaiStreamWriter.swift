@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import TapClientApi
 
 typealias Byte = UInt8
 
@@ -28,14 +29,24 @@ func fromByteArray<T>(_ value: [UInt8], _: T.Type) -> T {
 
 
 public class KaitaiStreamWriter : KaitaiWritableStream{
-	private var stream: ByteBuffer
+	var stream: ByteBuffer
 	
 	var position: Int
 	
 	var isEOF: Bool
 	
+	public func reverseBytes(){
+		self.stream.reverse()
+	}
+	
 	public init(bufferSize: Int = 255){
 		self.stream = ByteBuffer(size: bufferSize) // TODO buffer size
+		self.position = 0
+		self.isEOF = false
+	}
+	
+	public init(bytes: Bytes){
+		self.stream = ByteBuffer(bytes: bytes) // TODO buffer size
 		self.position = 0
 		self.isEOF = false
 	}

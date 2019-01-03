@@ -30,13 +30,14 @@ public class DefaultAuth: AuthApi {
 	}
 	
 	public func login(credential: LoginCredential) throws {
-//		credential.username = credential.password.leftPadding(toLength: 16, withPad: " ")
-//		credential.password = credential.password.leftPadding(toLength: 16, withPad: " ")
-
 		if (self.hashPassword){
-			credential.password = try Crypto.passwordHash(password: credential.password ?? "").ascii
+			let passwordHash = try Crypto.passwordHash(password: credential.password ?? "")
+			let hashedCredential = LoginCredentialHashed(username: credential.username, password: passwordHash)
+			try self.interfaceApi.loginWithHash(credential: hashedCredential).successful()
 		}
-		try self.interfaceApi.login(credential: credential).successful()
+		else {
+			try self.interfaceApi.login(credential: credential).successful()
+		}
 	}
 	
 	public func logout() throws {

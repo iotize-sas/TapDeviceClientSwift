@@ -119,6 +119,10 @@
 //    
 //
 //   
+//   "/interface/login-with-hash": "/1024//0",
+//    
+//
+//   
 //   "/datalog/options": "/1031//2",
 //    
 //
@@ -184,6 +188,10 @@
 //
 //   
 //   "/variable/{variableId}/set-value": "/1029/{variableId}/5",
+//    
+//
+//   
+//   "/target/read-address": "/1030//13",
 //    
 //
 //   
@@ -483,10 +491,6 @@
 //    
 //
 //   
-//   "/target/memaccess": "/1030//13",
-//    
-//
-//   
 //   "/interface/nfc/pairing-mode": "/1024//13",
 //    
 //
@@ -599,13 +603,6 @@
 //        
 //    
 //        
-//        "post /1030//13": {
-//            
- //           "bodyEncoder": "MemoryWriteInfo",
-//        },
-//        
-//    
-//        
 //        "put /1024//26": {
 //            
  //           "bodyEncoder": "CloudConnectionMode",
@@ -693,6 +690,13 @@
 //        "post /3//12": {
 //            
  //           
+//        },
+//        
+//    
+//        
+//        "post /1024//0": {
+//            
+ //           "bodyEncoder": "LoginCredentialHashed",
 //        },
 //        
 //    
@@ -972,7 +976,7 @@
 //        
 //        "get /1027//34": {
 //            "returnTypeConverter": "Bytes",
- //           "bodyEncoder": "integer_uint16",
+ //           "bodyEncoder": "Bytes",
 //        },
 //        
 //    
@@ -1218,13 +1222,6 @@
 //        "get /3//3": {
 //            "returnTypeConverter": "string",
  //           
-//        },
-//        
-//    
-//        
-//        "get /1030//13": {
-//            "returnTypeConverter": "Bytes",
- //           "bodyEncoder": "MemoryInfo",
 //        },
 //        
 //    
@@ -1621,6 +1618,13 @@
 //        
 //    
 //        
+//        "get /1030//13": {
+//            "returnTypeConverter": "Bytes",
+ //           "bodyEncoder": "MemoryInfo",
+//        },
+//        
+//    
+//        
 //        "post /5//2": {
 //            
  //           
@@ -1715,6 +1719,13 @@
 //        "get /1029/{variableId}/3": {
 //            "returnTypeConverter": "ReadWriteRights",
  //           
+//        },
+//        
+//    
+//        
+//        "post /1030//13": {
+//            
+ //           "bodyEncoder": "MemoryWriteInfo",
 //        },
 //        
 //    
@@ -1913,6 +1924,12 @@
 //        
 //            
 //    "ReadWriteRights": ReadWriteRightsConverter.instance(),
+//            
+//        
+//    
+//        
+//            
+//    "LoginCredentialHashed": LoginCredentialHashedConverter.instance(),
 //            
 //        
 //    

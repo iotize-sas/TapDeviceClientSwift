@@ -26,10 +26,10 @@ open class GroupAPI {
     * LWM2M path: /1025/{groupId}/5
 
     * @param groupId input
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getAliasRequest(
-        groupId: Int
+        groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/5"
         //var regex = "\{([\S]*)\}"
@@ -50,14 +50,14 @@ open class GroupAPI {
         * LWM2M path: /1025/{groupId}/5
         
         * @param groupId input
-        * @return Int api call
+        * @return UInt16 api call
         */
         public func getAlias(
-            groupId: Int
-        ) throws -> ApiResponse<Int>{
+            groupId: Int8
+        ) throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getAliasRequest(groupId: groupId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -70,7 +70,7 @@ open class GroupAPI {
     * @return String api call
     */
     public func getNameRequest(
-        groupId: Int
+        groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/0"
         //var regex = "\{([\S]*)\}"
@@ -94,7 +94,7 @@ open class GroupAPI {
         * @return String api call
         */
         public func getName(
-            groupId: Int
+            groupId: Int8
         ) throws -> ApiResponse<String>{
             let request : ApiRequest<Void> = self.getNameRequest(groupId: groupId)
             let converter: TapConverterContainer<String> = self.converterProvider.get(id: "string")
@@ -108,10 +108,10 @@ open class GroupAPI {
     * LWM2M path: /1025/{groupId}/7
 
     * @param groupId input
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getScramUserIterationRequest(
-        groupId: Int
+        groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/7"
         //var regex = "\{([\S]*)\}"
@@ -132,14 +132,14 @@ open class GroupAPI {
         * LWM2M path: /1025/{groupId}/7
         
         * @param groupId input
-        * @return Int api call
+        * @return UInt32 api call
         */
         public func getScramUserIteration(
-            groupId: Int
-        ) throws -> ApiResponse<Int>{
+            groupId: Int8
+        ) throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getScramUserIterationRequest(groupId: groupId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -149,10 +149,10 @@ open class GroupAPI {
     * LWM2M path: /1025/{groupId}/16
 
     * @param groupId input
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getScramUserSaltRequest(
-        groupId: Int
+        groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/16"
         //var regex = "\{([\S]*)\}"
@@ -173,14 +173,14 @@ open class GroupAPI {
         * LWM2M path: /1025/{groupId}/16
         
         * @param groupId input
-        * @return Int api call
+        * @return UInt32 api call
         */
         public func getScramUserSalt(
-            groupId: Int
-        ) throws -> ApiResponse<Int>{
+            groupId: Int8
+        ) throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getScramUserSaltRequest(groupId: groupId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -190,10 +190,10 @@ open class GroupAPI {
     * LWM2M path: /1025/{groupId}/4
 
     * @param groupId input
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getSessionLifetimeRequest(
-        groupId: Int
+        groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/4"
         //var regex = "\{([\S]*)\}"
@@ -214,14 +214,14 @@ open class GroupAPI {
         * LWM2M path: /1025/{groupId}/4
         
         * @param groupId input
-        * @return Int api call
+        * @return UInt16 api call
         */
         public func getSessionLifetime(
-            groupId: Int
-        ) throws -> ApiResponse<Int>{
+            groupId: Int8
+        ) throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getSessionLifetimeRequest(groupId: groupId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -237,7 +237,7 @@ open class GroupAPI {
     * @return  api call
     */
     public func postPasswordRequest(
-        groupId: Int, password: String
+        groupId: Int8, password: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1025/{groupId}/2"
         //var regex = "\{([\S]*)\}"
@@ -266,7 +266,7 @@ open class GroupAPI {
         * @return  api call
         */
         public func postPassword(
-            groupId: Int, password: String
+            groupId: Int8, password: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.postPasswordRequest(groupId: groupId, password: password)
             
@@ -286,8 +286,8 @@ open class GroupAPI {
     * @return  api call
     */
     public func putAliasRequest(
-        groupId: Int, value: Int
-    ) -> ApiRequest<Int>{
+        groupId: Int8, value: UInt16? = nil
+    ) -> ApiRequest<UInt16>{
         var path = "/1025/{groupId}/5"
         //var regex = "\{([\S]*)\}"
         
@@ -315,9 +315,9 @@ open class GroupAPI {
         * @return  api call
         */
         public func putAlias(
-            groupId: Int, value: Int
+            groupId: Int8, value: UInt16? = nil
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putAliasRequest(groupId: groupId, value: value)
+            let request : ApiRequest<UInt16> = self.putAliasRequest(groupId: groupId, value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -335,7 +335,7 @@ open class GroupAPI {
     * @return  api call
     */
     public func putNameRequest(
-        groupId: Int, name: String
+        groupId: Int8, name: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1025/{groupId}/0"
         //var regex = "\{([\S]*)\}"
@@ -364,7 +364,7 @@ open class GroupAPI {
         * @return  api call
         */
         public func putName(
-            groupId: Int, name: String
+            groupId: Int8, name: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putNameRequest(groupId: groupId, name: name)
             
@@ -384,8 +384,8 @@ open class GroupAPI {
     * @return  api call
     */
     public func putScramUserIterationRequest(
-        groupId: Int, value: Int
-    ) -> ApiRequest<Int>{
+        groupId: Int8, value: UInt32? = nil
+    ) -> ApiRequest<UInt32>{
         var path = "/1025/{groupId}/7"
         //var regex = "\{([\S]*)\}"
         
@@ -413,9 +413,9 @@ open class GroupAPI {
         * @return  api call
         */
         public func putScramUserIteration(
-            groupId: Int, value: Int
+            groupId: Int8, value: UInt32? = nil
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putScramUserIterationRequest(groupId: groupId, value: value)
+            let request : ApiRequest<UInt32> = self.putScramUserIterationRequest(groupId: groupId, value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -433,8 +433,8 @@ open class GroupAPI {
     * @return  api call
     */
     public func putScramUserSaltRequest(
-        groupId: Int, value: Int
-    ) -> ApiRequest<Int>{
+        groupId: Int8, value: UInt32? = nil
+    ) -> ApiRequest<UInt32>{
         var path = "/1025/{groupId}/16"
         //var regex = "\{([\S]*)\}"
         
@@ -462,9 +462,9 @@ open class GroupAPI {
         * @return  api call
         */
         public func putScramUserSalt(
-            groupId: Int, value: Int
+            groupId: Int8, value: UInt32? = nil
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putScramUserSaltRequest(groupId: groupId, value: value)
+            let request : ApiRequest<UInt32> = self.putScramUserSaltRequest(groupId: groupId, value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -482,8 +482,8 @@ open class GroupAPI {
     * @return  api call
     */
     public func putSessionLifetimeRequest(
-        groupId: Int, value: Int
-    ) -> ApiRequest<Int>{
+        groupId: Int8, value: UInt16? = nil
+    ) -> ApiRequest<UInt16>{
         var path = "/1025/{groupId}/4"
         //var regex = "\{([\S]*)\}"
         
@@ -511,9 +511,9 @@ open class GroupAPI {
         * @return  api call
         */
         public func putSessionLifetime(
-            groupId: Int, value: Int
+            groupId: Int8, value: UInt16? = nil
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putSessionLifetimeRequest(groupId: groupId, value: value)
+            let request : ApiRequest<UInt16> = self.putSessionLifetimeRequest(groupId: groupId, value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 

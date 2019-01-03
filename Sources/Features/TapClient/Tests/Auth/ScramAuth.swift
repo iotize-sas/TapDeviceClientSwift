@@ -66,7 +66,7 @@ struct ServerResponse : Codable {
 	let salt : String
 	
 	var model: ScramLoginResponseBody {
-		return ScramLoginResponseBody(servernonce: self.servernonce, salt: self.salt.hexbytes, iterationNumber: self.iterationNumber)
+		return ScramLoginResponseBody(serverNonce: self.servernonce, salt: self.salt.hexbytes, iterationNumber: self.iterationNumber)
 	}
 }
 

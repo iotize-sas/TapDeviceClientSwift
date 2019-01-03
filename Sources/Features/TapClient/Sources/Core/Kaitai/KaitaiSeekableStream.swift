@@ -15,6 +15,14 @@ protocol KaitaiBaseStream {
 	func size() -> Int
 }
 
+//class KaitaiBaseStream: KaitaiStream{
+//	prot let bytes:[UInt8]
+//
+//	public func reverse(){
+//
+//	}
+//}
+
 protocol KaitaiSeekableStream: KaitaiBaseStream {
     func read() -> UInt8?
     func read(length:Int) -> [UInt8]?
@@ -25,7 +33,7 @@ protocol KaitaiWritableStream: KaitaiBaseStream{
 }
 
 class ByteArraySeekableStream:KaitaiSeekableStream {
-    private let bytes:[UInt8]
+	private let bytes:[UInt8]
 
     private(set) var position:Int = 0
 

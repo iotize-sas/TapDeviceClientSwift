@@ -8,6 +8,8 @@
 import Foundation
 import TapClientApi
 import IotizeCore
+import XCTest
+@testable import TapClient
 
 struct ConverterTests: Decodable {
 	let tests: Array<ConverterTestOptions>
@@ -39,18 +41,14 @@ class ConverterTestLoader {
 	
 }
 
-import XCTest
-@testable import TapClient
 
-class ConverterTest: XCTestCase {
+class GenericConverterTest: XCTestCase {
 	
 	var options: ConverterTests!
 	
 	override func setUp()  {
 		// let path = Bundle.main.path(forResource: "test", ofType: "json")
-		let path = "/Users/developper/Documents/iotize-device-api-spec/tests/converter/encryption.json"
-		let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-		self.options = try! JSONDecoder().decode(ConverterTests.self, from: data)
+		self.options = TestUtility.loadTestResource(path: "converter/encryption.json", ConverterTests.self)
 	}
 	
 	override func tearDown() {

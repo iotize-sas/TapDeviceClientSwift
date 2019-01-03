@@ -10,7 +10,7 @@ public enum ConnectionState{
 }
 
 public protocol TapCodable {
-	// TODO 
+	var description: String { get }
 }
 
 public enum TapCodableError: Error{
@@ -21,12 +21,12 @@ public protocol ComProtocol{
 	
 	func getConnectionState() -> ConnectionState
 	
-	func connect() -> Any
-	func disconnect() -> Any
+	func connect() throws -> Any
+	func disconnect() throws -> Any
 	
-	func send(data: Bytes) -> Bytes
-	func read() -> Bytes
-	func write(data: Bytes)
+	func send(data: Bytes) throws -> Bytes
+	func read() throws  -> Bytes
+	func write(data: Bytes) throws 
 	
 }
 

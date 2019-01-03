@@ -31,7 +31,7 @@ open class BundleAPI {
     * @return  api call
     */
     public func getAclgroupIdRequest(
-        bundleId: Int, groupId: Int
+        bundleId: UInt8, groupId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1028/{tupId}"
         //var regex = "\{([\S]*)\}"
@@ -60,7 +60,7 @@ open class BundleAPI {
         * @return  api call
         */
         public func getAclgroupId(
-            bundleId: Int, groupId: Int
+            bundleId: UInt8, groupId: UInt8
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<Void> = self.getAclgroupIdRequest(bundleId: bundleId, groupId: groupId)
             
@@ -74,10 +74,10 @@ open class BundleAPI {
     * LWM2M path: /1028/{bundleId}/2
 
     * @param bundleId input
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getDatalogPeriodRequest(
-        bundleId: Int
+        bundleId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1028/{bundleId}/2"
         //var regex = "\{([\S]*)\}"
@@ -98,14 +98,14 @@ open class BundleAPI {
         * LWM2M path: /1028/{bundleId}/2
         
         * @param bundleId input
-        * @return Int api call
+        * @return UInt32 api call
         */
         public func getDatalogPeriod(
-            bundleId: Int
-        ) throws -> ApiResponse<Int>{
+            bundleId: UInt8
+        ) throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getDatalogPeriodRequest(bundleId: bundleId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -118,7 +118,7 @@ open class BundleAPI {
     * @return Bytes api call
     */
     public func getValuesRequest(
-        bundleId: Int
+        bundleId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1028/{bundleId}/1"
         //var regex = "\{([\S]*)\}"
@@ -142,7 +142,7 @@ open class BundleAPI {
         * @return Bytes api call
         */
         public func getValues(
-            bundleId: Int
+            bundleId: UInt8
         ) throws -> ApiResponse<Bytes>{
             let request : ApiRequest<Void> = self.getValuesRequest(bundleId: bundleId)
             let converter: TapConverterContainer<Bytes> = self.converterProvider.get(id: "Bytes")
@@ -164,7 +164,7 @@ open class BundleAPI {
     * @return  api call
     */
     public func putAclgroupIdRequest(
-        bundleId: Int, groupId: Int, rights: ReadWriteRights
+        bundleId: UInt8, groupId: UInt8, rights: ReadWriteRights
     ) -> ApiRequest<ReadWriteRights>{
         var path = "/1028/{bundleId}/0/{groupId}"
         //var regex = "\{([\S]*)\}"
@@ -198,7 +198,7 @@ open class BundleAPI {
         * @return  api call
         */
         public func putAclgroupId(
-            bundleId: Int, groupId: Int, rights: ReadWriteRights
+            bundleId: UInt8, groupId: UInt8, rights: ReadWriteRights
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<ReadWriteRights> = self.putAclgroupIdRequest(bundleId: bundleId, groupId: groupId, rights: rights)
             
@@ -218,8 +218,8 @@ open class BundleAPI {
     * @return  api call
     */
     public func putDatalogPeriodRequest(
-        bundleId: Int, value: Int
-    ) -> ApiRequest<Int>{
+        bundleId: UInt8, value: UInt32
+    ) -> ApiRequest<UInt32>{
         var path = "/1028/{bundleId}/2"
         //var regex = "\{([\S]*)\}"
         
@@ -247,9 +247,9 @@ open class BundleAPI {
         * @return  api call
         */
         public func putDatalogPeriod(
-            bundleId: Int, value: Int
+            bundleId: UInt8, value: UInt32
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putDatalogPeriodRequest(bundleId: bundleId, value: value)
+            let request : ApiRequest<UInt32> = self.putDatalogPeriodRequest(bundleId: bundleId, value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 

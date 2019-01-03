@@ -1,3 +1,8 @@
+/**
+ * This file has been generated
+ * DO NOT EDIT DIRECTLY, IT MAY BE OVERWRITE
+ */
+
 import TapClientApi
 
 public extension TapStreamReader {
@@ -127,7 +132,7 @@ public extension TapStreamReader {
     func readApduResponse() -> ApduResponse {
         let model = ApduResponse()
         model.data = self.readBytes(length: Int(self.getStreamSize() - 2))
-        model.status = self.readBytes(length: Int(2))
+        model.status = self.readU2()
         return model
     }
 
@@ -141,7 +146,7 @@ public extension TapStreamReader {
     func readApduRequest() -> ApduRequest {
         let model = ApduRequest()
         model.header = self.readApduRequestHeader()
-        model.data = self.readBytes(length: Int(model.header.lc))
+        model.data = self.readBytes(length: Int(Int(model.header.lc)))
         return model
     }
 
@@ -173,7 +178,8 @@ public extension TapStreamReader {
         let model = IotizeEncryptedFrame()
         model.id = self.readU2()
         model.len = self.readU2()
-        model.payload = self.readBytes(length: Int(model.len))
+        model.payload = self.readBytes(length: Int(Int(model.len)))
+        model.padding = self.readBytes(length: Int((16 - ((2 + 2 + Int(model.len) + 4) % 16)) % 16))
         model.crc = self.readU4()
         return model
     }
@@ -318,7 +324,7 @@ public extension TapStreamWriter {
 
     func writeApduResponse(_ model: ApduResponse) -> TapStreamWriter{
         self.writeBytes(model.data!)
-        self.writeBytes(model.status!)
+        self.writeU2(model.status!)
         return self
     }
 
@@ -365,7 +371,8 @@ public extension TapStreamWriter {
         self.writeU2(model.id!)
         self.writeU2(model.len!)
         self.writeBytes(model.payload!)
-        self.writeU4(model.crc!)
+        self.writeBytes(model.padding!)
+        self.appendCRC()
         return self
     }
 

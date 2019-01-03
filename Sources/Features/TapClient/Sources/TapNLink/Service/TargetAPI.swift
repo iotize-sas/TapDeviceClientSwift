@@ -248,7 +248,7 @@ open class TargetAPI {
     * Get max voltage
     * 
     * LWM2M path: /1027//9
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getMaxVoltageRequest()
          -> ApiRequest<Void>{
@@ -266,13 +266,13 @@ open class TargetAPI {
         * Get max voltage
         * 
         * LWM2M path: /1027//9
-                * @return Int api call
+                * @return UInt16 api call
         */
         public func getMaxVoltage()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getMaxVoltageRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -280,7 +280,7 @@ open class TargetAPI {
     * Get min voltage
     * 
     * LWM2M path: /1027//8
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getMinVoltageRequest()
          -> ApiRequest<Void>{
@@ -298,13 +298,13 @@ open class TargetAPI {
         * Get min voltage
         * 
         * LWM2M path: /1027//8
-                * @return Int api call
+                * @return UInt16 api call
         */
         public func getMinVoltage()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getMinVoltageRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -344,7 +344,7 @@ open class TargetAPI {
     * Get page size
     * Alignement page (TAR)
     * LWM2M path: /1027//10
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getPageSizeRequest()
          -> ApiRequest<Void>{
@@ -362,13 +362,13 @@ open class TargetAPI {
         * Get page size
         * Alignement page (TAR)
         * LWM2M path: /1027//10
-                * @return Int api call
+                * @return UInt32 api call
         */
         public func getPageSize()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getPageSizeRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -504,7 +504,7 @@ open class TargetAPI {
     * Get vcc
     * Lit la valeur de la tension de la cible
     * LWM2M path: /1027//7
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getVccRequest()
          -> ApiRequest<Void>{
@@ -522,13 +522,13 @@ open class TargetAPI {
         * Get vcc
         * Lit la valeur de la tension de la cible
         * LWM2M path: /1027//7
-                * @return Int api call
+                * @return UInt16 api call
         */
         public func getVcc()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getVccRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -848,8 +848,8 @@ open class TargetAPI {
     * @return  api call
     */
     public func putFirmwareVersionRequest(
-        value: Int
-    ) -> ApiRequest<Int>{
+        value: UInt32
+    ) -> ApiRequest<UInt32>{
         var path = "/1027//6"
         //var regex = "\{([\S]*)\}"
         
@@ -872,9 +872,9 @@ open class TargetAPI {
         * @return  api call
         */
         public func putFirmwareVersion(
-            value: Int
+            value: UInt32
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putFirmwareVersionRequest(value: value)
+            let request : ApiRequest<UInt32> = self.putFirmwareVersionRequest(value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -890,8 +890,8 @@ open class TargetAPI {
     * @return  api call
     */
     public func putMaxVoltageRequest(
-        value: Int
-    ) -> ApiRequest<Int>{
+        value: UInt16
+    ) -> ApiRequest<UInt16>{
         var path = "/1027//9"
         //var regex = "\{([\S]*)\}"
         
@@ -914,9 +914,9 @@ open class TargetAPI {
         * @return  api call
         */
         public func putMaxVoltage(
-            value: Int
+            value: UInt16
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putMaxVoltageRequest(value: value)
+            let request : ApiRequest<UInt16> = self.putMaxVoltageRequest(value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -932,8 +932,8 @@ open class TargetAPI {
     * @return  api call
     */
     public func putMinVoltageRequest(
-        value: Int
-    ) -> ApiRequest<Int>{
+        value: UInt16
+    ) -> ApiRequest<UInt16>{
         var path = "/1027//8"
         //var regex = "\{([\S]*)\}"
         
@@ -956,9 +956,9 @@ open class TargetAPI {
         * @return  api call
         */
         public func putMinVoltage(
-            value: Int
+            value: UInt16
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putMinVoltageRequest(value: value)
+            let request : ApiRequest<UInt16> = self.putMinVoltageRequest(value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -974,8 +974,8 @@ open class TargetAPI {
     * @return  api call
     */
     public func putPageSizeRequest(
-        value: Int
-    ) -> ApiRequest<Int>{
+        value: UInt32
+    ) -> ApiRequest<UInt32>{
         var path = "/1027//10"
         //var regex = "\{([\S]*)\}"
         
@@ -998,9 +998,9 @@ open class TargetAPI {
         * @return  api call
         */
         public func putPageSize(
-            value: Int
+            value: UInt32
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putPageSizeRequest(value: value)
+            let request : ApiRequest<UInt32> = self.putPageSizeRequest(value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -1049,7 +1049,7 @@ open class TargetAPI {
             return response
         }
     /**
-    * Read memory on target
+    * Read memory at given address on the target application
     * 
     * LWM2M path: /1030//13
     * Body converter id: "MemoryInfo"
@@ -1073,7 +1073,7 @@ open class TargetAPI {
     }
 
      /**
-        * Read memory on target
+        * Read memory at given address on the target application
         * 
         * LWM2M path: /1030//13
         * Body converter id: "MemoryInfo"
@@ -1100,8 +1100,8 @@ open class TargetAPI {
     * @return Bytes api call
     */
     public func readBytesRequest(
-        nbBytes: Int
-    ) -> ApiRequest<Int>{
+        nbBytes: UInt32? = nil
+    ) -> ApiRequest<UInt32>{
         var path = "/1027//35"
         //var regex = "\{([\S]*)\}"
         
@@ -1124,9 +1124,9 @@ open class TargetAPI {
         * @return Bytes api call
         */
         public func readBytes(
-            nbBytes: Int
+            nbBytes: UInt32? = nil
         ) throws -> ApiResponse<Bytes>{
-            let request : ApiRequest<Int> = self.readBytesRequest(nbBytes: nbBytes)
+            let request : ApiRequest<UInt32> = self.readBytesRequest(nbBytes: nbBytes)
             let converter: TapConverterContainer<Bytes> = self.converterProvider.get(id: "Bytes")
             let response: ApiResponse<Bytes> = try self.client.execute(request: request, converter: converter)
 
@@ -1210,14 +1210,14 @@ open class TargetAPI {
     * Transparent send and receive
     * Send data to the target application and expect response length
     * LWM2M path: /1027//34
-    * Body converter id: "integer_uint16"
+    * Body converter id: "Bytes"
 
-    * @param responseLength input
+    * @param data input
     * @return Bytes api call
     */
     public func sendReceiveRequest(
-        responseLength: Int
-    ) -> ApiRequest<Int>{
+        data: Bytes
+    ) -> ApiRequest<Bytes>{
         var path = "/1027//34"
         //var regex = "\{([\S]*)\}"
         
@@ -1225,8 +1225,8 @@ open class TargetAPI {
         return ApiRequest(
             method: TapRequestHeader.MethodType.GET
             , path: path
-            , body: responseLength
-            , bodyEncoder: self.converterProvider.get(id: "integer_uint16")
+            , body: data
+            , bodyEncoder: self.converterProvider.get(id: "Bytes")
         )
     }
 
@@ -1234,15 +1234,15 @@ open class TargetAPI {
         * Transparent send and receive
         * Send data to the target application and expect response length
         * LWM2M path: /1027//34
-        * Body converter id: "integer_uint16"
+        * Body converter id: "Bytes"
     
-        * @param responseLength input
+        * @param data input
         * @return Bytes api call
         */
         public func sendReceive(
-            responseLength: Int
+            data: Bytes
         ) throws -> ApiResponse<Bytes>{
-            let request : ApiRequest<Int> = self.sendReceiveRequest(responseLength: responseLength)
+            let request : ApiRequest<Bytes> = self.sendReceiveRequest(data: data)
             let converter: TapConverterContainer<Bytes> = self.converterProvider.get(id: "Bytes")
             let response: ApiResponse<Bytes> = try self.client.execute(request: request, converter: converter)
 

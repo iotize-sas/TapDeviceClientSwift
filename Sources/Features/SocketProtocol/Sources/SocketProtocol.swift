@@ -4,16 +4,32 @@ import SocketIO
 import RxSwift
 import TapClientApi
 
-
+// TODO install SwiftSocket
 public class SocketProtocol: RxComProtocol {
 	
 //	public var connectionState: ConnectionState
 	
 	var socket: SocketIOClient
+	var manager: SocketManager
 	
 	init(url: URL){
-		let manager = SocketManager(socketURL: url, config: [.log(true), .compress])
+		self.manager = SocketManager(socketURL: url, config: [.log(true), .compress])
 		self.socket = manager.defaultSocket
+		print("Current socket status \(socket.status)")
+	
+		socket.on(clientEvent: .connect) {data, ack in
+			print("socket connected")
+		}
+		
+		socket.on(clientEvent: .disconnect) { (data, ack) in
+			print("disconnect")
+		}
+		
+		socket.on(clientEvent: .error) { (data, ack) in
+			print("error connect")
+		}
+
+
 //		self.socket.on(clientEvent: SocketClientEvent.RawValue, callback: { ([Any], SocketAckEmitter) in
 //			//observer.onNext([UInt8])
 //			print("Event:")
@@ -29,9 +45,14 @@ public class SocketProtocol: RxComProtocol {
 //		}
 	}
 	
+	public func getConnectionState() -> ConnectionState {
+		return ConnectionState.DISCONNECTED // TODO
+	}
+	
 	public func connect() -> Observable<Any>{
 		return RxSwift.Observable.create { observer in
 			self.socket.on(clientEvent: .connect) {data, ack in
+				print("Client is now connected")
 				observer.onCompleted()
 			}
 			
@@ -50,7 +71,7 @@ public class SocketProtocol: RxComProtocol {
 	
 	public func write(data: [UInt8]) -> Observable<Any>{
 		return RxSwift.Observable.create { observer in
-			self.socket.emit("test", data)
+			self.socket.emit("dataTest", data)
 			observer.onCompleted()
 			return Disposables.create()
 		}

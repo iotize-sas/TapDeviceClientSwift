@@ -4,12 +4,15 @@
 //
 //  Created by Stephane on 26/12/2018.
 //
+import Foundation
 
-
-public class KaitaiStreamReader: KaitaiStream{
+public class KaitaiStreamReader: KaitaiStream {
+	
+	var bits_left = 0
+	var bits: Int = 0
 	
 	public func readU2() -> UInt16{
-		return UInt16(self.readU2be()!)
+		return self.readU2be()!
 	}
 	
 	public override func readU1() -> UInt8{
@@ -17,7 +20,7 @@ public class KaitaiStreamReader: KaitaiStream{
 	}
 	
 	public func readU4() -> UInt32{
-		return UInt32(self.readU4be()!)
+		return self.readU4be()!
 	}
 	
 	public override func readS1() -> Int8{
@@ -28,15 +31,23 @@ public class KaitaiStreamReader: KaitaiStream{
 		return Int16(self.readS2be()!)
 	}
 	
-	public func readS4() -> Int{
-		return Int(self.readS4be()!)
+	public func readS4() -> Int32{
+		return Int32(self.readS4be()!)
+	}
+	
+	public func readF4() -> Float32{
+		return self.readF4Be()
+	}
+	
+	public func readF4Be() -> Float32 {
+		let bytes = self.readBytes(length: 4)!
+		let data = Data(bytes)
+		return Float32(bitPattern: UInt32(bigEndian: data.withUnsafeBytes { $0.pointee } ))
 	}
 	
 	public func getStreamSize() -> Int {
 		return self.stream.size()
 	}
-	var bits_left = 0
-	var bits: Int = 0
 	
 	public func readBitsInt(length: Int) -> Int {
 		var bits_needed = length - self.bits_left

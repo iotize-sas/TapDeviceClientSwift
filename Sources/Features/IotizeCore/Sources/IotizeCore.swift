@@ -32,6 +32,7 @@ public extension String {
 public enum IotizeError: Error {
 	case runtimeError(String)
 	case notImplemented
+	case illegalArgument
 }
 
 public extension UInt8 {

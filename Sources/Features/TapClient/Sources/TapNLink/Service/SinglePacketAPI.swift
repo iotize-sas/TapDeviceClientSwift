@@ -30,7 +30,7 @@ open class SinglePacketAPI {
     * @return Bytes api call
     */
     public func bspeRequest(
-        data: Bytes
+        data: Bytes? = nil
     ) -> ApiRequest<Bytes>{
         var path = "/1024//83"
         //var regex = "\{([\S]*)\}"
@@ -54,7 +54,7 @@ open class SinglePacketAPI {
         * @return Bytes api call
         */
         public func bspe(
-            data: Bytes
+            data: Bytes? = nil
         ) throws -> ApiResponse<Bytes>{
             let request : ApiRequest<Bytes> = self.bspeRequest(data: data)
             let converter: TapConverterContainer<Bytes> = self.converterProvider.get(id: "Bytes")
@@ -104,7 +104,7 @@ open class SinglePacketAPI {
     * @return Bytes api call
     */
     public func writePartialSinglePacketRequest(
-        data: Bytes
+        data: Bytes? = nil
     ) -> ApiRequest<Bytes>{
         var path = "/1024//82"
         //var regex = "\{([\S]*)\}"
@@ -128,7 +128,7 @@ open class SinglePacketAPI {
         * @return Bytes api call
         */
         public func writePartialSinglePacket(
-            data: Bytes
+            data: Bytes? = nil
         ) throws -> ApiResponse<Bytes>{
             let request : ApiRequest<Bytes> = self.writePartialSinglePacketRequest(data: data)
             let converter: TapConverterContainer<Bytes> = self.converterProvider.get(id: "Bytes")
@@ -146,7 +146,7 @@ open class SinglePacketAPI {
     * @return Bytes api call
     */
     public func writeSmallSinglePacketRequest(
-        data: Bytes
+        data: Bytes? = nil
     ) -> ApiRequest<Bytes>{
         var path = "/1024//80"
         //var regex = "\{([\S]*)\}"
@@ -170,7 +170,7 @@ open class SinglePacketAPI {
         * @return Bytes api call
         */
         public func writeSmallSinglePacket(
-            data: Bytes
+            data: Bytes? = nil
         ) throws -> ApiResponse<Bytes>{
             let request : ApiRequest<Bytes> = self.writeSmallSinglePacketRequest(data: data)
             let converter: TapConverterContainer<Bytes> = self.converterProvider.get(id: "Bytes")

@@ -8,8 +8,8 @@
 import Foundation
 import TapClientApi
 
-
-open class TapStreamDecoder {
+// TODO remove or implement
+class TapStreamDecoder {
 	
 	public init(){}
 	
@@ -19,7 +19,7 @@ open class TapStreamDecoder {
 }
 
 
-open class TapStreamEncoder {
+class TapStreamEncoder {
 	
 	public init(){}
 	

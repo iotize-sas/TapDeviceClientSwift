@@ -15,8 +15,8 @@ targets:
       - target: TapClient
       - target: SocketProtocol
       - carthage: RxSwift
-      - carthage: RxCocoa
-      - carthage: RxReduce
+#      - carthage: RxCocoa
+#      - carthage: RxReduce
     scheme:
       testTargets:
         - StarterUnitTests

@@ -39,6 +39,19 @@ class KaitaiStreamTest: XCTestCase {
 		print(buffer.toBytes().hexstr)
 	}
 	
+	
+	func testWriteString() throws {
+		let buffer = TapStreamWriter()
+		buffer.writeStr("ABCDE", length: 5)
+		buffer.writeStr("FGHIJ", length: 3)
+		buffer.writeStr("KLMN", length: 7)
+		buffer.writeStr("O")
+		
+//		XCTAssertEqual(buffer.toBytes().ascii, "ABCDEFGHKLMN   O")
+		XCTAssertEqual(buffer.toBytes().count, 5 + 3 + 7 + 1)
+//		XCTAssertEqual(buffer.toBytes().ascii, "ABCDEFGHKLMNO")
+	}
+	
 	func testReadStream() throws {
 		let buffer = KaitaiStreamReader(bytes: "0123456789ABCDEF".hexbytes)
 		
@@ -60,6 +73,21 @@ class KaitaiStreamTest: XCTestCase {
 		
 		buffer = KaitaiStreamReader(bytes: "ABCDEF".hexbytes)
 		XCTAssert(buffer.readBitsInt(length: 20) == UInt32(0xABCDE))
+	}
+	
+	
+	func testReadIntegers() throws {
+		var buffer = KaitaiStreamReader(bytes: "00000001ABCD".hexbytes)
+		XCTAssertEqual(buffer.readU4(), UInt32(1))
+		
+		buffer = KaitaiStreamReader(bytes: "0001ABCD".hexbytes)
+		XCTAssertEqual(buffer.readU2(), UInt16(1))
+		
+		buffer = KaitaiStreamReader(bytes: "01ABCD".hexbytes)
+		XCTAssertEqual(buffer.readU1(), UInt8(1))
+		
+		buffer = KaitaiStreamReader(bytes: "00000001".hexbytes)
+		XCTAssertEqual(buffer.readS4(), Int32(1))
 	}
 	
 }

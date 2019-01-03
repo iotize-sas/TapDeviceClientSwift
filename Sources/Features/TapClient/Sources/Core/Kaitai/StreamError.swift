@@ -8,6 +8,6 @@
 import Foundation
 
 // TODO
-class StreamError: Error {
-	noMoreData()
+enum StreamError: Error {
+	case noMoreData
 }

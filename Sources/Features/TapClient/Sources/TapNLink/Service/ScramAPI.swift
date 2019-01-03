@@ -58,10 +58,10 @@ open class ScramAPI {
     * LWM2M path: /1025/{groupId}/7
 
     * @param groupId input
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getScramUserIterationRequest(
-        groupId: Int
+        groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/7"
         //var regex = "\{([\S]*)\}"
@@ -82,14 +82,14 @@ open class ScramAPI {
         * LWM2M path: /1025/{groupId}/7
         
         * @param groupId input
-        * @return Int api call
+        * @return UInt32 api call
         */
         public func getScramUserIteration(
-            groupId: Int
-        ) throws -> ApiResponse<Int>{
+            groupId: Int8
+        ) throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getScramUserIterationRequest(groupId: groupId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -99,10 +99,10 @@ open class ScramAPI {
     * LWM2M path: /1025/{groupId}/16
 
     * @param groupId input
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getScramUserSaltRequest(
-        groupId: Int
+        groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/16"
         //var regex = "\{([\S]*)\}"
@@ -123,14 +123,14 @@ open class ScramAPI {
         * LWM2M path: /1025/{groupId}/16
         
         * @param groupId input
-        * @return Int api call
+        * @return UInt32 api call
         */
         public func getScramUserSalt(
-            groupId: Int
-        ) throws -> ApiResponse<Int>{
+            groupId: Int8
+        ) throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getScramUserSaltRequest(groupId: groupId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -176,7 +176,7 @@ open class ScramAPI {
     * @return ScramLoginResponseBody api call
     */
     public func loginRequest(
-        params: ScramLoginParams
+        params: ScramLoginParams? = nil
     ) -> ApiRequest<ScramLoginParams>{
         var path = "/1024//40"
         //var regex = "\{([\S]*)\}"
@@ -200,7 +200,7 @@ open class ScramAPI {
         * @return ScramLoginResponseBody api call
         */
         public func login(
-            params: ScramLoginParams
+            params: ScramLoginParams? = nil
         ) throws -> ApiResponse<ScramLoginResponseBody>{
             let request : ApiRequest<ScramLoginParams> = self.loginRequest(params: params)
             let converter: TapConverterContainer<ScramLoginResponseBody> = self.converterProvider.get(id: "ScramLoginResponseBody")
@@ -218,7 +218,7 @@ open class ScramAPI {
     * @return Bytes api call
     */
     public func loginProofRequest(
-        params: Bytes
+        params: Bytes? = nil
     ) -> ApiRequest<Bytes>{
         var path = "/1024//41"
         //var regex = "\{([\S]*)\}"
@@ -242,7 +242,7 @@ open class ScramAPI {
         * @return Bytes api call
         */
         public func loginProof(
-            params: Bytes
+            params: Bytes? = nil
         ) throws -> ApiResponse<Bytes>{
             let request : ApiRequest<Bytes> = self.loginProofRequest(params: params)
             let converter: TapConverterContainer<Bytes> = self.converterProvider.get(id: "Bytes")
@@ -262,8 +262,8 @@ open class ScramAPI {
     * @return  api call
     */
     public func putScramUserIterationRequest(
-        groupId: Int, value: Int
-    ) -> ApiRequest<Int>{
+        groupId: Int8, value: UInt32? = nil
+    ) -> ApiRequest<UInt32>{
         var path = "/1025/{groupId}/7"
         //var regex = "\{([\S]*)\}"
         
@@ -291,9 +291,9 @@ open class ScramAPI {
         * @return  api call
         */
         public func putScramUserIteration(
-            groupId: Int, value: Int
+            groupId: Int8, value: UInt32? = nil
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putScramUserIterationRequest(groupId: groupId, value: value)
+            let request : ApiRequest<UInt32> = self.putScramUserIterationRequest(groupId: groupId, value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -311,8 +311,8 @@ open class ScramAPI {
     * @return  api call
     */
     public func putScramUserSaltRequest(
-        groupId: Int, value: Int
-    ) -> ApiRequest<Int>{
+        groupId: Int8, value: UInt32? = nil
+    ) -> ApiRequest<UInt32>{
         var path = "/1025/{groupId}/16"
         //var regex = "\{([\S]*)\}"
         
@@ -340,9 +340,9 @@ open class ScramAPI {
         * @return  api call
         */
         public func putScramUserSalt(
-            groupId: Int, value: Int
+            groupId: Int8, value: UInt32? = nil
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putScramUserSaltRequest(groupId: groupId, value: value)
+            let request : ApiRequest<UInt32> = self.putScramUserSaltRequest(groupId: groupId, value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 

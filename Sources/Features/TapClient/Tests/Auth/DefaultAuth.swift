@@ -26,7 +26,8 @@ class DefaultAuthTest: XCTestCase {
 	}
 	
 	func testComputeKeys() throws {
-		let auth = DefaultAuth(hashPassword: true, interfaceApi: InterfaceAPI)
+//		let auth = DefaultAuth(hashPassword: true, interfaceApi: InterfaceAPI)
+		// TODOs
 	}
 	
 }

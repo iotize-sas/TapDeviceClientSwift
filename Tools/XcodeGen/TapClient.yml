@@ -9,12 +9,11 @@ targets:
       - target: IotizeCore
       - target: TapClientApi
       - carthage: RxSwift
-      - carthage: RxCocoa
-      - carthage: RxReduce
       - carthage: CryptoSwift
     scheme:
       testTargets:
         - TapClientUnitTests
+        - TapClientIntegrationTests
       gatherCoverageData: true
   TapClientUnitTests:
     type: bundle.unit-test
@@ -24,4 +23,15 @@ targets:
       path: Sources/Features/TapClient/SupportingFiles/InfoUnitTests.plist
     dependencies:
       - target: TapClient
-# - target: SocketProtocol TODO add integration test
+      - carthage: RxBlocking
+      - cartage: HandyJSON
+  TapClientIntegrationTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Features/TapClient/IntegrationTests]
+    info:
+      path: Sources/Features/TapClient/SupportingFiles/InfoIntegrationTests.plist
+    dependencies:
+      - target: TapClient
+      - target: SocketProtocol
+      - carthage: RxBlocking

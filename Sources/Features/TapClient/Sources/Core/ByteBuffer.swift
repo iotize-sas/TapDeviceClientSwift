@@ -14,12 +14,20 @@ public class ByteBuffer {
 		array.reserveCapacity(size)
 	}
 	
+	public init(bytes: [UInt8]) {
+		array = bytes
+	}
+	
 	public func position() -> Int {
 		return array.count
 	}
 	
 	public func bytes() -> [UInt8] {
 		return array
+	}
+	
+	public func reverse() {
+		self.array.reverse()
 	}
 	
 	public func setPosition(_ position: Int) {

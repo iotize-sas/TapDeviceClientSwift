@@ -31,8 +31,12 @@ public class TapStreamReader: KaitaiStreamReader{
 		return self.readS2()
 	}
 	
-	public func read(_ type: Int32.Type) throws -> Int {
+	public func read(_ type: Int32.Type) throws -> Int32 {
 		return self.readS4()
+	}
+	
+	public func read(_ type: Float32.Type) throws -> Float32 {
+		return self.readF4()
 	}
 	
 }

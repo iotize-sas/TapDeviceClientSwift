@@ -7,6 +7,7 @@
 
 import Foundation
 import TapClientApi
+import IotizeCore
 import CryptoSwift
 
 public enum ScramError: Error {
@@ -34,6 +35,20 @@ public extension Array where Element == UInt8 {
 	}
 }
 
+public protocol NonceGenerator {
+	
+	func next() -> UInt32
+	
+}
+
+public class RandomNonceGenerator: NonceGenerator {
+	
+	public func next() -> UInt32 {
+		return UInt32.random(in: UInt32.min ... UInt32.max)
+	}
+	
+}
+
 
 public class ScramAuth: AuthApi {
 	
@@ -59,22 +74,24 @@ public class ScramAuth: AuthApi {
 	
 	var authState = AuthState.LoggedOut
 	var username: String?
+	var nonceGenerator: NonceGenerator
 	
-	init(scramService: ScramAPI, interfaceService: InterfaceAPI){
+	init(scramService: ScramAPI, interfaceService: InterfaceAPI, nonceGenerator: NonceGenerator = RandomNonceGenerator()){
 		self.scramService = scramService
 		self.interfaceService = interfaceService
+		self.nonceGenerator = nonceGenerator
 	}
 	
-	public func generateNonce() -> UInt32 {
-		 return 1 // TODO
+	public func getSessionData() -> SessionData?{
+		return self.sessionData
 	}
 	
 	public func login(credential: LoginCredential) throws {
-		let clientNonce: UInt32 = self.generateNonce()
+		let clientNonce: UInt32 = self.nonceGenerator.next()
 		let loginParams = ScramLoginParams(username: credential.username, clientNonce: clientNonce)
 		let loginResponseBody: ScramLoginResponseBody = try self.scramService.login(params: loginParams).body()
 		let keys = try ScramAuth.computeKeys(credentials: credential, loginBody: loginResponseBody, clientNonce: loginParams.clientNonce)
-		let serverNonce: UInt32 = loginResponseBody.servernonce;
+		let serverNonce: UInt32 = loginResponseBody.serverNonce;
 		
 		let deviceServerProof: Bytes = try self.scramService.loginProof(params: keys.clientProof).body()
 		
@@ -90,10 +107,11 @@ public class ScramAuth: AuthApi {
 		self.username = credential.username
 	}
 	
-	public func logout(){
-		// TODO
+	public func logout() throws {
+		try self.interfaceService.logout().successful()
 		self.authState = AuthState.LoggedOut
 		self.username = nil
+		self.sessionData = nil
 	}
 	
 	static func computeKeys(credentials: LoginCredential, loginBody: ScramLoginResponseBody, clientNonce: UInt32) throws -> Keys {
@@ -108,10 +126,10 @@ public class ScramAuth: AuthApi {
 		let serverKey = try ScramAuth.serverKey(saltedPassword: saltedPassword)
 		// console.debug('ScramAuth', 'serverKey', FormatHelper.toHexString(serverKey));
 		
-		let clientProof = try ScramAuth.clientProof(storedKey: storedKey, clientNonce: clientNonce, serverNonce: loginBody.servernonce)
+		let clientProof = try ScramAuth.clientProof(storedKey: storedKey, clientNonce: clientNonce, serverNonce: loginBody.serverNonce)
 		// console.debug('ScramAuth', 'clientProof', FormatHelper.toHexString(clientProof));
 		
-		let serverProof = try ScramAuth.serverProof(serverKey: serverKey, clientNonce: clientNonce, serverNonce: loginBody.servernonce)
+		let serverProof = try ScramAuth.serverProof(serverKey: serverKey, clientNonce: clientNonce, serverNonce: loginBody.serverNonce)
 		// console.debug('ScramAuth', 'serverProof', FormatHelper.toHexString(serverProof));
 		return Keys(
 			storedKey: storedKey,
@@ -141,6 +159,12 @@ public class ScramAuth: AuthApi {
 	* @param input
 	*/
 	static func HASH(input: Bytes, salt: Bytes, iterations: Int) throws -> Bytes {
+		if (iterations < 0){
+ 			throw IotizeError.illegalArgument
+		}
+		if (iterations > 1000000000){
+			print("Iteration number is very big \(iterations). It may take some time to compute hash key." )
+		}
 		return try PKCS5.PBKDF2(
 			password: input,
 			salt: salt,

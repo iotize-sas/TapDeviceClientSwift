@@ -34,6 +34,9 @@ class RelayServer{
 //	}
 }
 
+//let SERVER_URL = "tcp://localhost:2000"
+let SERVER_URL = "tcp://192.168.20.120:2000"
+let WS_SERVER_URL = "ws://192.168.20.120:2000"
 
 class test: XCTestCase {
 
@@ -45,17 +48,35 @@ class test: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testSocketProtocol() {
-		let url = URL(string: "tcp://localhost:2000")!
+	func testSocketProtocol() throws {
+		let url = URL(string: SERVER_URL)!
+		print("Connecting to " + url.description )
 		let p = SocketProtocol(url: url)
 		// TODO add blocking calls
-
-		p.connect().toBlocking()
-		p.write(data: "01 02 03 04".hexbytes).toBlocking()
-		let message = p.read().toBlocking().single()
 		
-		XCTAssert(message.hexstr == "05060708")
-    }
-
+		try p.connect().toBlocking().first()
+		try p.write(data: "01 02 03 04".hexbytes).toBlocking().first()
+		let message = try p.read().toBlocking().first()
+		
+		XCTAssert(message!.hexstr == "05060708")
+		
+		try p.disconnect().toBlocking().first()
+	}
+	
+	func testWebsocketProtocol() throws {
+		let url = URL(string: WS_SERVER_URL)!
+		print("Connecting to " + url.description )
+		let p = WebSocketProtocol(url: url)
+		// TODO add blocking calls
+		
+		try p.connect().toBlocking().first()
+		try p.write(data: "A2CA000007010003FFFF0002".hexbytes).toBlocking().first()
+		let message = try p.read().toBlocking().first()
+		
+		XCTAssertEqual(message!.ascii, "EIoTSch00410000000D")
+		
+		try p.disconnect().toBlocking().first()
+	}
+	
 
 }

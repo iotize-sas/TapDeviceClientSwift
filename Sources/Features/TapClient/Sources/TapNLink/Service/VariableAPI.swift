@@ -26,10 +26,10 @@ open class VariableAPI {
     * LWM2M path: /1029/{variableId}/0
 
     * @param variableId input
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getAddressRequest(
-        variableId: Int
+        variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/0"
         //var regex = "\{([\S]*)\}"
@@ -50,14 +50,14 @@ open class VariableAPI {
         * LWM2M path: /1029/{variableId}/0
         
         * @param variableId input
-        * @return Int api call
+        * @return UInt32 api call
         */
         public func getAddress(
-            variableId: Int
-        ) throws -> ApiResponse<Int>{
+            variableId: UInt8
+        ) throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getAddressRequest(variableId: variableId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -67,10 +67,10 @@ open class VariableAPI {
     * LWM2M path: /1029/{variableId}/6
 
     * @param variableId input
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getBundleIdRequest(
-        variableId: Int
+        variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/6"
         //var regex = "\{([\S]*)\}"
@@ -91,14 +91,14 @@ open class VariableAPI {
         * LWM2M path: /1029/{variableId}/6
         
         * @param variableId input
-        * @return Int api call
+        * @return UInt16 api call
         */
         public func getBundleId(
-            variableId: Int
-        ) throws -> ApiResponse<Int>{
+            variableId: UInt8
+        ) throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getBundleIdRequest(variableId: variableId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -108,10 +108,10 @@ open class VariableAPI {
     * LWM2M path: /1029/{variableId}/7
 
     * @param variableId input
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getBundleValuesRequest(
-        variableId: Int
+        variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/7"
         //var regex = "\{([\S]*)\}"
@@ -132,14 +132,14 @@ open class VariableAPI {
         * LWM2M path: /1029/{variableId}/7
         
         * @param variableId input
-        * @return Int api call
+        * @return UInt16 api call
         */
         public func getBundleValues(
-            variableId: Int
-        ) throws -> ApiResponse<Int>{
+            variableId: UInt8
+        ) throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getBundleValuesRequest(variableId: variableId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -152,7 +152,7 @@ open class VariableAPI {
     * @return ReadWriteRights api call
     */
     public func getCurrentAccessRequest(
-        variableId: Int
+        variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/3"
         //var regex = "\{([\S]*)\}"
@@ -176,7 +176,7 @@ open class VariableAPI {
         * @return ReadWriteRights api call
         */
         public func getCurrentAccess(
-            variableId: Int
+            variableId: UInt8
         ) throws -> ApiResponse<ReadWriteRights>{
             let request : ApiRequest<Void> = self.getCurrentAccessRequest(variableId: variableId)
             let converter: TapConverterContainer<ReadWriteRights> = self.converterProvider.get(id: "ReadWriteRights")
@@ -190,10 +190,10 @@ open class VariableAPI {
     * LWM2M path: /1029/{variableId}/1
 
     * @param variableId input
-    * @return Int api call
+    * @return UInt8 api call
     */
     public func getFormatRequest(
-        variableId: Int
+        variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/1"
         //var regex = "\{([\S]*)\}"
@@ -214,14 +214,14 @@ open class VariableAPI {
         * LWM2M path: /1029/{variableId}/1
         
         * @param variableId input
-        * @return Int api call
+        * @return UInt8 api call
         */
         public func getFormat(
-            variableId: Int
-        ) throws -> ApiResponse<Int>{
+            variableId: UInt8
+        ) throws -> ApiResponse<UInt8>{
             let request : ApiRequest<Void> = self.getFormatRequest(variableId: variableId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint8")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt8> = self.converterProvider.get(id: "integer_uint8")
+            let response: ApiResponse<UInt8> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -231,10 +231,10 @@ open class VariableAPI {
     * LWM2M path: /1029/{variableId}/2
 
     * @param variableId input
-    * @return Int api call
+    * @return UInt8 api call
     */
     public func getNumberOfElementsRequest(
-        variableId: Int
+        variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/2"
         //var regex = "\{([\S]*)\}"
@@ -255,14 +255,14 @@ open class VariableAPI {
         * LWM2M path: /1029/{variableId}/2
         
         * @param variableId input
-        * @return Int api call
+        * @return UInt8 api call
         */
         public func getNumberOfElements(
-            variableId: Int
-        ) throws -> ApiResponse<Int>{
+            variableId: UInt8
+        ) throws -> ApiResponse<UInt8>{
             let request : ApiRequest<Void> = self.getNumberOfElementsRequest(variableId: variableId)
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint8")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt8> = self.converterProvider.get(id: "integer_uint8")
+            let response: ApiResponse<UInt8> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -275,7 +275,7 @@ open class VariableAPI {
     * @return Bytes api call
     */
     public func getValueRequest(
-        variableId: Int
+        variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/4"
         //var regex = "\{([\S]*)\}"
@@ -299,7 +299,7 @@ open class VariableAPI {
         * @return Bytes api call
         */
         public func getValue(
-            variableId: Int
+            variableId: UInt8
         ) throws -> ApiResponse<Bytes>{
             let request : ApiRequest<Void> = self.getValueRequest(variableId: variableId)
             let converter: TapConverterContainer<Bytes> = self.converterProvider.get(id: "Bytes")
@@ -319,8 +319,8 @@ open class VariableAPI {
     * @return  api call
     */
     public func putAddressRequest(
-        variableId: Int, address: Int
-    ) -> ApiRequest<Int>{
+        variableId: UInt8, address: UInt32
+    ) -> ApiRequest<UInt32>{
         var path = "/1029/{variableId}/0"
         //var regex = "\{([\S]*)\}"
         
@@ -348,9 +348,9 @@ open class VariableAPI {
         * @return  api call
         */
         public func putAddress(
-            variableId: Int, address: Int
+            variableId: UInt8, address: UInt32
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putAddressRequest(variableId: variableId, address: address)
+            let request : ApiRequest<UInt32> = self.putAddressRequest(variableId: variableId, address: address)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -368,8 +368,8 @@ open class VariableAPI {
     * @return  api call
     */
     public func putBundleIdRequest(
-        variableId: Int, value: Int
-    ) -> ApiRequest<Int>{
+        variableId: UInt8, value: UInt32
+    ) -> ApiRequest<UInt32>{
         var path = "/1029/{variableId}/6"
         //var regex = "\{([\S]*)\}"
         
@@ -397,9 +397,9 @@ open class VariableAPI {
         * @return  api call
         */
         public func putBundleId(
-            variableId: Int, value: Int
+            variableId: UInt8, value: UInt32
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putBundleIdRequest(variableId: variableId, value: value)
+            let request : ApiRequest<UInt32> = self.putBundleIdRequest(variableId: variableId, value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -417,8 +417,8 @@ open class VariableAPI {
     * @return  api call
     */
     public func putFormatRequest(
-        variableId: Int, value: Int
-    ) -> ApiRequest<Int>{
+        variableId: UInt8, value: UInt8
+    ) -> ApiRequest<UInt8>{
         var path = "/1029/{variableId}/1"
         //var regex = "\{([\S]*)\}"
         
@@ -446,9 +446,9 @@ open class VariableAPI {
         * @return  api call
         */
         public func putFormat(
-            variableId: Int, value: Int
+            variableId: UInt8, value: UInt8
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putFormatRequest(variableId: variableId, value: value)
+            let request : ApiRequest<UInt8> = self.putFormatRequest(variableId: variableId, value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -466,8 +466,8 @@ open class VariableAPI {
     * @return  api call
     */
     public func putNumberOfElementsRequest(
-        variableId: Int, value: Int
-    ) -> ApiRequest<Int>{
+        variableId: UInt8, value: UInt8
+    ) -> ApiRequest<UInt8>{
         var path = "/1029/{variableId}/2"
         //var regex = "\{([\S]*)\}"
         
@@ -495,9 +495,9 @@ open class VariableAPI {
         * @return  api call
         */
         public func putNumberOfElements(
-            variableId: Int, value: Int
+            variableId: UInt8, value: UInt8
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putNumberOfElementsRequest(variableId: variableId, value: value)
+            let request : ApiRequest<UInt8> = self.putNumberOfElementsRequest(variableId: variableId, value: value)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -515,7 +515,7 @@ open class VariableAPI {
     * @return  api call
     */
     public func putValueRequest(
-        variableId: Int, value: Bytes
+        variableId: UInt8, value: Bytes
     ) -> ApiRequest<Bytes>{
         var path = "/1029/{variableId}/4"
         //var regex = "\{([\S]*)\}"
@@ -544,7 +544,7 @@ open class VariableAPI {
         * @return  api call
         */
         public func putValue(
-            variableId: Int, value: Bytes
+            variableId: UInt8, value: Bytes
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<Bytes> = self.putValueRequest(variableId: variableId, value: value)
             
@@ -564,7 +564,7 @@ open class VariableAPI {
     * @return  api call
     */
     public func setValueRequest(
-        variableId: Int, value: Bytes
+        variableId: UInt8, value: Bytes
     ) -> ApiRequest<Bytes>{
         var path = "/1029/{variableId}/5"
         //var regex = "\{([\S]*)\}"
@@ -593,7 +593,7 @@ open class VariableAPI {
         * @return  api call
         */
         public func setValue(
-            variableId: Int, value: Bytes
+            variableId: UInt8, value: Bytes
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<Bytes> = self.setValueRequest(variableId: variableId, value: value)
             

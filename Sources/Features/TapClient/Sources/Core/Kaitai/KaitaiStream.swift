@@ -89,7 +89,7 @@ public class KaitaiStream {
         return (value2Int << 8) + (value1Int << 0)
     }
 
-    public func readU2be() -> UInt? {
+    public func readU2be() -> UInt16? {
         guard let value1 = stream.read() else {
             return nil
         }
@@ -98,10 +98,11 @@ public class KaitaiStream {
             return nil
         }
 
-        let value1Int = UInt(value1)
-        let value2Int = UInt(value2)
+        let value1Int = UInt16(value1)
+        let value2Int = UInt16(value2)
 
-        return (value1Int << 8) + (value2Int << 0)
+		let total: UInt16 = (value1Int << 8) + (value2Int << 0)
+		return total
     }
 
     public func readS2le() -> Int? {
@@ -134,7 +135,7 @@ public class KaitaiStream {
         return (value1Int << 8) + (value2Int << 0)
     }
 
-    public func readU4le() -> UInt? {
+    public func readU4le() -> UInt32? {
         guard let value1 = stream.read() else {
             return nil
         }
@@ -151,15 +152,16 @@ public class KaitaiStream {
             return nil
         }
 
-        let value1Int = UInt(value1)
-        let value2Int = UInt(value2)
-        let value3Int = UInt(value3)
-        let value4Int = UInt(value4)
-
-        return (value4Int << 24) + (value3Int << 16) + (value2Int << 8) + (value1Int << 0)
+        let value1Int = UInt32(value1)
+        let value2Int = UInt32(value2)
+        let value3Int = UInt32(value3)
+        let value4Int = UInt32(value4)
+		
+		let total: UInt32 = (value4Int << 24) + (value3Int << 16) + (value2Int << 8) + (value1Int << 0)
+		return total
     }
 
-    public func readU4be() -> UInt? {
+    public func readU4be() -> UInt32? {
         guard let value1 = stream.read() else {
             return nil
         }
@@ -176,12 +178,13 @@ public class KaitaiStream {
             return nil
         }
 
-        let value1Int = UInt(value1)
-        let value2Int = UInt(value2)
-        let value3Int = UInt(value3)
-        let value4Int = UInt(value4)
+        let value1Int = UInt32(value1)
+        let value2Int = UInt32(value2)
+        let value3Int = UInt32(value3)
+        let value4Int = UInt32(value4)
 
-        return (value4Int << 24) + (value3Int << 16) + (value2Int << 8) + (value1Int << 0)
+		let total: UInt32 = (value1Int << 24) + (value2Int << 16) + (value3Int << 8) + (value4Int << 0)
+		return total
     }
 
     public func readS4le() -> Int? {
@@ -234,7 +237,7 @@ public class KaitaiStream {
         return (value1Int << 24) + (value2Int << 16) + (value3Int << 8) + (value4Int << 0)
     }
 
-    public func readU8le() -> UInt? {
+    public func readU8le() -> UInt64? {
         guard let value1 = readU4le() else {
             return nil
         }
@@ -242,11 +245,12 @@ public class KaitaiStream {
         guard let value2 = readU4le() else {
             return nil
         }
-
-        return (value2 << 32) + (value1 << 0)
+		
+		var total: UInt64 = (UInt64(value2) << 32) + (UInt64(value1) << 0)
+		return total
     }
 
-    public func readU8be() -> UInt? {
+    public func readU8be() -> UInt64? {
         guard let value1 = readU4le() else {
             return nil
         }
@@ -255,7 +259,8 @@ public class KaitaiStream {
             return nil
         }
 
-        return (value1 << 32) + (value2 << 0)
+		var total: UInt64 = (UInt64(value1) << 32) + (UInt64(value2) << 0)
+		return total
     }
 
     public func readS8le() -> Int? {

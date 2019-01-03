@@ -152,7 +152,7 @@ open class DeviceAPI {
     * Get device last error code
     * 
     * LWM2M path: /3//11
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getLastErrorCodeRequest()
          -> ApiRequest<Void>{
@@ -170,13 +170,13 @@ open class DeviceAPI {
         * Get device last error code
         * 
         * LWM2M path: /3//11
-                * @return Int api call
+                * @return UInt32 api call
         */
         public func getLastErrorCode()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getLastErrorCodeRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -216,7 +216,7 @@ open class DeviceAPI {
     * Get device memory free
     * In bytes
     * LWM2M path: /3//10
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getMemoryFreeRequest()
          -> ApiRequest<Void>{
@@ -234,13 +234,13 @@ open class DeviceAPI {
         * Get device memory free
         * In bytes
         * LWM2M path: /3//10
-                * @return Int api call
+                * @return UInt32 api call
         */
         public func getMemoryFree()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getMemoryFreeRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -280,7 +280,7 @@ open class DeviceAPI {
     * Get power source voltage
     * 
     * LWM2M path: /3//7
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getPowerSourceVoltageRequest()
          -> ApiRequest<Void>{
@@ -298,13 +298,13 @@ open class DeviceAPI {
         * Get power source voltage
         * 
         * LWM2M path: /3//7
-                * @return Int api call
+                * @return UInt32 api call
         */
         public func getPowerSourceVoltage()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getPowerSourceVoltageRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }

@@ -1,3 +1,8 @@
+/**
+ * This file has been generated
+ * DO NOT EDIT DIRECTLY, IT MAY BE OVERWRITE
+ */
+
 import TapClientApi
 
 public extension TapStreamReader {
@@ -41,8 +46,9 @@ public extension TapStreamReader {
     func readMemoryInfo() -> MemoryInfo {
         let model = MemoryInfo()
         model.address = self.readU4()
-        model.length = self.readU4()
-        model.sizeInBytes = self.readU4()
+        model.wordCount = self.readU4()
+        model.wordSize = MemoryInfo.WordSizeType(rawValue:self.readU1())
+
         return model
     }
 
@@ -55,10 +61,8 @@ public extension TapStreamReader {
 
     func readMemoryWriteInfo() -> MemoryWriteInfo {
         let model = MemoryWriteInfo()
-        model.address = self.readU4()
-        model.length = self.readU4()
-        model.itemSize = self.readU1()
-        model.value = self.readBytes(length: Int(1))
+        model.address = self.readMemoryInfo()
+        model.value = self.readBytes()
         return model
     }
 
@@ -92,7 +96,7 @@ public extension TapStreamReader {
         self.forwardBits(length: 5)
         model.logOnChange = self.readBool()
         model.rollingMode = self.readBool()
-        model.autoorun = self.readBool()
+        model.autorun = self.readBool()
         return model
     }
 
@@ -113,7 +117,7 @@ public extension TapStreamReader {
     
     func readUartSettingsCtr1() -> UartSettings.Ctr1 {
         let model = UartSettings.Ctr1()
-        model.skip = UInt8(self.readBitsInt(length: 4))
+        self.forwardBits(length: 4)
         model.physicalPort = UartSettings.PhysicalPort(rawValue:UInt8(self.readBitsInt(length: 4)))
 
         model.stopBit = UartSettings.StopBit(rawValue:UInt8(self.readBitsInt(length: 2)))
@@ -123,7 +127,8 @@ public extension TapStreamReader {
         model.dataLength = UInt8(self.readBitsInt(length: 2))
         model.handshakeDelimiter = UartSettings.HandshakeDelimiter(rawValue:UInt8(self.readBitsInt(length: 4)))
 
-        model.handshakeValue = UInt8(self.readBitsInt(length: 4))
+        model.handshakeValue = UartSettings.Handshake(rawValue:UInt8(self.readBitsInt(length: 4)))
+
         model.timeout = self.readU1()
         return model
     }
@@ -131,11 +136,26 @@ public extension TapStreamReader {
     func readUartSettingsCtr2() -> UartSettings.Ctr2 {
         let model = UartSettings.Ctr2()
         model.slv = self.readU1()
-        model.skip = UInt8(self.readBitsInt(length: 3))
+        self.forwardBits(length: 3)
         model.ofs = self.readBool()
         model.baudrate = Int(self.readBitsInt(length: 20))
         return model
     }
+    
+
+
+	public func read(_ type: TapVersion.Type) throws -> TapVersion {
+        return self.readTapVersion()
+	}
+
+    func readTapVersion() -> TapVersion {
+        let model = TapVersion()
+        model.major = self.readU1()
+        model.minor = self.readU1()
+        model.build = self.readU2()
+        return model
+    }
+
     
 
 
@@ -191,6 +211,20 @@ public extension TapStreamReader {
     
 
 
+	public func read(_ type: LoginCredentialHashed.Type) throws -> LoginCredentialHashed {
+        return self.readLoginCredentialHashed()
+	}
+
+    func readLoginCredentialHashed() -> LoginCredentialHashed {
+        let model = LoginCredentialHashed()
+        model.username = self.readStr(length: 16)
+        model.password = self.readBytes(length: Int(16))
+        return model
+    }
+
+    
+
+
 	public func read(_ type: ScramLoginParams.Type) throws -> ScramLoginParams {
         return self.readScramLoginParams()
 	}
@@ -211,7 +245,7 @@ public extension TapStreamReader {
 
     func readScramLoginResponseBody() -> ScramLoginResponseBody {
         let model = ScramLoginResponseBody()
-        model.servernonce = self.readU4()
+        model.serverNonce = self.readU4()
         model.salt = self.readBytes(length: Int(4))
         model.iterationNumber = self.readU4()
         return model
@@ -305,8 +339,8 @@ public extension TapStreamWriter {
 
     func writeMemoryInfo(_ model: MemoryInfo) -> TapStreamWriter{
         self.writeU4(model.address!)
-        self.writeU4(model.length!)
-        self.writeU4(model.sizeInBytes!)
+        self.writeU4(model.wordCount!)
+        self.writeU1(model.wordSize!.rawValue)
         return self
     }
 
@@ -319,9 +353,7 @@ public extension TapStreamWriter {
     }
 
     func writeMemoryWriteInfo(_ model: MemoryWriteInfo) -> TapStreamWriter{
-        self.writeU4(model.address!)
-        self.writeU4(model.length!)
-        self.writeU1(model.itemSize!)
+        self.writeMemoryInfo(model.address)
         self.writeBytes(model.value!)
         return self
     }
@@ -359,7 +391,7 @@ public extension TapStreamWriter {
 
         self.writeBitsInt(model.logOnChange!, 1)
         self.writeBitsInt(model.rollingMode!, 1)
-        self.writeBitsInt(model.autoorun!, 1)
+        self.writeBitsInt(model.autorun!, 1)
         return self
     }
 
@@ -383,13 +415,14 @@ public extension TapStreamWriter {
     }
 
     func writeUartSettingsCtr1(_ model: UartSettings.Ctr1) -> TapStreamWriter{
-        self.writeBitsInt(model.skip!, 4)
+        self.forwardBits(4)
+
         self.writeBitsInt(model.physicalPort!.rawValue, 4)
         self.writeBitsInt(model.stopBit!.rawValue, 2)
         self.writeBitsInt(model.parity!.rawValue, 4)
         self.writeBitsInt(model.dataLength!, 2)
         self.writeBitsInt(model.handshakeDelimiter!.rawValue, 4)
-        self.writeBitsInt(model.handshakeValue!, 4)
+        self.writeBitsInt(model.handshakeValue!.rawValue, 4)
         self.writeU1(model.timeout!)
         return self
     }
@@ -400,11 +433,27 @@ public extension TapStreamWriter {
 
     func writeUartSettingsCtr2(_ model: UartSettings.Ctr2) -> TapStreamWriter{
         self.writeU1(model.slv!)
-        self.writeBitsInt(model.skip!, 3)
+        self.forwardBits(3)
+
         self.writeBitsInt(model.ofs!, 1)
         self.writeBitsInt(model.baudrate!, 20)
         return self
     }
+    
+
+
+
+    func write(_ model: TapVersion) -> TapStreamWriter{
+        return self.writeTapVersion(model)
+    }
+
+    func writeTapVersion(_ model: TapVersion) -> TapStreamWriter{
+        self.writeU1(model.major!)
+        self.writeU1(model.minor!)
+        self.writeU2(model.build!)
+        return self
+    }
+
     
 
 
@@ -454,8 +503,22 @@ public extension TapStreamWriter {
     }
 
     func writeLoginCredential(_ model: LoginCredential) -> TapStreamWriter{
-        self.writeStr(model.username!)
-        self.writeStr(model.password!)
+        self.writeStr(model.username!, length: Int(16))
+        self.writeStr(model.password!, length: Int(16))
+        return self
+    }
+
+    
+
+
+
+    func write(_ model: LoginCredentialHashed) -> TapStreamWriter{
+        return self.writeLoginCredentialHashed(model)
+    }
+
+    func writeLoginCredentialHashed(_ model: LoginCredentialHashed) -> TapStreamWriter{
+        self.writeStr(model.username!, length: Int(16))
+        self.writeBytes(model.password!)
         return self
     }
 
@@ -468,7 +531,7 @@ public extension TapStreamWriter {
     }
 
     func writeScramLoginParams(_ model: ScramLoginParams) -> TapStreamWriter{
-        self.writeStr(model.username!)
+        self.writeStr(model.username!, length: Int(16))
         self.writeU4(model.clientNonce!)
         return self
     }
@@ -482,7 +545,7 @@ public extension TapStreamWriter {
     }
 
     func writeScramLoginResponseBody(_ model: ScramLoginResponseBody) -> TapStreamWriter{
-        self.writeU4(model.servernonce!)
+        self.writeU4(model.serverNonce!)
         self.writeBytes(model.salt!)
         self.writeU4(model.iterationNumber!)
         return self

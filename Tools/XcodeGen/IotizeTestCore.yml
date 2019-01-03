@@ -6,8 +6,9 @@ targets:
     sources: [Sources/Features/IotizeTestCore/Sources]
     info:
       path: Sources/Features/IotizeTestCore/SupportingFiles/Info.plist
-    # dependencies: 
-    #   - carthage: RxSwift
+      dependencies:
+        - carthage: RxSwift
+        - cartage: HandyJSON
     scheme:
       testTargets:
         - IotizeTestCoreUnitTests

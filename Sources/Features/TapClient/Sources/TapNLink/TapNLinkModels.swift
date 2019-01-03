@@ -1,11 +1,33 @@
+/**
+ * This file has been generated
+ * DO NOT EDIT DIRECTLY, IT MAY BE OVERWRITE
+ */
+
 import TapClientApi
 
 
 
-public class Types: Codable, TapCodable {
+public class Types: Codable, TapCodable, Equatable {
     
 
     
+
+    
+public var description : String  {
+    return "Types[]"
+}
+
+/*
+public var debugDescription : String  {
+    return "Types"
+}
+*/
+
+
+
+	public static func == (lhs: Types, rhs: Types) -> Bool {
+        return true 
+	}
 
     public init(){
         
@@ -124,7 +146,7 @@ public enum TargetCoreType: UInt8, Codable {
 
 
 
-public class AclEntry: Codable, TapCodable {
+public class AclEntry: Codable, TapCodable, Equatable {
     // unamed
 
     var create: Bool!
@@ -137,6 +159,33 @@ public class AclEntry: Codable, TapCodable {
     
     public init(){}
     
+
+    
+public var description : String  {
+    return "AclEntry[create:\(self.create)delete:\(self.delete)execute:\(self.execute)write:\(self.write)read:\(self.read)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "AclEntry"
+        + "; create=" +  \(self.create)
+        + "; delete=" +  \(self.delete)
+        + "; execute=" +  \(self.execute)
+        + "; write=" +  \(self.write)
+        + "; read=" +  \(self.read)
+}
+*/
+
+
+
+	public static func == (lhs: AclEntry, rhs: AclEntry) -> Bool {
+        return true 
+            && lhs.create == rhs.create
+            && lhs.delete == rhs.delete
+            && lhs.execute == rhs.execute
+            && lhs.write == rhs.write
+            && lhs.read == rhs.read
+	}
 
     public init(create: Bool, delete: Bool, execute: Bool, write: Bool, read: Bool){
         
@@ -161,20 +210,43 @@ public class AclEntry: Codable, TapCodable {
 
 
 
-public class MemoryInfo: Codable, TapCodable {
+public class MemoryInfo: Codable, TapCodable, Equatable {
     var address: UInt32!
-    var length: UInt32!
-    var sizeInBytes: UInt32!
+    var wordCount: UInt32!
+    var wordSize: WordSizeType!
     
 
     
     public init(){}
     
 
-    public init(address: UInt32, length: UInt32, sizeInBytes: UInt32){
+    
+public var description : String  {
+    return "MemoryInfo[address:\(self.address)wordCount:\(self.wordCount)wordSize:\(self.wordSize.rawValue)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "MemoryInfo"
+        + "; address=" +  \(self.address)
+        + "; wordCount=" +  \(self.wordCount)
+        + "; wordSize=" +  \(self.wordSize.rawValue)
+}
+*/
+
+
+
+	public static func == (lhs: MemoryInfo, rhs: MemoryInfo) -> Bool {
+        return true 
+            && lhs.address == rhs.address
+            && lhs.wordCount == rhs.wordCount
+            && lhs.wordSize == rhs.wordSize
+	}
+
+    public init(address: UInt32, wordCount: UInt32, wordSize: WordSizeType){
         self.address = address
-        self.length = length
-        self.sizeInBytes = sizeInBytes
+        self.wordCount = wordCount
+        self.wordSize = wordSize
         
     }
 
@@ -186,15 +258,20 @@ public class MemoryInfo: Codable, TapCodable {
 
     
 
+    public enum WordSizeType: UInt8, Codable {
+    case _32_BITS = 3
+    case _16_BITS = 2
+    case _8_BITS = 1
+    case _1_BIT = 0
     
+}
+
     }
 
 
 
-public class MemoryWriteInfo: Codable, TapCodable {
-    var address: UInt32!
-    var length: UInt32!
-    var itemSize: UInt8!
+public class MemoryWriteInfo: Codable, TapCodable, Equatable {
+    var address: MemoryInfo!
     var value: Bytes!
     
 
@@ -202,10 +279,29 @@ public class MemoryWriteInfo: Codable, TapCodable {
     public init(){}
     
 
-    public init(address: UInt32, length: UInt32, itemSize: UInt8, value: Bytes){
+    
+public var description : String  {
+    return "MemoryWriteInfo[address:\(self.address.description)value:\(self.value?.hexstr)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "MemoryWriteInfo"
+        + "; address=" +  \(self.address.description)
+        + "; value=" +  \(self.value?.hexstr)
+}
+*/
+
+
+
+	public static func == (lhs: MemoryWriteInfo, rhs: MemoryWriteInfo) -> Bool {
+        return true 
+            && lhs.address == rhs.address
+            && lhs.value == rhs.value
+	}
+
+    public init(address: MemoryInfo, value: Bytes){
         self.address = address
-        self.length = length
-        self.itemSize = itemSize
         self.value = value
         
     }
@@ -223,7 +319,7 @@ public class MemoryWriteInfo: Codable, TapCodable {
 
 
 
-public class ReadWriteRights: Codable, TapCodable {
+public class ReadWriteRights: Codable, TapCodable, Equatable {
     // unamed
 
     var write: Bool!
@@ -233,6 +329,27 @@ public class ReadWriteRights: Codable, TapCodable {
     
     public init(){}
     
+
+    
+public var description : String  {
+    return "ReadWriteRights[write:\(self.write)read:\(self.read)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "ReadWriteRights"
+        + "; write=" +  \(self.write)
+        + "; read=" +  \(self.read)
+}
+*/
+
+
+
+	public static func == (lhs: ReadWriteRights, rhs: ReadWriteRights) -> Bool {
+        return true 
+            && lhs.write == rhs.write
+            && lhs.read == rhs.read
+	}
 
     public init(write: Bool, read: Bool){
         
@@ -254,7 +371,7 @@ public class ReadWriteRights: Codable, TapCodable {
 
 
 
-public class DatalogOption: Codable, TapCodable {
+public class DatalogOption: Codable, TapCodable, Equatable {
     // unamed
 
     var security: Bool!
@@ -263,21 +380,48 @@ public class DatalogOption: Codable, TapCodable {
 
     var logOnChange: Bool!
     var rollingMode: Bool!
-    var autoorun: Bool!
+    var autorun: Bool!
     
 
     
     public init(){}
     
 
-    public init(security: Bool, qos: Bool, logOnChange: Bool, rollingMode: Bool, autoorun: Bool){
+    
+public var description : String  {
+    return "DatalogOption[security:\(self.security)qos:\(self.qos)logOnChange:\(self.logOnChange)rollingMode:\(self.rollingMode)autorun:\(self.autorun)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "DatalogOption"
+        + "; security=" +  \(self.security)
+        + "; qos=" +  \(self.qos)
+        + "; logOnChange=" +  \(self.logOnChange)
+        + "; rollingMode=" +  \(self.rollingMode)
+        + "; autorun=" +  \(self.autorun)
+}
+*/
+
+
+
+	public static func == (lhs: DatalogOption, rhs: DatalogOption) -> Bool {
+        return true 
+            && lhs.security == rhs.security
+            && lhs.qos == rhs.qos
+            && lhs.logOnChange == rhs.logOnChange
+            && lhs.rollingMode == rhs.rollingMode
+            && lhs.autorun == rhs.autorun
+	}
+
+    public init(security: Bool, qos: Bool, logOnChange: Bool, rollingMode: Bool, autorun: Bool){
         
         self.security = security
         self.qos = qos
         
         self.logOnChange = logOnChange
         self.rollingMode = rollingMode
-        self.autoorun = autoorun
+        self.autorun = autorun
         
     }
 
@@ -294,7 +438,7 @@ public class DatalogOption: Codable, TapCodable {
 
 
 
-public class UartSettings: Codable, TapCodable {
+public class UartSettings: Codable, TapCodable, Equatable {
     var ctr2: Ctr2!
     var ctr1: Ctr1!
     
@@ -302,6 +446,27 @@ public class UartSettings: Codable, TapCodable {
     
     public init(){}
     
+
+    
+public var description : String  {
+    return "UartSettings[ctr2:\(self.ctr2.description)ctr1:\(self.ctr1.description)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "UartSettings"
+        + "; ctr2=" +  \(self.ctr2.description)
+        + "; ctr1=" +  \(self.ctr1.description)
+}
+*/
+
+
+
+	public static func == (lhs: UartSettings, rhs: UartSettings) -> Bool {
+        return true 
+            && lhs.ctr2 == rhs.ctr2
+            && lhs.ctr1 == rhs.ctr1
+	}
 
     public init(ctr2: Ctr2, ctr1: Ctr1){
         self.ctr2 = ctr2
@@ -315,14 +480,15 @@ public class UartSettings: Codable, TapCodable {
 // }
 
 
-    public class Ctr1: Codable, TapCodable {
-        var skip: UInt8!
+    public class Ctr1: Codable, TapCodable, Equatable {
+        // unamed
+
         var physicalPort: PhysicalPort!
         var stopBit: StopBit!
         var parity: BitParity!
         var dataLength: UInt8!
         var handshakeDelimiter: HandshakeDelimiter!
-        var handshakeValue: UInt8!
+        var handshakeValue: Handshake!
         var timeout: UInt8!
         
 
@@ -331,8 +497,40 @@ public class UartSettings: Codable, TapCodable {
         public init(){}
         
 
-        public init(skip: UInt8, physicalPort: PhysicalPort, stopBit: StopBit, parity: BitParity, dataLength: UInt8, handshakeDelimiter: HandshakeDelimiter, handshakeValue: UInt8, timeout: UInt8){
-            self.skip = skip
+        
+public var description : String  {
+    return "Ctr1[physicalPort:\(self.physicalPort.rawValue)stopBit:\(self.stopBit.rawValue)parity:\(self.parity.rawValue)dataLength:\(self.dataLength)handshakeDelimiter:\(self.handshakeDelimiter.rawValue)handshakeValue:\(self.handshakeValue.rawValue)timeout:\(self.timeout)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "Ctr1"
+        + "; physicalPort=" +  \(self.physicalPort.rawValue)
+        + "; stopBit=" +  \(self.stopBit.rawValue)
+        + "; parity=" +  \(self.parity.rawValue)
+        + "; dataLength=" +  \(self.dataLength)
+        + "; handshakeDelimiter=" +  \(self.handshakeDelimiter.rawValue)
+        + "; handshakeValue=" +  \(self.handshakeValue.rawValue)
+        + "; timeout=" +  \(self.timeout)
+}
+*/
+
+
+
+        public static func == (lhs: Ctr1, rhs: Ctr1) -> Bool {
+            return true 
+                && lhs.physicalPort == rhs.physicalPort
+                && lhs.stopBit == rhs.stopBit
+                && lhs.parity == rhs.parity
+                && lhs.dataLength == rhs.dataLength
+                && lhs.handshakeDelimiter == rhs.handshakeDelimiter
+                && lhs.handshakeValue == rhs.handshakeValue
+                && lhs.timeout == rhs.timeout
+        }
+
+
+        public init(physicalPort: PhysicalPort, stopBit: StopBit, parity: BitParity, dataLength: UInt8, handshakeDelimiter: HandshakeDelimiter, handshakeValue: Handshake, timeout: UInt8){
+            
             self.physicalPort = physicalPort
             self.stopBit = stopBit
             self.parity = parity
@@ -344,9 +542,10 @@ public class UartSettings: Codable, TapCodable {
         }
 
     }
-    public class Ctr2: Codable, TapCodable {
+    public class Ctr2: Codable, TapCodable, Equatable {
         var slv: UInt8!
-        var skip: UInt8!
+        // unamed
+
         var ofs: Bool!
         var baudrate: Int!
         
@@ -356,9 +555,33 @@ public class UartSettings: Codable, TapCodable {
         public init(){}
         
 
-        public init(slv: UInt8, skip: UInt8, ofs: Bool, baudrate: Int){
+        
+public var description : String  {
+    return "Ctr2[slv:\(self.slv)ofs:\(self.ofs)baudrate:\(self.baudrate)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "Ctr2"
+        + "; slv=" +  \(self.slv)
+        + "; ofs=" +  \(self.ofs)
+        + "; baudrate=" +  \(self.baudrate)
+}
+*/
+
+
+
+        public static func == (lhs: Ctr2, rhs: Ctr2) -> Bool {
+            return true 
+                && lhs.slv == rhs.slv
+                && lhs.ofs == rhs.ofs
+                && lhs.baudrate == rhs.baudrate
+        }
+
+
+        public init(slv: UInt8, ofs: Bool, baudrate: Int){
             self.slv = slv
-            self.skip = skip
+            
             self.ofs = ofs
             self.baudrate = baudrate
             
@@ -373,6 +596,13 @@ public class UartSettings: Codable, TapCodable {
     case EVEN = 2
     
 }
+public enum Handshake: UInt8, Codable {
+    case NONE = 0
+    case RTS = 1
+    case CTS = 2
+    case RTS_CTS = 3
+    
+}
 public enum StopBit: UInt8, Codable {
     case ONE = 0
     case ONE_AND_HALF = 1
@@ -380,13 +610,12 @@ public enum StopBit: UInt8, Codable {
     
 }
 public enum PhysicalPort: UInt8, Codable {
-    case RS232 = 1
-    case RS485 = 2
-    case USB = 3
-    case UART = 4
-    case CAN = 5
-    case TERMINAISON_ACTIVE = 6
     case NONE = 0
+    case RS232 = 1
+    case RS485_NO_TERM = 2
+    case USB = 3
+    case AUTO = 6
+    case RS485_TERM = 10
     
 }
 public enum HandshakeDelimiter: UInt8, Codable {
@@ -401,7 +630,47 @@ public enum HandshakeDelimiter: UInt8, Codable {
 
 
 
-public class Lwm2mTlv: Codable, TapCodable {
+public class TapVersion: Codable, TapCodable, Equatable {
+    var major: UInt8!
+    var minor: UInt8!
+    var build: UInt16!
+    
+
+    
+    public init(){}
+    
+
+    
+
+
+	public static func == (lhs: TapVersion, rhs: TapVersion) -> Bool {
+        return true 
+            && lhs.major == rhs.major
+            && lhs.minor == rhs.minor
+            && lhs.build == rhs.build
+	}
+
+    public init(major: UInt8, minor: UInt8, build: UInt16){
+        self.major = major
+        self.minor = minor
+        self.build = build
+        
+    }
+
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
+    
+
+    
+    }
+
+
+
+public class Lwm2mTlv: Codable, TapCodable, Equatable {
     var identifierType: UInt8!
     var identifierLength: Bool!
     var lengthType: UInt8!
@@ -414,6 +683,37 @@ public class Lwm2mTlv: Codable, TapCodable {
     
     public init(){}
     
+
+    
+public var description : String  {
+    return "Lwm2mTlv[identifierType:\(self.identifierType)identifierLength:\(self.identifierLength)lengthType:\(self.lengthType)other:\(self.other)identifier:\(self.identifier?.hexstr)len:\(self.len)value:\(self.value?.hexstr)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "Lwm2mTlv"
+        + "; identifierType=" +  \(self.identifierType)
+        + "; identifierLength=" +  \(self.identifierLength)
+        + "; lengthType=" +  \(self.lengthType)
+        + "; other=" +  \(self.other)
+        + "; identifier=" +  \(self.identifier?.hexstr)
+        + "; len=" +  \(self.len)
+        + "; value=" +  \(self.value?.hexstr)
+}
+*/
+
+
+
+	public static func == (lhs: Lwm2mTlv, rhs: Lwm2mTlv) -> Bool {
+        return true 
+            && lhs.identifierType == rhs.identifierType
+            && lhs.identifierLength == rhs.identifierLength
+            && lhs.lengthType == rhs.lengthType
+            && lhs.other == rhs.other
+            && lhs.identifier == rhs.identifier
+            && lhs.len == rhs.len
+            && lhs.value == rhs.value
+	}
 
     public init(identifierType: UInt8, identifierLength: Bool, lengthType: UInt8, other: UInt8, identifier: Bytes, len: UInt16, value: Bytes){
         self.identifierType = identifierType
@@ -439,7 +739,7 @@ public class Lwm2mTlv: Codable, TapCodable {
 
 
 
-public class InterfaceLock: Codable, TapCodable {
+public class InterfaceLock: Codable, TapCodable, Equatable {
     // unamed
 
     // unamed
@@ -454,6 +754,33 @@ public class InterfaceLock: Codable, TapCodable {
     
     public init(){}
     
+
+    
+public var description : String  {
+    return "InterfaceLock[scramActivated:\(self.scramActivated)hashPassword:\(self.hashPassword)factoryReset:\(self.factoryReset)resourceLogUid:\(self.resourceLogUid)resouceFactory:\(self.resouceFactory)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "InterfaceLock"
+        + "; scramActivated=" +  \(self.scramActivated)
+        + "; hashPassword=" +  \(self.hashPassword)
+        + "; factoryReset=" +  \(self.factoryReset)
+        + "; resourceLogUid=" +  \(self.resourceLogUid)
+        + "; resouceFactory=" +  \(self.resouceFactory)
+}
+*/
+
+
+
+	public static func == (lhs: InterfaceLock, rhs: InterfaceLock) -> Bool {
+        return true 
+            && lhs.scramActivated == rhs.scramActivated
+            && lhs.hashPassword == rhs.hashPassword
+            && lhs.factoryReset == rhs.factoryReset
+            && lhs.resourceLogUid == rhs.resourceLogUid
+            && lhs.resouceFactory == rhs.resouceFactory
+	}
 
     public init(scramActivated: Bool, hashPassword: Bool, factoryReset: Bool, resourceLogUid: Bool, resouceFactory: Bool){
         
@@ -479,7 +806,7 @@ public class InterfaceLock: Codable, TapCodable {
 
 
 
-public class LoginCredential: Codable, TapCodable {
+public class LoginCredential: Codable, TapCodable, Equatable {
     var username: String!
     var password: String!
     
@@ -487,6 +814,27 @@ public class LoginCredential: Codable, TapCodable {
     
     public init(){}
     
+
+    
+public var description : String  {
+    return "LoginCredential[username:\(self.username)password:\(self.password)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "LoginCredential"
+        + "; username=" +  \(self.username)
+        + "; password=" +  \(self.password)
+}
+*/
+
+
+
+	public static func == (lhs: LoginCredential, rhs: LoginCredential) -> Bool {
+        return true 
+            && lhs.username == rhs.username
+            && lhs.password == rhs.password
+	}
 
     public init(username: String, password: String){
         self.username = username
@@ -507,7 +855,56 @@ public class LoginCredential: Codable, TapCodable {
 
 
 
-public class ScramLoginParams: Codable, TapCodable {
+public class LoginCredentialHashed: Codable, TapCodable, Equatable {
+    var username: String!
+    var password: Bytes!
+    
+
+    
+    public init(){}
+    
+
+    
+public var description : String  {
+    return "LoginCredentialHashed[username:\(self.username)password:\(self.password?.hexstr)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "LoginCredentialHashed"
+        + "; username=" +  \(self.username)
+        + "; password=" +  \(self.password?.hexstr)
+}
+*/
+
+
+
+	public static func == (lhs: LoginCredentialHashed, rhs: LoginCredentialHashed) -> Bool {
+        return true 
+            && lhs.username == rhs.username
+            && lhs.password == rhs.password
+	}
+
+    public init(username: String, password: Bytes){
+        self.username = username
+        self.password = password
+        
+    }
+
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
+    
+
+    
+    }
+
+
+
+public class ScramLoginParams: Codable, TapCodable, Equatable {
     var username: String!
     var clientNonce: UInt32!
     
@@ -515,6 +912,27 @@ public class ScramLoginParams: Codable, TapCodable {
     
     public init(){}
     
+
+    
+public var description : String  {
+    return "ScramLoginParams[username:\(self.username)clientNonce:\(self.clientNonce)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "ScramLoginParams"
+        + "; username=" +  \(self.username)
+        + "; clientNonce=" +  \(self.clientNonce)
+}
+*/
+
+
+
+	public static func == (lhs: ScramLoginParams, rhs: ScramLoginParams) -> Bool {
+        return true 
+            && lhs.username == rhs.username
+            && lhs.clientNonce == rhs.clientNonce
+	}
 
     public init(username: String, clientNonce: UInt32){
         self.username = username
@@ -535,8 +953,8 @@ public class ScramLoginParams: Codable, TapCodable {
 
 
 
-public class ScramLoginResponseBody: Codable, TapCodable {
-    var servernonce: UInt32!
+public class ScramLoginResponseBody: Codable, TapCodable, Equatable {
+    var serverNonce: UInt32!
     var salt: Bytes!
     var iterationNumber: UInt32!
     
@@ -545,8 +963,31 @@ public class ScramLoginResponseBody: Codable, TapCodable {
     public init(){}
     
 
-    public init(servernonce: UInt32, salt: Bytes, iterationNumber: UInt32){
-        self.servernonce = servernonce
+    
+public var description : String  {
+    return "ScramLoginResponseBody[serverNonce:\(self.serverNonce)salt:\(self.salt?.hexstr)iterationNumber:\(self.iterationNumber)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "ScramLoginResponseBody"
+        + "; serverNonce=" +  \(self.serverNonce)
+        + "; salt=" +  \(self.salt?.hexstr)
+        + "; iterationNumber=" +  \(self.iterationNumber)
+}
+*/
+
+
+
+	public static func == (lhs: ScramLoginResponseBody, rhs: ScramLoginResponseBody) -> Bool {
+        return true 
+            && lhs.serverNonce == rhs.serverNonce
+            && lhs.salt == rhs.salt
+            && lhs.iterationNumber == rhs.iterationNumber
+	}
+
+    public init(serverNonce: UInt32, salt: Bytes, iterationNumber: UInt32){
+        self.serverNonce = serverNonce
         self.salt = salt
         self.iterationNumber = iterationNumber
         
@@ -565,7 +1006,7 @@ public class ScramLoginResponseBody: Codable, TapCodable {
 
 
 
-public class TargetComStats: Codable, TapCodable {
+public class TargetComStats: Codable, TapCodable, Equatable {
     var nbFailCom: UInt32!
     var nbSuccessfulCom: UInt32!
     
@@ -573,6 +1014,27 @@ public class TargetComStats: Codable, TapCodable {
     
     public init(){}
     
+
+    
+public var description : String  {
+    return "TargetComStats[nbFailCom:\(self.nbFailCom)nbSuccessfulCom:\(self.nbSuccessfulCom)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "TargetComStats"
+        + "; nbFailCom=" +  \(self.nbFailCom)
+        + "; nbSuccessfulCom=" +  \(self.nbSuccessfulCom)
+}
+*/
+
+
+
+	public static func == (lhs: TargetComStats, rhs: TargetComStats) -> Bool {
+        return true 
+            && lhs.nbFailCom == rhs.nbFailCom
+            && lhs.nbSuccessfulCom == rhs.nbSuccessfulCom
+	}
 
     public init(nbFailCom: UInt32, nbSuccessfulCom: UInt32){
         self.nbFailCom = nbFailCom
@@ -593,7 +1055,7 @@ public class TargetComStats: Codable, TapCodable {
 
 
 
-public class AvailableFunction: Codable, TapCodable {
+public class AvailableFunction: Codable, TapCodable, Equatable {
     // unamed
 
     var debug: Bool!
@@ -603,6 +1065,27 @@ public class AvailableFunction: Codable, TapCodable {
     
     public init(){}
     
+
+    
+public var description : String  {
+    return "AvailableFunction[debug:\(self.debug)datalog:\(self.datalog)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "AvailableFunction"
+        + "; debug=" +  \(self.debug)
+        + "; datalog=" +  \(self.datalog)
+}
+*/
+
+
+
+	public static func == (lhs: AvailableFunction, rhs: AvailableFunction) -> Bool {
+        return true 
+            && lhs.debug == rhs.debug
+            && lhs.datalog == rhs.datalog
+	}
 
     public init(debug: Bool, datalog: Bool){
         
@@ -624,7 +1107,7 @@ public class AvailableFunction: Codable, TapCodable {
 
 
 
-public class CrcCheckBody: Codable, TapCodable {
+public class CrcCheckBody: Codable, TapCodable, Equatable {
     var address: UInt32!
     var size: UInt32!
     var crc: UInt32!
@@ -633,6 +1116,29 @@ public class CrcCheckBody: Codable, TapCodable {
     
     public init(){}
     
+
+    
+public var description : String  {
+    return "CrcCheckBody[address:\(self.address)size:\(self.size)crc:\(self.crc)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "CrcCheckBody"
+        + "; address=" +  \(self.address)
+        + "; size=" +  \(self.size)
+        + "; crc=" +  \(self.crc)
+}
+*/
+
+
+
+	public static func == (lhs: CrcCheckBody, rhs: CrcCheckBody) -> Bool {
+        return true 
+            && lhs.address == rhs.address
+            && lhs.size == rhs.size
+            && lhs.crc == rhs.crc
+	}
 
     public init(address: UInt32, size: UInt32, crc: UInt32){
         self.address = address

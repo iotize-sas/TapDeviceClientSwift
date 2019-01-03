@@ -1,14 +1,23 @@
 import TapClientApi
 
+
+public func getDefaultTapAndLinkConverters() -> ConverterProvider{
+	let provider = ConverterProvider.getDefaultInstance()
+	initTapNLinkModels(provider: provider) // TODO move init from here
+	provider.add(id: "UartSettings", converter: ReversedUartSettingsConverter())
+	return provider
+}
+
+
 public class TapDevice {
 	
 	public var service : ServiceContainer
 	var client: TapClient
-	var auth: AuthApi?
 	
-	public init(client: TapClient){
-		let converterProvider = ConverterProvider.getDefaultInstance()
-		initTapNLinkModels(provider: converterProvider) // TODO move init from here
+	var auth: AuthApi?
+	private var sessionKey: Bytes?
+	
+	public init(client: TapClient, converterProvider: ConverterProvider = getDefaultTapAndLinkConverters()){
 		self.service = ServiceContainer(client: client, converterProvider: converterProvider)
 		self.client = client
 	}
@@ -23,20 +32,36 @@ public class TapDevice {
 			try self.initAuth()
 		}
 		let credential = LoginCredential(username: username, password: password)
-		return try self.auth!.login(credential: credential)
+		try self.auth!.login(credential: credential)
+		if (self.auth is ScramAuth){
+			// TODO do not implement like this
+			self.sessionKey = (self.auth as! ScramAuth).getSessionData()?.key
+			try self.encryption(enabled: true)
+		}
 	}
 	
 	public func logout() throws {
-		try self.auth?.logout()
+		if (self.auth == nil){
+			try self.initAuth()
+		}
+		try self.auth!.logout()
+		self.sessionKey = nil
 	}
 	
+//	public func setSessionKey(key: Bytes){
+//		self.sessionKey = key
+//	}
+
 	public func encryption(enabled: Bool) throws {
 		if (enabled) {
-			let key = try self.service.scram.initialize().body()
-			let algo = try AesCBBC128Encryption(key: key)
+			if (self.sessionKey == nil){
+				self.sessionKey = try self.service.scram.initialize().body()
+			}
+			let algo = try AesCBBC128Encryption(key: self.sessionKey!)
 			self.client._requestInterceptor = EncryptedRequestBuilder(encryptionAlgo: algo)
 		}
 		else {
+			self.sessionKey = nil
 			self.client._requestInterceptor = ApduRequestInterceptor()
 		}
 	}
@@ -48,19 +73,19 @@ public class TapDevice {
 		return self.client._requestInterceptor is EncryptedRequestBuilder
 	}
 	
-	public func connect(){
-		return self.client.connect()
+	public func connect() throws {
+		return try self.client.connect()
 	}
 	
-	public func disconnect(){
-		return self.client.disconnect()
+	public func disconnect() throws {
+		return try self.client.disconnect()
 	}
 	
 	public func getConnectionState() -> ConnectionState {
 		return self.client.comProtocol.getConnectionState()
 	}
 	
-	public func initAuth() throws {
+	func initAuth() throws {
 		let lockInfo = try self.service.interface.getLock().body()
 		if (lockInfo.scramActivated){
 			self.auth = ScramAuth(scramService: self.service.scram, interfaceService: self.service.interface)
@@ -86,6 +111,7 @@ public class TapDevice {
 			self.singelePacket = SinglePacketAPI(client: client, converterProvider: converterProvider)
 			self.target = TargetAPI(client: client, converterProvider: converterProvider)
 			self.variable = VariableAPI(client: client, converterProvider: converterProvider)
+			self.datalog = DataLogAPI(client: client, converterProvider: converterProvider)
 		}
 		
 		public var acl: AclAPI
@@ -99,5 +125,6 @@ public class TapDevice {
 		public var singelePacket: SinglePacketAPI
 		public var target: TargetAPI
 		public var variable: VariableAPI
+		public var datalog: DataLogAPI
 	}
 }

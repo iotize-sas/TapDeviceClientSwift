@@ -1,16 +1,252 @@
+/**
+ * This file has been generated
+ * DO NOT EDIT DIRECTLY, IT MAY BE OVERWRITE
+ */
+
 import TapClientApi
 
 
 
 
 
-public class AclEntryConverter: TapConverter {
+public class AvailablePowerSourceEnumConverter: TapConverter {
 
-    public static var ID = "AclEntry"
-
-    public func id() -> String{
-        return AclEntryConverter.ID
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = AvailablePowerSource(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
     }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! AvailablePowerSource
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class FirmwareStateEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = FirmwareState(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! FirmwareState
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class FirmwareUpdateResultEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = FirmwareUpdateResult(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! FirmwareUpdateResult
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class HostProtocolEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = HostProtocol(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! HostProtocol
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class ListTargetProtocolEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = ListTargetProtocol(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! ListTargetProtocol
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class ListHostProtocolEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = ListHostProtocol(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! ListHostProtocol
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class LowPowerOptimisationLevelEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = LowPowerOptimisationLevel(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! LowPowerOptimisationLevel
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class NetworkModeEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = NetworkMode(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! NetworkMode
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class CloudConnectionModeEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = CloudConnectionMode(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! CloudConnectionMode
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class TargetProtocolEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = TargetProtocol(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! TargetProtocol
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class CoretypeEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = Coretype(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! Coretype
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class NfcPairingModeEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = NfcPairingMode(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! NfcPairingMode
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+public class TargetCoreTypeEnumConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let rawValue = stream.readU1()
+        let model = TargetCoreType(rawValue: rawValue)
+        if (model == nil){
+            // TODO throw
+        }
+        return model! as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! TargetCoreType
+        stream.write(model.rawValue)
+        return stream
+    }
+}
+
+
+
+
+public class AclEntryConverter: TapConverter {
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = AclEntry()
@@ -23,7 +259,7 @@ public class AclEntryConverter: TapConverter {
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! AclEntry
         stream.forwardBits(3)
 
@@ -32,75 +268,60 @@ public class AclEntryConverter: TapConverter {
         stream.writeBitsInt(model.execute!, 1)
         stream.writeBitsInt(model.write!, 1)
         stream.writeBitsInt(model.read!, 1)
-        }
+        return stream
+    }
 
 }
+
 
 
 
 public class MemoryInfoConverter: TapConverter {
 
-    public static var ID = "MemoryInfo"
-
-    public func id() -> String{
-        return MemoryInfoConverter.ID
-    }
-
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = MemoryInfo()
         model.address = stream.readU4()
-        model.length = stream.readU4()
-        model.sizeInBytes = stream.readU4()
+        model.wordCount = stream.readU4()
+        model.wordSize = MemoryInfo.WordSizeType(rawValue:stream.readU1())
+
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! MemoryInfo
         stream.writeU4(model.address!)
-        stream.writeU4(model.length!)
-        stream.writeU4(model.sizeInBytes!)
-        }
+        stream.writeU4(model.wordCount!)
+        stream.writeU1(model.wordSize!.rawValue)
+        return stream
+    }
 
 }
+
 
 
 
 public class MemoryWriteInfoConverter: TapConverter {
 
-    public static var ID = "MemoryWriteInfo"
-
-    public func id() -> String{
-        return MemoryWriteInfoConverter.ID
-    }
-
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = MemoryWriteInfo()
-        model.address = stream.readU4()
-        model.length = stream.readU4()
-        model.itemSize = stream.readU1()
-        model.value = stream.readBytes(length: Int(1))
+        model.address = stream.readMemoryInfo()
+        model.value = stream.readBytes()
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! MemoryWriteInfo
-        stream.writeU4(model.address!)
-        stream.writeU4(model.length!)
-        stream.writeU1(model.itemSize!)
+        stream.writeMemoryInfo(model.address)
         stream.writeBytes(model.value!)
-        }
+        return stream
+    }
 
 }
 
 
 
+
 public class ReadWriteRightsConverter: TapConverter {
-
-    public static var ID = "ReadWriteRights"
-
-    public func id() -> String{
-        return ReadWriteRightsConverter.ID
-    }
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = ReadWriteRights()
@@ -110,25 +331,21 @@ public class ReadWriteRightsConverter: TapConverter {
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! ReadWriteRights
         stream.forwardBits(6)
 
         stream.writeBitsInt(model.write!, 1)
         stream.writeBitsInt(model.read!, 1)
-        }
+        return stream
+    }
 
 }
 
 
 
+
 public class DatalogOptionConverter: TapConverter {
-
-    public static var ID = "DatalogOption"
-
-    public func id() -> String{
-        return DatalogOptionConverter.ID
-    }
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = DatalogOption()
@@ -138,11 +355,11 @@ public class DatalogOptionConverter: TapConverter {
         stream.forwardBits(length: 5)
         model.logOnChange = stream.readBool()
         model.rollingMode = stream.readBool()
-        model.autoorun = stream.readBool()
+        model.autorun = stream.readBool()
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! DatalogOption
         stream.forwardBits(6)
 
@@ -152,20 +369,16 @@ public class DatalogOptionConverter: TapConverter {
 
         stream.writeBitsInt(model.logOnChange!, 1)
         stream.writeBitsInt(model.rollingMode!, 1)
-        stream.writeBitsInt(model.autoorun!, 1)
-        }
+        stream.writeBitsInt(model.autorun!, 1)
+        return stream
+    }
 
 }
 
 
 
+
 public class UartSettingsConverter: TapConverter {
-
-    public static var ID = "UartSettings"
-
-    public func id() -> String{
-        return UartSettingsConverter.ID
-    }
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = UartSettings()
@@ -174,23 +387,42 @@ public class UartSettingsConverter: TapConverter {
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! UartSettings
         stream.writeUartSettingsCtr2(model.ctr2)
         stream.writeUartSettingsCtr1(model.ctr1)
-        }
+        return stream
+    }
 
 }
 
 
 
-public class Lwm2mTlvConverter: TapConverter {
 
-    public static var ID = "Lwm2mTlv"
+public class TapVersionConverter: TapConverter {
 
-    public func id() -> String{
-        return Lwm2mTlvConverter.ID
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let model = TapVersion()
+        model.major = stream.readU1()
+        model.minor = stream.readU1()
+        model.build = stream.readU2()
+        return model as! T
     }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! TapVersion
+        stream.writeU1(model.major!)
+        stream.writeU1(model.minor!)
+        stream.writeU2(model.build!)
+        return stream
+    }
+
+}
+
+
+
+
+public class Lwm2mTlvConverter: TapConverter {
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = Lwm2mTlv()
@@ -204,7 +436,7 @@ public class Lwm2mTlvConverter: TapConverter {
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! Lwm2mTlv
         stream.writeBitsInt(model.identifierType!, 2)
         stream.writeBitsInt(model.identifierLength!, 1)
@@ -213,19 +445,15 @@ public class Lwm2mTlvConverter: TapConverter {
         stream.writeBytes(model.identifier!)
         stream.writeU2(model.len!)
         stream.writeBytes(model.value!)
-        }
+        return stream
+    }
 
 }
 
 
 
+
 public class InterfaceLockConverter: TapConverter {
-
-    public static var ID = "InterfaceLock"
-
-    public func id() -> String{
-        return InterfaceLockConverter.ID
-    }
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = InterfaceLock()
@@ -239,7 +467,7 @@ public class InterfaceLockConverter: TapConverter {
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! InterfaceLock
         stream.forwardBits(8)
 
@@ -250,19 +478,15 @@ public class InterfaceLockConverter: TapConverter {
         stream.writeBitsInt(model.factoryReset!, 1)
         stream.writeBitsInt(model.resourceLogUid!, 1)
         stream.writeBitsInt(model.resouceFactory!, 1)
-        }
+        return stream
+    }
 
 }
 
 
 
+
 public class LoginCredentialConverter: TapConverter {
-
-    public static var ID = "LoginCredential"
-
-    public func id() -> String{
-        return LoginCredentialConverter.ID
-    }
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = LoginCredential()
@@ -271,23 +495,40 @@ public class LoginCredentialConverter: TapConverter {
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! LoginCredential
-        stream.writeStr(model.username!, length: 16)
-        stream.writeStr(model.password!, length: 16)
-        }
+        stream.writeStr(model.username!, length: Int(16))
+        stream.writeStr(model.password!, length: Int(16))
+        return stream
+    }
 
 }
 
 
 
-public class ScramLoginParamsConverter: TapConverter {
 
-    public static var ID = "ScramLoginParams"
+public class LoginCredentialHashedConverter: TapConverter {
 
-    public func id() -> String{
-        return ScramLoginParamsConverter.ID
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let model = LoginCredentialHashed()
+        model.username = stream.readStr(length: 16)
+        model.password = stream.readBytes(length: Int(16))
+        return model as! T
     }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! LoginCredentialHashed
+        stream.writeStr(model.username!, length: Int(16))
+        stream.writeBytes(model.password!)
+        return stream
+    }
+
+}
+
+
+
+
+public class ScramLoginParamsConverter: TapConverter {
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = ScramLoginParams()
@@ -296,50 +537,42 @@ public class ScramLoginParamsConverter: TapConverter {
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! ScramLoginParams
-        stream.writeStr(model.username!)
+        stream.writeStr(model.username!, length: Int(16))
         stream.writeU4(model.clientNonce!)
-        }
+        return stream
+    }
 
 }
+
 
 
 
 public class ScramLoginResponseBodyConverter: TapConverter {
 
-    public static var ID = "ScramLoginResponseBody"
-
-    public func id() -> String{
-        return ScramLoginResponseBodyConverter.ID
-    }
-
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = ScramLoginResponseBody()
-        model.servernonce = stream.readU4()
+        model.serverNonce = stream.readU4()
         model.salt = stream.readBytes(length: Int(4))
         model.iterationNumber = stream.readU4()
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! ScramLoginResponseBody
-        stream.writeU4(model.servernonce!)
+        stream.writeU4(model.serverNonce!)
         stream.writeBytes(model.salt!)
         stream.writeU4(model.iterationNumber!)
-        }
+        return stream
+    }
 
 }
 
 
 
+
 public class TargetComStatsConverter: TapConverter {
-
-    public static var ID = "TargetComStats"
-
-    public func id() -> String{
-        return TargetComStatsConverter.ID
-    }
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = TargetComStats()
@@ -348,23 +581,19 @@ public class TargetComStatsConverter: TapConverter {
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! TargetComStats
         stream.writeU4(model.nbFailCom!)
         stream.writeU4(model.nbSuccessfulCom!)
-        }
+        return stream
+    }
 
 }
 
 
 
+
 public class AvailableFunctionConverter: TapConverter {
-
-    public static var ID = "AvailableFunction"
-
-    public func id() -> String{
-        return AvailableFunctionConverter.ID
-    }
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = AvailableFunction()
@@ -374,25 +603,21 @@ public class AvailableFunctionConverter: TapConverter {
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! AvailableFunction
         stream.forwardBits(6)
 
         stream.writeBitsInt(model.debug!, 1)
         stream.writeBitsInt(model.datalog!, 1)
-        }
+        return stream
+    }
 
 }
 
 
 
+
 public class CrcCheckBodyConverter: TapConverter {
-
-    public static var ID = "CrcCheckBody"
-
-    public func id() -> String{
-        return CrcCheckBodyConverter.ID
-    }
 
     public func decode<T>(stream: TapStreamReader) -> T {
         let model = CrcCheckBody()
@@ -402,46 +627,97 @@ public class CrcCheckBodyConverter: TapConverter {
         return model as! T
     }
 
-    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()){
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! CrcCheckBody
         stream.writeU4(model.address!)
         stream.writeU4(model.size!)
         stream.writeU4(model.crc!)
-        }
+        return stream
+    }
 
 }
+
 
 
 func initTapNLinkModels(provider: ConverterProvider){
 
 
 
- provider.add(converter: AclEntryConverter())
 
- provider.add(converter: MemoryInfoConverter())
+    provider.add(id: "AvailablePowerSource", converter: AvailablePowerSourceEnumConverter())
 
- provider.add(converter: MemoryWriteInfoConverter())
+    provider.add(id: "FirmwareState", converter: FirmwareStateEnumConverter())
 
- provider.add(converter: ReadWriteRightsConverter())
+    provider.add(id: "FirmwareUpdateResult", converter: FirmwareUpdateResultEnumConverter())
 
- provider.add(converter: DatalogOptionConverter())
+    provider.add(id: "HostProtocol", converter: HostProtocolEnumConverter())
 
- provider.add(converter: UartSettingsConverter())
+    provider.add(id: "ListTargetProtocol", converter: ListTargetProtocolEnumConverter())
 
- provider.add(converter: Lwm2mTlvConverter())
+    provider.add(id: "ListHostProtocol", converter: ListHostProtocolEnumConverter())
 
- provider.add(converter: InterfaceLockConverter())
+    provider.add(id: "LowPowerOptimisationLevel", converter: LowPowerOptimisationLevelEnumConverter())
 
- provider.add(converter: LoginCredentialConverter())
+    provider.add(id: "NetworkMode", converter: NetworkModeEnumConverter())
 
- provider.add(converter: ScramLoginParamsConverter())
+    provider.add(id: "CloudConnectionMode", converter: CloudConnectionModeEnumConverter())
 
- provider.add(converter: ScramLoginResponseBodyConverter())
+    provider.add(id: "TargetProtocol", converter: TargetProtocolEnumConverter())
 
- provider.add(converter: TargetComStatsConverter())
+    provider.add(id: "Coretype", converter: CoretypeEnumConverter())
 
- provider.add(converter: AvailableFunctionConverter())
+    provider.add(id: "NfcPairingMode", converter: NfcPairingModeEnumConverter())
 
- provider.add(converter: CrcCheckBodyConverter())
+    provider.add(id: "TargetCoreType", converter: TargetCoreTypeEnumConverter())
+
+
+
+ provider.add(id: "AclEntry", converter: AclEntryConverter())
+
+
+ provider.add(id: "MemoryInfo", converter: MemoryInfoConverter())
+
+
+ provider.add(id: "MemoryWriteInfo", converter: MemoryWriteInfoConverter())
+
+
+ provider.add(id: "ReadWriteRights", converter: ReadWriteRightsConverter())
+
+
+ provider.add(id: "DatalogOption", converter: DatalogOptionConverter())
+
+
+ provider.add(id: "UartSettings", converter: UartSettingsConverter())
+
+
+ provider.add(id: "TapVersion", converter: TapVersionConverter())
+
+
+ provider.add(id: "Lwm2mTlv", converter: Lwm2mTlvConverter())
+
+
+ provider.add(id: "InterfaceLock", converter: InterfaceLockConverter())
+
+
+ provider.add(id: "LoginCredential", converter: LoginCredentialConverter())
+
+
+ provider.add(id: "LoginCredentialHashed", converter: LoginCredentialHashedConverter())
+
+
+ provider.add(id: "ScramLoginParams", converter: ScramLoginParamsConverter())
+
+
+ provider.add(id: "ScramLoginResponseBody", converter: ScramLoginResponseBodyConverter())
+
+
+ provider.add(id: "TargetComStats", converter: TargetComStatsConverter())
+
+
+ provider.add(id: "AvailableFunction", converter: AvailableFunctionConverter())
+
+
+ provider.add(id: "CrcCheckBody", converter: CrcCheckBodyConverter())
+
 
 }

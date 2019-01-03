@@ -88,7 +88,7 @@ open class DataLogAPI {
     * Get the maximum number of packet
     * 
     * LWM2M path: /1024//23
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getMaxPacketCountRequest()
          -> ApiRequest<Void>{
@@ -106,13 +106,13 @@ open class DataLogAPI {
         * Get the maximum number of packet
         * 
         * LWM2M path: /1024//23
-                * @return Int api call
+                * @return UInt16 api call
         */
         public func getMaxPacketCount()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getMaxPacketCountRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -152,7 +152,7 @@ open class DataLogAPI {
     * Get number of pending datalog packet
     * Get the number of data log packet available
     * LWM2M path: /1031//10
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getPacketCountRequest()
          -> ApiRequest<Void>{
@@ -170,13 +170,13 @@ open class DataLogAPI {
         * Get number of pending datalog packet
         * Get the number of data log packet available
         * LWM2M path: /1031//10
-                * @return Int api call
+                * @return UInt16 api call
         */
         public func getPacketCount()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getPacketCountRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }

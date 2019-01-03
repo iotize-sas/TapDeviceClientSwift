@@ -11,6 +11,8 @@ import RxSwift
 
 public protocol RxComProtocol{
 	
+	func getConnectionState() -> ConnectionState
+	
 	func connect() -> Observable<Any>
 	func disconnect() -> Observable<Any>
 	

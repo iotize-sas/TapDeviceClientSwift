@@ -312,7 +312,7 @@ open class InterfaceAPI {
     * Get cloud mqtt period
     * Minimum period between 2 Mqtt smartphone sendings in ms : 0 &#x3D; no
     * LWM2M path: /1024//33
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func getCloudMqttPeriodRequest()
          -> ApiRequest<Void>{
@@ -330,13 +330,13 @@ open class InterfaceAPI {
         * Get cloud mqtt period
         * Minimum period between 2 Mqtt smartphone sendings in ms : 0 &#x3D; no
         * LWM2M path: /1024//33
-                * @return Int api call
+                * @return UInt32 api call
         */
         public func getCloudMqttPeriod()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.getCloudMqttPeriodRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -414,7 +414,7 @@ open class InterfaceAPI {
     * @return Bytes api call
     */
     public func getComRequest(
-        data: Bytes
+        data: Bytes? = nil
     ) -> ApiRequest<Bytes>{
         var path = "/1024//71"
         //var regex = "\{([\S]*)\}"
@@ -438,7 +438,7 @@ open class InterfaceAPI {
         * @return Bytes api call
         */
         public func getCom(
-            data: Bytes
+            data: Bytes? = nil
         ) throws -> ApiResponse<Bytes>{
             let request : ApiRequest<Bytes> = self.getComRequest(data: data)
             let converter: TapConverterContainer<Bytes> = self.converterProvider.get(id: "Bytes")
@@ -578,7 +578,7 @@ open class InterfaceAPI {
     * Get current group id 
     * 
     * LWM2M path: /1024//7
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getCurrentGroupIdRequest()
          -> ApiRequest<Void>{
@@ -596,13 +596,13 @@ open class InterfaceAPI {
         * Get current group id 
         * 
         * LWM2M path: /1024//7
-                * @return Int api call
+                * @return UInt16 api call
         */
         public func getCurrentGroupId()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getCurrentGroupIdRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -642,7 +642,7 @@ open class InterfaceAPI {
     * Get current profile id
     * 
     * LWM2M path: /1024//2
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getCurrentProfileIdRequest()
          -> ApiRequest<Void>{
@@ -660,13 +660,13 @@ open class InterfaceAPI {
         * Get current profile id
         * 
         * LWM2M path: /1024//2
-                * @return Int api call
+                * @return UInt16 api call
         */
         public func getCurrentProfileId()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getCurrentProfileIdRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -706,7 +706,7 @@ open class InterfaceAPI {
     * Get host inactivity period
     * Host inactivity period before switch to standby mode or shutdown depending on optimisation level (res /1024//14)
     * LWM2M path: /1024//34
-    * @return Int api call
+    * @return UInt16 api call
     */
     public func getHostInactivityPeriodRequest()
          -> ApiRequest<Void>{
@@ -724,13 +724,13 @@ open class InterfaceAPI {
         * Get host inactivity period
         * Host inactivity period before switch to standby mode or shutdown depending on optimisation level (res /1024//14)
         * LWM2M path: /1024//34
-                * @return Int api call
+                * @return UInt16 api call
         */
         public func getHostInactivityPeriod()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt16>{
             let request : ApiRequest<Void> = self.getHostInactivityPeriodRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint16")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt16> = self.converterProvider.get(id: "integer_uint16")
+            let response: ApiResponse<UInt16> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -1314,7 +1314,7 @@ open class InterfaceAPI {
     * Keep alive.
     * Call this method to ensure communication resources are maintain.
     * LWM2M path: /1024//4
-    * @return Int api call
+    * @return UInt32 api call
     */
     public func keepAliveRequest()
          -> ApiRequest<Void>{
@@ -1332,13 +1332,13 @@ open class InterfaceAPI {
         * Keep alive.
         * Call this method to ensure communication resources are maintain.
         * LWM2M path: /1024//4
-                * @return Int api call
+                * @return UInt32 api call
         */
         public func keepAlive()
-             throws -> ApiResponse<Int>{
+             throws -> ApiResponse<UInt32>{
             let request : ApiRequest<Void> = self.keepAliveRequest()
-            let converter: TapConverterContainer<Int> = self.converterProvider.get(id: "integer_uint32")
-            let response: ApiResponse<Int> = try self.client.execute(request: request, converter: converter)
+            let converter: TapConverterContainer<UInt32> = self.converterProvider.get(id: "integer_uint32")
+            let response: ApiResponse<UInt32> = try self.client.execute(request: request, converter: converter)
 
             return response
         }
@@ -1352,7 +1352,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func loginRequest(
-        credential: LoginCredential
+        credential: LoginCredential? = nil
     ) -> ApiRequest<LoginCredential>{
         var path = "/1024//0"
         //var regex = "\{([\S]*)\}"
@@ -1376,9 +1376,51 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func login(
-            credential: LoginCredential
+            credential: LoginCredential? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<LoginCredential> = self.loginRequest(credential: credential)
+            
+            let response: ApiResponse<Void> = try self.client.execute(request: request)
+
+            return response
+        }
+    /**
+    * Login
+    * User login with username and password hash
+    * LWM2M path: /1024//0
+    * Body converter id: "LoginCredentialHashed"
+
+    * @param credential input
+    * @return  api call
+    */
+    public func loginWithHashRequest(
+        credential: LoginCredentialHashed? = nil
+    ) -> ApiRequest<LoginCredentialHashed>{
+        var path = "/1024//0"
+        //var regex = "\{([\S]*)\}"
+        
+
+        return ApiRequest(
+            method: TapRequestHeader.MethodType.POST
+            , path: path
+            , body: credential
+            , bodyEncoder: self.converterProvider.get(id: "LoginCredentialHashed")
+        )
+    }
+
+     /**
+        * Login
+        * User login with username and password hash
+        * LWM2M path: /1024//0
+        * Body converter id: "LoginCredentialHashed"
+    
+        * @param credential input
+        * @return  api call
+        */
+        public func loginWithHash(
+            credential: LoginCredentialHashed? = nil
+        ) throws -> ApiResponse<Void>{
+            let request : ApiRequest<LoginCredentialHashed> = self.loginWithHashRequest(credential: credential)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -1426,7 +1468,7 @@ open class InterfaceAPI {
     * @return TapMultiResponse api call
     */
     public func multiCommandsRequest(
-        data: TapMultiRequest
+        data: TapMultiRequest? = nil
     ) -> ApiRequest<TapMultiRequest>{
         var path = "/1024//89"
         //var regex = "\{([\S]*)\}"
@@ -1450,7 +1492,7 @@ open class InterfaceAPI {
         * @return TapMultiResponse api call
         */
         public func multiCommands(
-            data: TapMultiRequest
+            data: TapMultiRequest? = nil
         ) throws -> ApiResponse<TapMultiResponse>{
             let request : ApiRequest<TapMultiRequest> = self.multiCommandsRequest(data: data)
             let converter: TapConverterContainer<TapMultiResponse> = self.converterProvider.get(id: "TapMultiResponse")
@@ -1594,7 +1636,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putAuthorizedHostProtocolRequest(
-        mode: ListHostProtocol
+        mode: ListHostProtocol? = nil
     ) -> ApiRequest<ListHostProtocol>{
         var path = "/1024//17"
         //var regex = "\{([\S]*)\}"
@@ -1618,7 +1660,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putAuthorizedHostProtocol(
-            mode: ListHostProtocol
+            mode: ListHostProtocol? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<ListHostProtocol> = self.putAuthorizedHostProtocolRequest(mode: mode)
             
@@ -1636,7 +1678,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putCloudConnectionModeRequest(
-        key: CloudConnectionMode
+        key: CloudConnectionMode? = nil
     ) -> ApiRequest<CloudConnectionMode>{
         var path = "/1024//26"
         //var regex = "\{([\S]*)\}"
@@ -1660,7 +1702,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putCloudConnectionMode(
-            key: CloudConnectionMode
+            key: CloudConnectionMode? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<CloudConnectionMode> = self.putCloudConnectionModeRequest(key: key)
             
@@ -1720,8 +1762,8 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putCloudMqttPeriodRequest(
-        key: Int
-    ) -> ApiRequest<Int>{
+        key: UInt32? = nil
+    ) -> ApiRequest<UInt32>{
         var path = "/1024//33"
         //var regex = "\{([\S]*)\}"
         
@@ -1744,9 +1786,9 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putCloudMqttPeriod(
-            key: Int
+            key: UInt32? = nil
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putCloudMqttPeriodRequest(key: key)
+            let request : ApiRequest<UInt32> = self.putCloudMqttPeriodRequest(key: key)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -1762,7 +1804,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putCloudPasswordRequest(
-        key: String
+        key: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//29"
         //var regex = "\{([\S]*)\}"
@@ -1786,7 +1828,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putCloudPassword(
-            key: String
+            key: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putCloudPasswordRequest(key: key)
             
@@ -1804,7 +1846,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putCloudServiceNameRequest(
-        name: String
+        name: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//61"
         //var regex = "\{([\S]*)\}"
@@ -1828,7 +1870,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putCloudServiceName(
-            name: String
+            name: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putCloudServiceNameRequest(name: name)
             
@@ -1846,8 +1888,8 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putConfigFormatVersionRequest(
-        configFormat: Int
-    ) -> ApiRequest<Int>{
+        configFormat: UInt32
+    ) -> ApiRequest<UInt32>{
         var path = "/1024//8"
         //var regex = "\{([\S]*)\}"
         
@@ -1870,9 +1912,9 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putConfigFormatVersion(
-            configFormat: Int
+            configFormat: UInt32
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putConfigFormatVersionRequest(configFormat: configFormat)
+            let request : ApiRequest<UInt32> = self.putConfigFormatVersionRequest(configFormat: configFormat)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -1888,8 +1930,8 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putConfigVersionRequest(
-        version: Int
-    ) -> ApiRequest<Int>{
+        version: UInt32
+    ) -> ApiRequest<UInt32>{
         var path = "/1024//10"
         //var regex = "\{([\S]*)\}"
         
@@ -1912,9 +1954,9 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putConfigVersion(
-            version: Int
+            version: UInt32
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putConfigVersionRequest(version: version)
+            let request : ApiRequest<UInt32> = self.putConfigVersionRequest(version: version)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -1930,7 +1972,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putConfigureRequest(
-        conf: Bytes
+        conf: Bytes? = nil
     ) -> ApiRequest<Bytes>{
         var path = "/1024//70"
         //var regex = "\{([\S]*)\}"
@@ -1954,7 +1996,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putConfigure(
-            conf: Bytes
+            conf: Bytes? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<Bytes> = self.putConfigureRequest(conf: conf)
             
@@ -2014,8 +2056,8 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putHostInactivityPeriodRequest(
-        key: Int
-    ) -> ApiRequest<Int>{
+        key: UInt16? = nil
+    ) -> ApiRequest<UInt16>{
         var path = "/1024//34"
         //var regex = "\{([\S]*)\}"
         
@@ -2038,9 +2080,9 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putHostInactivityPeriod(
-            key: Int
+            key: UInt16? = nil
         ) throws -> ApiResponse<Void>{
-            let request : ApiRequest<Int> = self.putHostInactivityPeriodRequest(key: key)
+            let request : ApiRequest<UInt16> = self.putHostInactivityPeriodRequest(key: key)
             
             let response: ApiResponse<Void> = try self.client.execute(request: request)
 
@@ -2098,7 +2140,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putMqttRelayNetKeyRequest(
-        netkey: String
+        netkey: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//55"
         //var regex = "\{([\S]*)\}"
@@ -2122,7 +2164,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putMqttRelayNetKey(
-            netkey: String
+            netkey: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putMqttRelayNetKeyRequest(netkey: netkey)
             
@@ -2140,7 +2182,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putMqttRelayPasswordRequest(
-        url: String
+        url: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//54"
         //var regex = "\{([\S]*)\}"
@@ -2164,7 +2206,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putMqttRelayPassword(
-            url: String
+            url: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putMqttRelayPasswordRequest(url: url)
             
@@ -2182,7 +2224,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putMqttRelayPortRequest(
-        url: String
+        url: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//51"
         //var regex = "\{([\S]*)\}"
@@ -2206,7 +2248,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putMqttRelayPort(
-            url: String
+            url: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putMqttRelayPortRequest(url: url)
             
@@ -2224,7 +2266,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putMqttRelayUrlRequest(
-        url: String
+        url: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//50"
         //var regex = "\{([\S]*)\}"
@@ -2248,7 +2290,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putMqttRelayUrl(
-            url: String
+            url: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putMqttRelayUrlRequest(url: url)
             
@@ -2266,7 +2308,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putNetworkGatewayIpRequest(
-        key: String
+        key: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//31"
         //var regex = "\{([\S]*)\}"
@@ -2290,7 +2332,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putNetworkGatewayIp(
-            key: String
+            key: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putNetworkGatewayIpRequest(key: key)
             
@@ -2308,7 +2350,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putNetworkInfraIpRequest(
-        key: String
+        key: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//30"
         //var regex = "\{([\S]*)\}"
@@ -2332,7 +2374,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putNetworkInfraIp(
-            key: String
+            key: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putNetworkInfraIpRequest(key: key)
             
@@ -2350,7 +2392,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putNetworkInfraIpMaskRequest(
-        key: String
+        key: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//32"
         //var regex = "\{([\S]*)\}"
@@ -2374,7 +2416,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putNetworkInfraIpMask(
-            key: String
+            key: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putNetworkInfraIpMaskRequest(key: key)
             
@@ -2392,7 +2434,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putNetworkModeRequest(
-        mode: NetworkMode
+        mode: NetworkMode? = nil
     ) -> ApiRequest<NetworkMode>{
         var path = "/1024//15"
         //var regex = "\{([\S]*)\}"
@@ -2416,7 +2458,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putNetworkMode(
-            mode: NetworkMode
+            mode: NetworkMode? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<NetworkMode> = self.putNetworkModeRequest(mode: mode)
             
@@ -2434,7 +2476,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putNfcPairingModeRequest(
-        mode: NfcPairingMode
+        mode: NfcPairingMode? = nil
     ) -> ApiRequest<NfcPairingMode>{
         var path = "/1024//13"
         //var regex = "\{([\S]*)\}"
@@ -2458,7 +2500,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putNfcPairingMode(
-            mode: NfcPairingMode
+            mode: NfcPairingMode? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<NfcPairingMode> = self.putNfcPairingModeRequest(mode: mode)
             
@@ -2476,7 +2518,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putPowerOptimisationLevelRequest(
-        mode: LowPowerOptimisationLevel
+        mode: LowPowerOptimisationLevel? = nil
     ) -> ApiRequest<LowPowerOptimisationLevel>{
         var path = "/1024//14"
         //var regex = "\{([\S]*)\}"
@@ -2500,7 +2542,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putPowerOptimisationLevel(
-            mode: LowPowerOptimisationLevel
+            mode: LowPowerOptimisationLevel? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<LowPowerOptimisationLevel> = self.putPowerOptimisationLevelRequest(mode: mode)
             
@@ -2518,7 +2560,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putWepKeyRequest(
-        key: String
+        key: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//16"
         //var regex = "\{([\S]*)\}"
@@ -2542,7 +2584,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putWepKey(
-            key: String
+            key: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putWepKeyRequest(key: key)
             
@@ -2560,7 +2602,7 @@ open class InterfaceAPI {
     * @return  api call
     */
     public func putWifiSsidRequest(
-        key: String
+        key: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1024//25"
         //var regex = "\{([\S]*)\}"
@@ -2584,7 +2626,7 @@ open class InterfaceAPI {
         * @return  api call
         */
         public func putWifiSsid(
-            key: String
+            key: String? = nil
         ) throws -> ApiResponse<Void>{
             let request : ApiRequest<String> = self.putWifiSsidRequest(key: key)
             
