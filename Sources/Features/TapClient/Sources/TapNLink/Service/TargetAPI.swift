@@ -1051,7 +1051,7 @@ open class TargetAPI {
     /**
     * Read memory at given address on the target application
     * 
-    * LWM2M path: /1030//13
+    * LWM2M path: /1027//33
     * Body converter id: "MemoryInfo"
 
     * @param value input
@@ -1060,7 +1060,7 @@ open class TargetAPI {
     public func readAddressRequest(
         value: MemoryInfo
     ) -> ApiRequest<MemoryInfo>{
-        var path = "/1030//13"
+        var path = "/1027//33"
         //var regex = "\{([\S]*)\}"
         
 
@@ -1075,7 +1075,7 @@ open class TargetAPI {
      /**
         * Read memory at given address on the target application
         * 
-        * LWM2M path: /1030//13
+        * LWM2M path: /1027//33
         * Body converter id: "MemoryInfo"
     
         * @param value input
@@ -1293,7 +1293,7 @@ open class TargetAPI {
     /**
     * Write into memory on target
     * 
-    * LWM2M path: /1030//13
+    * LWM2M path: /1027//33
     * Body converter id: "MemoryWriteInfo"
 
     * @param value input
@@ -1302,7 +1302,7 @@ open class TargetAPI {
     public func writeAddressRequest(
         value: MemoryWriteInfo
     ) -> ApiRequest<MemoryWriteInfo>{
-        var path = "/1030//13"
+        var path = "/1027//33"
         //var regex = "\{([\S]*)\}"
         
 
@@ -1317,7 +1317,7 @@ open class TargetAPI {
      /**
         * Write into memory on target
         * 
-        * LWM2M path: /1030//13
+        * LWM2M path: /1027//33
         * Body converter id: "MemoryWriteInfo"
     
         * @param value input

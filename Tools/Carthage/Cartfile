@@ -5,4 +5,4 @@ github "ReactiveX/RxSwift"
 github "socketio/socket.io-client-swift" ~> 13.3.0
 github "krzyzanowskim/CryptoSwift"
 github "alibaba/HandyJSON" ~> 4.2.0
-
+github "IBM-Swift/BlueSocket" 

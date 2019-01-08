@@ -1,3 +1,4 @@
+github "IBM-Swift/BlueSocket" "1.0.43"
 github "ReactiveX/RxSwift" "4.4.0"
 github "alibaba/HandyJSON" "4.2.1"
 github "daltoniam/Starscream" "3.0.6"

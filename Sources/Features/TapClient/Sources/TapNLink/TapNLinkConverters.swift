@@ -639,6 +639,55 @@ public class CrcCheckBodyConverter: TapConverter {
 
 
 
+
+public class SinglePacketConverter: TapConverter {
+
+    public func decode<T>(stream: TapStreamReader) -> T {
+        let model = SinglePacket()
+        model.sendTime = stream.readU4()
+        model.packetLength = stream.readU2()
+        model.packetId = stream.readU2()
+        model.configVersion = stream.readU4()
+        model.messageType = SinglePacket.Type(rawValue:UInt8(stream.readBitsInt(length: 4)))
+
+        stream.forwardBits(length: 2)
+        model.encryption = stream.readBool()
+        model.ack = stream.readBool()
+        model.senderId = stream.readU1()
+        model.salt = stream.readU2()
+        model.logTime = stream.readU4()
+        model.dataSize = stream.readU2()
+        model.data = stream.readBytes(length: Int(data_size))
+        model.padding = stream.readBytes(length: Int((4 - ((data_size + 10) % 4)) % 4))
+        model.crc = stream.readU4()
+        return model as! T
+    }
+
+    public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
+        let model = mymodel as! SinglePacket
+        stream.writeU4(model.sendTime!)
+        stream.writeU2(model.packetLength!)
+        stream.writeU2(model.packetId!)
+        stream.writeU4(model.configVersion!)
+        stream.writeBitsInt(model.messageType!.rawValue, 4)
+        stream.forwardBits(2)
+
+        stream.writeBitsInt(model.encryption!, 1)
+        stream.writeBitsInt(model.ack!, 1)
+        stream.writeU1(model.senderId!)
+        stream.writeU2(model.salt!)
+        stream.writeU4(model.logTime!)
+        stream.writeU2(model.dataSize!)
+        stream.writeBytes(model.data!)
+        stream.writeBytes(model.padding!)
+        stream.appendCRC()
+        return stream
+    }
+
+}
+
+
+
 func initTapNLinkModels(provider: ConverterProvider){
 
 
@@ -718,6 +767,9 @@ func initTapNLinkModels(provider: ConverterProvider){
 
 
  provider.add(id: "CrcCheckBody", converter: CrcCheckBodyConverter())
+
+
+ provider.add(id: "SinglePacket", converter: SinglePacketConverter())
 
 
 }

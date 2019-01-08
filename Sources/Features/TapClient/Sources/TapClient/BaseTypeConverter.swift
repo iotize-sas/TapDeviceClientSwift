@@ -195,7 +195,11 @@ public class BytesConverter: TapConverter {
 	}
 	
 	public func decode<T>(stream: TapStreamReader) -> T {
-		return stream.readBytesFull() as! T
+		var bytes = stream.readBytesFull()
+		if (bytes == nil){
+			bytes = Bytes()
+		}
+		return bytes as! T
 	}
 	
 

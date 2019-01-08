@@ -9,11 +9,6 @@
 import Foundation
 
 
-public class SinglePacket {
-	
-}
-
-
 public class ListAclEntry {
 	
 }

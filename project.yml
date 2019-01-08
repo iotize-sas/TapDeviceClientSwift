@@ -1,6 +1,5 @@
 include:
-  - Tools/XCodeGen/Application.yml
-  - Tools/XCodeGen/Core.yml
+  - Tools/XCodeGen/DemoApp.yml
   - Tools/XCodeGen/TapClientApi.yml
   - Tools/XCodeGen/BLEProtocol_iOS.yml
   - Tools/XCodeGen/TapClient.yml
@@ -10,7 +9,7 @@ include:
 name: Starter
 fileGroups: [Tools/Carthage/Cartfile, Tools/Carthage/Cartfile.resolved, Tools/SwiftGen, Tools/XcodeGen, Documentation, project.yml, README.md]
 options:
-  bundleIdPrefix: fr.alexisschultz
+  bundleIdPrefix: com.iotize
   carthageBuildPath: Tools/Carthage/Carthage/Build
   createIntermediateGroups: true
   usesTabs: true
@@ -27,6 +26,6 @@ configs:
   Beta: release
   AppStore: release
 configFiles:
-  Debug: Sources/Application/SupportingFiles/Debug.xcconfig
-  Beta: Sources/Application/SupportingFiles/Beta.xcconfig
-  AppStore: Sources/Application/SupportingFiles/AppStore.xcconfig
+  Debug: Sources/DemoApp/SupportingFiles/Debug.xcconfig
+  Beta: Sources/DemoApp/SupportingFiles/Beta.xcconfig
+  AppStore: Sources/DemoApp/SupportingFiles/AppStore.xcconfig

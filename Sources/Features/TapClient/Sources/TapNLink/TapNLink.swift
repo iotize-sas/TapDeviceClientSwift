@@ -12,8 +12,8 @@ public func getDefaultTapAndLinkConverters() -> ConverterProvider{
 public class TapDevice {
 	
 	public var service : ServiceContainer
-	var client: TapClient
 	
+	var client: TapClient
 	var auth: AuthApi?
 	private var sessionKey: Bytes?
 	
@@ -47,10 +47,6 @@ public class TapDevice {
 		try self.auth!.logout()
 		self.sessionKey = nil
 	}
-	
-//	public func setSessionKey(key: Bytes){
-//		self.sessionKey = key
-//	}
 
 	public func encryption(enabled: Bool) throws {
 		if (enabled) {

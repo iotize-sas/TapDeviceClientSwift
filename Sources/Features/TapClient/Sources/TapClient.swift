@@ -129,7 +129,8 @@ public class ApiResponse<DataType>{
 		try self.successful()
 //		return try TapStreamDecoder().decode(self.dataType!, from: self.response.data)
 		if (self.converter != nil){
-			return self.converter!.decode(stream: TapStreamReader(withBytes: self.response.data!))
+			var data = self.response.data ?? [UInt8]()
+			return self.converter!.decode(stream: TapStreamReader(withBytes: data))
 		}
 //		else if (self.response.data is Bytes){
 //			return self.response.data as! DataType // TODO check it's Bytes
@@ -140,7 +141,9 @@ public class ApiResponse<DataType>{
 	}
 	
 	public var description: String {
-		return "ApiResponse \(self.response.description)"
+		let errorMessage = TapResultCode.description(code: self.response.codeRet)
+		let errorName = TapResultCode.errorName(code: self.response.codeRet)
+		return "ApiResponse \(errorName): \(errorMessage) \(self.response.description)"
 	}
 }
 

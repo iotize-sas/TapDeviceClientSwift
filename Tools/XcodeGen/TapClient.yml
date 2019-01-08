@@ -24,7 +24,7 @@ targets:
     dependencies:
       - target: TapClient
       - carthage: RxBlocking
-      - cartage: HandyJSON
+      - carthage: HandyJSON
   TapClientIntegrationTests:
     type: bundle.unit-test
     platform: iOS

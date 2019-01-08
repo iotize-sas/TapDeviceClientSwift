@@ -1,5 +1,3 @@
-
-
 public typealias Bytes = [UInt8]
 
 public enum ConnectionState{
@@ -31,20 +29,19 @@ public protocol ComProtocol{
 }
 
 public protocol ConnectionStateAware {
-	var connectionState: ConnectionState { get set}
-	
+	var connectionState: ConnectionState { get set}	
 }
 
-public protocol ITapClient{
-	
-	func connect()
-	func disconnect()
-	
-	// func send(Command)
-	
-	func GET(path: String, _ data: Bytes?)
-	func PUT(path: String, _ data: Bytes?)
-	func POST(path: String, _ data: Bytes?)
-	
-	func setProtocol(_ _protocol: ComProtocol)
-}
+//public protocol ITapClient{
+//
+//	func connect()
+//	func disconnect()
+//
+//	// func send(Command)
+//
+//	func GET(path: String, _ data: Bytes?)
+//	func PUT(path: String, _ data: Bytes?)
+//	func POST(path: String, _ data: Bytes?)
+//
+//	func setProtocol(_ _protocol: ComProtocol)
+//}

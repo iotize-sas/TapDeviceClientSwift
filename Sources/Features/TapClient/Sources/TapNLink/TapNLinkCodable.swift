@@ -297,6 +297,34 @@ public extension TapStreamReader {
 
     
 
+
+	public func read(_ type: SinglePacket.Type) throws -> SinglePacket {
+        return self.readSinglePacket()
+	}
+
+    func readSinglePacket() -> SinglePacket {
+        let model = SinglePacket()
+        model.sendTime = self.readU4()
+        model.packetLength = self.readU2()
+        model.packetId = self.readU2()
+        model.configVersion = self.readU4()
+        model.messageType = SinglePacket.Type(rawValue:UInt8(self.readBitsInt(length: 4)))
+
+        self.forwardBits(length: 2)
+        model.encryption = self.readBool()
+        model.ack = self.readBool()
+        model.senderId = self.readU1()
+        model.salt = self.readU2()
+        model.logTime = self.readU4()
+        model.dataSize = self.readU2()
+        model.data = self.readBytes(length: Int(data_size))
+        model.padding = self.readBytes(length: Int((4 - ((data_size + 10) % 4)) % 4))
+        model.crc = self.readU4()
+        return model
+    }
+
+    
+
 }
 
 public extension TapStreamWriter {
@@ -593,6 +621,34 @@ public extension TapStreamWriter {
         self.writeU4(model.address!)
         self.writeU4(model.size!)
         self.writeU4(model.crc!)
+        return self
+    }
+
+    
+
+
+
+    func write(_ model: SinglePacket) -> TapStreamWriter{
+        return self.writeSinglePacket(model)
+    }
+
+    func writeSinglePacket(_ model: SinglePacket) -> TapStreamWriter{
+        self.writeU4(model.sendTime!)
+        self.writeU2(model.packetLength!)
+        self.writeU2(model.packetId!)
+        self.writeU4(model.configVersion!)
+        self.writeBitsInt(model.messageType!.rawValue, 4)
+        self.forwardBits(2)
+
+        self.writeBitsInt(model.encryption!, 1)
+        self.writeBitsInt(model.ack!, 1)
+        self.writeU1(model.senderId!)
+        self.writeU2(model.salt!)
+        self.writeU4(model.logTime!)
+        self.writeU2(model.dataSize!)
+        self.writeBytes(model.data!)
+        self.writeBytes(model.padding!)
+        self.appendCRC()
         return self
     }
 

@@ -1160,4 +1160,114 @@ public var debugDescription : String  {
 
 
 
+public class SinglePacket: Codable, TapCodable, Equatable {
+    var sendTime: UInt32!
+    var packetLength: UInt16!
+    var packetId: UInt16!
+    var configVersion: UInt32!
+    var messageType: Type!
+    // unamed
+
+    var encryption: Bool!
+    var ack: Bool!
+    var senderId: UInt8!
+    var salt: UInt16!
+    var logTime: UInt32!
+    var dataSize: UInt16!
+    var data: Bytes!
+    var padding: Bytes!
+    var crc: UInt32!
+    
+
+    
+    public init(){}
+    
+
+    
+public var description : String  {
+    return "SinglePacket[sendTime:\(self.sendTime)packetLength:\(self.packetLength)packetId:\(self.packetId)configVersion:\(self.configVersion)messageType:\(self.messageType.rawValue)encryption:\(self.encryption)ack:\(self.ack)senderId:\(self.senderId)salt:\(self.salt)logTime:\(self.logTime)dataSize:\(self.dataSize)data:\(self.data?.hexstr)padding:\(self.padding?.hexstr)crc:\(self.crc)]"
+}
+
+/*
+public var debugDescription : String  {
+    return "SinglePacket"
+        + "; sendTime=" +  \(self.sendTime)
+        + "; packetLength=" +  \(self.packetLength)
+        + "; packetId=" +  \(self.packetId)
+        + "; configVersion=" +  \(self.configVersion)
+        + "; messageType=" +  \(self.messageType.rawValue)
+        + "; encryption=" +  \(self.encryption)
+        + "; ack=" +  \(self.ack)
+        + "; senderId=" +  \(self.senderId)
+        + "; salt=" +  \(self.salt)
+        + "; logTime=" +  \(self.logTime)
+        + "; dataSize=" +  \(self.dataSize)
+        + "; data=" +  \(self.data?.hexstr)
+        + "; padding=" +  \(self.padding?.hexstr)
+        + "; crc=" +  \(self.crc)
+}
+*/
+
+
+
+	public static func == (lhs: SinglePacket, rhs: SinglePacket) -> Bool {
+        return true 
+            && lhs.sendTime == rhs.sendTime
+            && lhs.packetLength == rhs.packetLength
+            && lhs.packetId == rhs.packetId
+            && lhs.configVersion == rhs.configVersion
+            && lhs.messageType == rhs.messageType
+            && lhs.encryption == rhs.encryption
+            && lhs.ack == rhs.ack
+            && lhs.senderId == rhs.senderId
+            && lhs.salt == rhs.salt
+            && lhs.logTime == rhs.logTime
+            && lhs.dataSize == rhs.dataSize
+            && lhs.data == rhs.data
+            && lhs.padding == rhs.padding
+            && lhs.crc == rhs.crc
+	}
+
+    public init(sendTime: UInt32, packetLength: UInt16, packetId: UInt16, configVersion: UInt32, messageType: Type, encryption: Bool, ack: Bool, senderId: UInt8, salt: UInt16, logTime: UInt32, dataSize: UInt16, data: Bytes, padding: Bytes, crc: UInt32){
+        self.sendTime = sendTime
+        self.packetLength = packetLength
+        self.packetId = packetId
+        self.configVersion = configVersion
+        self.messageType = messageType
+        
+        self.encryption = encryption
+        self.ack = ack
+        self.senderId = senderId
+        self.salt = salt
+        self.logTime = logTime
+        self.dataSize = dataSize
+        self.data = data
+        self.padding = padding
+        self.crc = crc
+        
+    }
+
+    // public var description: String {
+//     return "TODO: \(val)"
+
+// }
+
+
+    
+
+    public enum Type: UInt8, Codable {
+    case MASK = 0x7
+    case DATALOG = 0x1
+    case COMMAND = 0x2
+    case CODE_EXEC = 0x3
+    case CONF_UPDATE = 0x4
+    case SECURITY_TOKEN = 0x5
+    case TARGET_FW_UPDATE = 0x6
+    
+}
+
+    }
+
+
+
 

@@ -38,6 +38,9 @@ class RelayServer{
 let SERVER_URL = "tcp://192.168.20.120:2000"
 let WS_SERVER_URL = "ws://192.168.20.120:2000"
 
+let LWM2M_CMD = "A2CA000007010403FFFF0002".hexbytes
+let LWM2M_RESPONSE = "45039000".hexbytes
+
 class test: XCTestCase {
 
     override func setUp() {
@@ -47,7 +50,7 @@ class test: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+	
 	func testSocketProtocol() throws {
 		let url = URL(string: SERVER_URL)!
 		print("Connecting to " + url.description )
@@ -55,18 +58,34 @@ class test: XCTestCase {
 		// TODO add blocking calls
 		
 		try p.connect().toBlocking().first()
-		try p.write(data: "01 02 03 04".hexbytes).toBlocking().first()
+		try p.write(data: LWM2M_CMD).toBlocking().first()
 		let message = try p.read().toBlocking().first()
 		
-		XCTAssert(message!.hexstr == "05060708")
-		
+		XCTAssert(message!.hexstr == LWM2M_RESPONSE.hexstr)
+
 		try p.disconnect().toBlocking().first()
+	}
+	
+	
+	func testBlueSocketProtocol() throws {
+		let url = URL(string: SERVER_URL)!
+		print("Connecting to " + url.description )
+		let p = BlueSocketProtocol(url: url)
+		// TODO add blocking calls
+		
+		try p.connect()
+		try p.write(data: LWM2M_CMD)
+		let message = try p.read()
+		
+		XCTAssert(message.hexstr == LWM2M_RESPONSE.hexstr)
+		
+		try p.disconnect()
 	}
 	
 	func testWebsocketProtocol() throws {
 		let url = URL(string: WS_SERVER_URL)!
 		print("Connecting to " + url.description )
-		let p = WebSocketProtocol(url: url)
+		let p = RxWebSocketProtocol(url: url)
 		// TODO add blocking calls
 		
 		try p.connect().toBlocking().first()

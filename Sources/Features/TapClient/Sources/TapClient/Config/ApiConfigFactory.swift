@@ -191,7 +191,7 @@
 //    
 //
 //   
-//   "/target/read-address": "/1030//13",
+//   "/target/read-address": "/1027//33",
 //    
 //
 //   
@@ -1618,7 +1618,7 @@
 //        
 //    
 //        
-//        "get /1030//13": {
+//        "get /1027//33": {
 //            "returnTypeConverter": "Bytes",
  //           "bodyEncoder": "MemoryInfo",
 //        },
@@ -1723,7 +1723,7 @@
 //        
 //    
 //        
-//        "post /1030//13": {
+//        "post /1027//33": {
 //            
  //           "bodyEncoder": "MemoryWriteInfo",
 //        },

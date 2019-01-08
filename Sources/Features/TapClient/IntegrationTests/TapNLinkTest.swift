@@ -12,11 +12,14 @@ import XCTest
 import TapClientApi
 import SocketProtocol
 
+let SERVER_URL = "tcp://192.168.20.120:2000"
+
 class TapNLinkTest: XCTestCase {
 	var device: TapDevice!
 	
 	override func setUp() {
-		let p = SyncProtocolAdapter(protocol: RxWebSocketProtocol(url: URL(string: "ws://192.168.20.120:2000")!))
+		// let p = SyncProtocolAdapter(protocol: RxWebSocketProtocol(url: URL(string: SERVER_URL)!))
+		let p = BlueSocketProtocol(url: URL(string: SERVER_URL)!)
 		self.device = TapDevice.createFrom(protocol: p)
 		try! self.device.connect()
 	}
@@ -38,7 +41,7 @@ class TapNLinkTest: XCTestCase {
 	
 		try self.device.encryption(enabled: false)
 		XCTAssertEqual(try self.device.service.device.getManufacturer().body(), "IOTIZE")
-		let targetService = self.device.service.target
+		_ = self.device.service.target
 		
 
 	}
@@ -61,13 +64,13 @@ class TapNLinkTest: XCTestCase {
 	
 	
 	func testSerialCommunication() throws {
-//		try self.device.login(username: "admin", password: "admin")
+		try self.device.login(username: "admin", password: "admin")
 
 		let uartSettings: UartSettings = try self.device.service.target.getUARTSettings().body()
 		
 		// Read all bytes
 		var response = try self.device.service.target.readBytes().body()
-		
+	
 		// Read output
 		response = try self.device.service.target.readBytes(nbBytes: 10).body()
 		
@@ -77,7 +80,7 @@ class TapNLinkTest: XCTestCase {
 		try self.device.service.target.send(data: bytes).successful()
 
 		// Send data and wait for n bytes
-		let response2 = try self.device.service.target.sendReceive(
+		_ = try self.device.service.target.sendReceive(
 			data: bytes
 		).body()
 		
@@ -90,20 +93,25 @@ class TapNLinkTest: XCTestCase {
 		let varId: UInt8 = 4
 		let variableAdress = try self.device.service.variable.getAddress(variableId: varId).body()
 		XCTAssertEqual(variableAdress, 0x200000)
-		let variableValue = try self.device.service.variable.getValue(variableId: varId).body()
+		_ = try self.device.service.variable.getValue(variableId: varId).body()
 	}
 	
 	func testReadWriteMemory() throws {
-		let varId: UInt8 = 4
-		let variableAdress = try self.device.service.target.readAddress(value: MemoryInfo(address: 0x200, wordCount: 10, wordSize: ._32_BITS)).body()
+		try self.device.login(username: "admin", password: "admin")
 		
-		
+		let memoryInfo = MemoryInfo(address: 0x20000000, wordCount: 2, wordSize: ._32_BITS)
+		let data = try self.device.service.target.readAddress(value: memoryInfo).body()
+		XCTAssertEqual(data.count, Int(memoryInfo.wordCount) *  memoryInfo.wordSize.asByte)
+//		print("MEMORY READ: \(data.description)")
 		try self.device.service.target.writeAddress(value:
 			MemoryWriteInfo(
-				address: MemoryInfo(address: 0x200, wordCount: 10, wordSize: ._32_BITS),
-				value: "Hello World!".bytes
+				address: memoryInfo,
+				value: "0102030401020304".hexbytes
 			)
-		).body()
+		).successful()
+		_ = try self.device.service.target.readAddress(value: memoryInfo).body()
+		XCTAssertEqual(data.hexstr, "0102030401020304")
+
 	}
 	
 	func commands(){

@@ -2,14 +2,14 @@ targets:
   Starter:
     type: application
     platform: iOS
-    sources: [Sources/Application/Sources, Sources/Application/Resources]
+    sources: [Sources/DemoApp/Sources, Sources/DemoApp/Resources]
     info:
-      path: Sources/Application/SupportingFiles/Info.plist
+      path: Sources/DemoApp/SupportingFiles/Info.plist
       properties:
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
         UILaunchStoryboardName: LaunchScreen
     dependencies:
-      - target: Core
+      # - target: Core
       - target: TapClientApi
       - target: BLEProtocol_iOS
       - target: TapClient
@@ -25,16 +25,16 @@ targets:
   StarterUnitTests:
     type: bundle.unit-test
     platform: iOS
-    sources: [Sources/Application/Tests/Unit]
+    sources: [Sources/DemoApp/Tests/Unit]
     info:
-      path: Sources/Application/SupportingFiles/InfoUnitTests.plist
+      path: Sources/DemoApp/SupportingFiles/InfoUnitTests.plist
     dependencies:
       - target: Starter
   StarterUITests:
     type: bundle.ui-testing
     platform: iOS
-    sources: [Sources/Application/Tests/UI]
+    sources: [Sources/DemoApp/Tests/UI]
     info:
-      path: Sources/Application/SupportingFiles/InfoUITests.plist
+      path: Sources/DemoApp/SupportingFiles/InfoUITests.plist
     dependencies:
       - target: Starter

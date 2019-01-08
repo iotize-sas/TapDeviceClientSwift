@@ -10,7 +10,9 @@ targets:
       - target: TapClientApi
       - carthage: RxSwift
       - carthage: SocketIO
+#      - carthage: BlueSocket
       - carthage: Starscream
+      - carthage: Socket
     scheme:
       testTargets:
         - SocketProtocolUnitTests

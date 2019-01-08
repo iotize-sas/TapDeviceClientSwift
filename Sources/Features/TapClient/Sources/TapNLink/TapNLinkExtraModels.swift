@@ -7,7 +7,20 @@
 
 import Foundation
 
-
+public extension MemoryInfo.WordSizeType {
+	public var asByte: Int {
+		switch self {
+		case ._32_BITS:
+			return 4
+		case ._16_BITS:
+			return 2
+		case ._8_BITS:
+			return 1
+		default:
+			return 0
+		}
+	}
+}
 
 public extension UartSettings {
 	
