@@ -28,8 +28,7 @@ open class ScramAPI {
     */
     public func getScramHashItRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//42"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//42"
         
 
         return ApiRequest(
@@ -64,7 +63,6 @@ open class ScramAPI {
         groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/7"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -105,7 +103,6 @@ open class ScramAPI {
         groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/16"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -142,8 +139,7 @@ open class ScramAPI {
     */
     public func initializeRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//47"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//47"
         
 
         return ApiRequest(
@@ -178,8 +174,7 @@ open class ScramAPI {
     public func loginRequest(
         params: ScramLoginParams? = nil
     ) -> ApiRequest<ScramLoginParams>{
-        var path = "/1024//40"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//40"
         
 
         return ApiRequest(
@@ -220,8 +215,7 @@ open class ScramAPI {
     public func loginProofRequest(
         params: Bytes? = nil
     ) -> ApiRequest<Bytes>{
-        var path = "/1024//41"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//41"
         
 
         return ApiRequest(
@@ -265,7 +259,6 @@ open class ScramAPI {
         groupId: Int8, value: UInt32? = nil
     ) -> ApiRequest<UInt32>{
         var path = "/1025/{groupId}/7"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -314,7 +307,6 @@ open class ScramAPI {
         groupId: Int8, value: UInt32? = nil
     ) -> ApiRequest<UInt32>{
         var path = "/1025/{groupId}/16"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -360,8 +352,7 @@ open class ScramAPI {
     public func sendRequest(
         data: Bytes
     ) -> ApiRequest<Bytes>{
-        var path = "/1024//48"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//48"
         
 
         return ApiRequest(

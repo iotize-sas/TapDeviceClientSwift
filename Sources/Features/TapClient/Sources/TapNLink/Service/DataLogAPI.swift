@@ -28,8 +28,7 @@ open class DataLogAPI {
     */
     public func dequeueOnePacketRequest()
          -> ApiRequest<Void>{
-        var path = "/1031//11"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1031//11"
         
 
         return ApiRequest(
@@ -60,8 +59,7 @@ open class DataLogAPI {
     */
     public func flushRequest()
          -> ApiRequest<Void>{
-        var path = "/1031//4"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1031//4"
         
 
         return ApiRequest(
@@ -92,8 +90,7 @@ open class DataLogAPI {
     */
     public func getMaxPacketCountRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//23"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//23"
         
 
         return ApiRequest(
@@ -124,8 +121,7 @@ open class DataLogAPI {
     */
     public func getOptionsRequest()
          -> ApiRequest<Void>{
-        var path = "/1031//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1031//2"
         
 
         return ApiRequest(
@@ -156,8 +152,7 @@ open class DataLogAPI {
     */
     public func getPacketCountRequest()
          -> ApiRequest<Void>{
-        var path = "/1031//10"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1031//10"
         
 
         return ApiRequest(
@@ -192,8 +187,7 @@ open class DataLogAPI {
     public func putCryptoKeyRequest(
         value: Bytes
     ) -> ApiRequest<Bytes>{
-        var path = "/1031//3"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1031//3"
         
 
         return ApiRequest(
@@ -234,8 +228,7 @@ open class DataLogAPI {
     public func putOptionsRequest(
         value: DatalogOption
     ) -> ApiRequest<DatalogOption>{
-        var path = "/1031//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1031//2"
         
 
         return ApiRequest(
@@ -272,8 +265,7 @@ open class DataLogAPI {
     */
     public func runRequest()
          -> ApiRequest<Void>{
-        var path = "/1031//0"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1031//0"
         
 
         return ApiRequest(
@@ -304,8 +296,7 @@ open class DataLogAPI {
     */
     public func stopRequest()
          -> ApiRequest<Void>{
-        var path = "/1031//1"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1031//1"
         
 
         return ApiRequest(

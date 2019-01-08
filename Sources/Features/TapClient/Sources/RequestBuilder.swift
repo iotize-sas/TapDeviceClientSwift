@@ -49,7 +49,7 @@ public class ApduRequestInterceptor: TapRequestInterceptor {
 	
 	
 	func _decodeResponse(_ data: Bytes) -> TapResponse{
-		var apduResponse = TapStreamReader(withBytes: data).readApduResponse()
+		let apduResponse = TapStreamReader(withBytes: data).readApduResponse()
 		if ((apduResponse.status) != nil){
 			// TODO check valid APDU
 		}
@@ -125,7 +125,7 @@ public class EncryptedRequestBuilder: TapRequestInterceptor {
 		let requestBytes = TapStreamWriter().writeTapRequest(request).toBytes()
 		let responseBytes = try self.intercept(frame: requestBytes, next: next)
 
-		var tapResponse = TapStreamReader(withBytes: responseBytes).readTapResponse()
+		let tapResponse = TapStreamReader(withBytes: responseBytes).readTapResponse()
 		return ApiResponse(response: tapResponse)
 	}
 	

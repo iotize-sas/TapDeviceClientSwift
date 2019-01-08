@@ -35,7 +35,7 @@ public class TapConverterContainer<T>{
 	}
 	
 	public func encode(model: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter{
-		self.converter.encode(mymodel: model, stream: stream);
+		_ = self.converter.encode(mymodel: model, stream: stream);
 		return stream
 	}
 	

@@ -17,7 +17,7 @@ public class ReversedUartSettingsConverter: TapConverter {
 	}
 	
 	public func encode<T>(mymodel: T, stream: TapStreamWriter) -> TapStreamWriter {
-		self.uartSettingsConverter.encode(mymodel: mymodel, stream: stream)
+		_ = self.uartSettingsConverter.encode(mymodel: mymodel, stream: stream)
 		stream.reverseBytes()
 		return stream
 	}

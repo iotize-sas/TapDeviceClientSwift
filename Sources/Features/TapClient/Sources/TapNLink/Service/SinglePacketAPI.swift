@@ -32,8 +32,7 @@ open class SinglePacketAPI {
     public func bspeRequest(
         data: Bytes? = nil
     ) -> ApiRequest<Bytes>{
-        var path = "/1024//83"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//83"
         
 
         return ApiRequest(
@@ -70,8 +69,7 @@ open class SinglePacketAPI {
     */
     public func getInfoRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//80"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//80"
         
 
         return ApiRequest(
@@ -106,8 +104,7 @@ open class SinglePacketAPI {
     public func writePartialSinglePacketRequest(
         data: Bytes? = nil
     ) -> ApiRequest<Bytes>{
-        var path = "/1024//82"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//82"
         
 
         return ApiRequest(
@@ -148,8 +145,7 @@ open class SinglePacketAPI {
     public func writeSmallSinglePacketRequest(
         data: Bytes? = nil
     ) -> ApiRequest<Bytes>{
-        var path = "/1024//80"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//80"
         
 
         return ApiRequest(

@@ -28,8 +28,7 @@ open class TargetAPI {
     */
     public func clearComStatsRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//11"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//11"
         
 
         return ApiRequest(
@@ -60,8 +59,7 @@ open class TargetAPI {
     */
     public func connectRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//3"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//3"
         
 
         return ApiRequest(
@@ -92,8 +90,7 @@ open class TargetAPI {
     */
     public func disconnectRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//4"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//4"
         
 
         return ApiRequest(
@@ -124,8 +121,7 @@ open class TargetAPI {
     */
     public func getComStatsRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//11"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//11"
         
 
         return ApiRequest(
@@ -156,8 +152,7 @@ open class TargetAPI {
     */
     public func getCoreTypeRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//2"
         
 
         return ApiRequest(
@@ -188,8 +183,7 @@ open class TargetAPI {
     */
     public func getDebugAccessRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//31"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//31"
         
 
         return ApiRequest(
@@ -220,8 +214,7 @@ open class TargetAPI {
     */
     public func getFirmwareVersionRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//6"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//6"
         
 
         return ApiRequest(
@@ -252,8 +245,7 @@ open class TargetAPI {
     */
     public func getMaxVoltageRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//9"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//9"
         
 
         return ApiRequest(
@@ -284,8 +276,7 @@ open class TargetAPI {
     */
     public func getMinVoltageRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//8"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//8"
         
 
         return ApiRequest(
@@ -316,8 +307,7 @@ open class TargetAPI {
     */
     public func getModbusSubProtocolRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//40"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//40"
         
 
         return ApiRequest(
@@ -348,8 +338,7 @@ open class TargetAPI {
     */
     public func getPageSizeRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//10"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//10"
         
 
         return ApiRequest(
@@ -380,8 +369,7 @@ open class TargetAPI {
     */
     public func getProtocolRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//1"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//1"
         
 
         return ApiRequest(
@@ -412,8 +400,7 @@ open class TargetAPI {
     */
     public func getProtocolListRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//20"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//20"
         
 
         return ApiRequest(
@@ -444,8 +431,7 @@ open class TargetAPI {
     */
     public func getRegAccessRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//32"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//32"
         
 
         return ApiRequest(
@@ -476,8 +462,7 @@ open class TargetAPI {
     */
     public func getUARTSettingsRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//21"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//21"
         
 
         return ApiRequest(
@@ -508,8 +493,7 @@ open class TargetAPI {
     */
     public func getVccRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//7"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//7"
         
 
         return ApiRequest(
@@ -544,8 +528,7 @@ open class TargetAPI {
     public func modbusReadRequest(
         data: MemoryInfo
     ) -> ApiRequest<MemoryInfo>{
-        var path = "/1027//38"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//38"
         
 
         return ApiRequest(
@@ -586,8 +569,7 @@ open class TargetAPI {
     public func modbusWriteRequest(
         data: MemoryWriteInfo
     ) -> ApiRequest<MemoryWriteInfo>{
-        var path = "/1027//37"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//37"
         
 
         return ApiRequest(
@@ -628,8 +610,7 @@ open class TargetAPI {
     public func postAdpActionRequest(
         data: Bytes
     ) -> ApiRequest<Bytes>{
-        var path = "/1027//39"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//39"
         
 
         return ApiRequest(
@@ -666,8 +647,7 @@ open class TargetAPI {
     */
     public func postDebugAccessRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//31"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//31"
         
 
         return ApiRequest(
@@ -702,8 +682,7 @@ open class TargetAPI {
     public func postModbusSubProtocolRequest(
         data: Bytes
     ) -> ApiRequest<Bytes>{
-        var path = "/1027//40"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//40"
         
 
         return ApiRequest(
@@ -740,8 +719,7 @@ open class TargetAPI {
     */
     public func postRegAccessRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//32"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//32"
         
 
         return ApiRequest(
@@ -772,8 +750,7 @@ open class TargetAPI {
     */
     public func postResetKeepRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//30"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//30"
         
 
         return ApiRequest(
@@ -808,8 +785,7 @@ open class TargetAPI {
     public func putCoreTypeRequest(
         value: TargetCoreType
     ) -> ApiRequest<TargetCoreType>{
-        var path = "/1027//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//2"
         
 
         return ApiRequest(
@@ -850,8 +826,7 @@ open class TargetAPI {
     public func putFirmwareVersionRequest(
         value: UInt32
     ) -> ApiRequest<UInt32>{
-        var path = "/1027//6"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//6"
         
 
         return ApiRequest(
@@ -892,8 +867,7 @@ open class TargetAPI {
     public func putMaxVoltageRequest(
         value: UInt16
     ) -> ApiRequest<UInt16>{
-        var path = "/1027//9"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//9"
         
 
         return ApiRequest(
@@ -934,8 +908,7 @@ open class TargetAPI {
     public func putMinVoltageRequest(
         value: UInt16
     ) -> ApiRequest<UInt16>{
-        var path = "/1027//8"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//8"
         
 
         return ApiRequest(
@@ -976,8 +949,7 @@ open class TargetAPI {
     public func putPageSizeRequest(
         value: UInt32
     ) -> ApiRequest<UInt32>{
-        var path = "/1027//10"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//10"
         
 
         return ApiRequest(
@@ -1018,8 +990,7 @@ open class TargetAPI {
     public func putProtocolRequest(
         targetProtocol: TargetProtocol
     ) -> ApiRequest<TargetProtocol>{
-        var path = "/1027//1"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//1"
         
 
         return ApiRequest(
@@ -1060,8 +1031,7 @@ open class TargetAPI {
     public func readAddressRequest(
         value: MemoryInfo
     ) -> ApiRequest<MemoryInfo>{
-        var path = "/1027//33"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//33"
         
 
         return ApiRequest(
@@ -1102,8 +1072,7 @@ open class TargetAPI {
     public func readBytesRequest(
         nbBytes: UInt32? = nil
     ) -> ApiRequest<UInt32>{
-        var path = "/1027//35"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//35"
         
 
         return ApiRequest(
@@ -1140,8 +1109,7 @@ open class TargetAPI {
     */
     public func resetRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//5"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//5"
         
 
         return ApiRequest(
@@ -1176,8 +1144,7 @@ open class TargetAPI {
     public func sendRequest(
         data: Bytes
     ) -> ApiRequest<Bytes>{
-        var path = "/1027//34"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//34"
         
 
         return ApiRequest(
@@ -1218,8 +1185,7 @@ open class TargetAPI {
     public func sendReceiveRequest(
         data: Bytes
     ) -> ApiRequest<Bytes>{
-        var path = "/1027//34"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//34"
         
 
         return ApiRequest(
@@ -1260,8 +1226,7 @@ open class TargetAPI {
     public func setUARTSettingsRequest(
         value: UartSettings
     ) -> ApiRequest<UartSettings>{
-        var path = "/1027//21"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//21"
         
 
         return ApiRequest(
@@ -1302,8 +1267,7 @@ open class TargetAPI {
     public func writeAddressRequest(
         value: MemoryWriteInfo
     ) -> ApiRequest<MemoryWriteInfo>{
-        var path = "/1027//33"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//33"
         
 
         return ApiRequest(
@@ -1344,8 +1308,7 @@ open class TargetAPI {
     public func writeUARTSettingsRequest(
         value: UartSettings
     ) -> ApiRequest<UartSettings>{
-        var path = "/1027//21"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//21"
         
 
         return ApiRequest(

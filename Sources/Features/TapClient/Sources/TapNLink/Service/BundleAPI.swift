@@ -34,7 +34,6 @@ open class BundleAPI {
         bundleId: UInt8, groupId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1028/{tupId}"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"bundleId"+"}", with: String(bundleId))
         
@@ -80,7 +79,6 @@ open class BundleAPI {
         bundleId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1028/{bundleId}/2"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"bundleId"+"}", with: String(bundleId))
         
@@ -121,7 +119,6 @@ open class BundleAPI {
         bundleId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1028/{bundleId}/1"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"bundleId"+"}", with: String(bundleId))
         
@@ -167,7 +164,6 @@ open class BundleAPI {
         bundleId: UInt8, groupId: UInt8, rights: ReadWriteRights
     ) -> ApiRequest<ReadWriteRights>{
         var path = "/1028/{bundleId}/0/{groupId}"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"bundleId"+"}", with: String(bundleId))
         
@@ -221,7 +217,6 @@ open class BundleAPI {
         bundleId: UInt8, value: UInt32
     ) -> ApiRequest<UInt32>{
         var path = "/1028/{bundleId}/2"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"bundleId"+"}", with: String(bundleId))
         

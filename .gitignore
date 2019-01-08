@@ -44,3 +44,9 @@ Tools/fastlane/test_output
 .AppleDouble
 .LSOverride
 ._*
+
+# Log files
+*.log
+
+# Temporary file folder
+Tmp
