@@ -22,9 +22,9 @@ class TapNLinkTest: XCTestCase {
 	}
 	
 	func testGetValues() throws {
-		var p1: ComProtocol = MockProtocol { bytes in
-			var r = ApduRequest.fromBytes(bytes: bytes)
-			var request = TapRequest.fromBytes(bytes: r.data)
+		let p1: ComProtocol = MockProtocol { bytes in
+			let r = ApduRequest.fromBytes(bytes: bytes)
+			let request = TapRequest.fromBytes(bytes: r.data)
 			print("Received request: " + request.description)
 			switch (request.description){
 			case "GET /3/65535/2":
@@ -34,7 +34,7 @@ class TapNLinkTest: XCTestCase {
 			}
 		}
 		
-		var tap: TapDevice = TapDevice.createFrom(protocol: p1)
+		let tap: TapDevice = TapDevice.createFrom(protocol: p1)
 		try tap.connect()
 		//tap.login(username: "admin", password: "admin")
 		let period = try tap.service.bundle.getDatalogPeriod(bundleId: 1).body()
@@ -48,9 +48,9 @@ class TapNLinkTest: XCTestCase {
 	}
 	
 	func testEncryption() throws {
-		var p1: ComProtocol = MockProtocol { bytes in
-			var r = ApduRequest.fromBytes(bytes: bytes)
-			var request = TapRequest.fromBytes(bytes: r.data)
+		let p1: ComProtocol = MockProtocol { bytes in
+			let r = ApduRequest.fromBytes(bytes: bytes)
+			let request = TapRequest.fromBytes(bytes: r.data)
 			print("Received request: " + request.description)
 			switch (request.description){
 			case "GET /3/65535/2":
@@ -66,7 +66,7 @@ class TapNLinkTest: XCTestCase {
 			}
 		}
 		
-		var tap: TapDevice = TapDevice.createFrom(protocol: p1)
+		let tap: TapDevice = TapDevice.createFrom(protocol: p1)
 		try tap.connect()
 		
 		try tap.login(username: "admin", password: "admin")
@@ -79,8 +79,8 @@ class TapNLinkTest: XCTestCase {
 	
 	
 	func testGets() throws {
-		var p1: ComProtocol = try MockProtocol.fromJSONSnapshot(path: TestUtility.snapshotPath("device-1-11.json"))
-		var tap: TapDevice = TapDevice.createFrom(protocol: p1)
+		let p1: ComProtocol = try MockProtocol.fromJSONSnapshot(path: TestUtility.snapshotPath("device-1-11.json"))
+		let tap: TapDevice = TapDevice.createFrom(protocol: p1)
 		try tap.connect()
 		XCTAssertEqual(try tap.service.device.getSerialNumber().body(), "IoTize00410000009B")
 		XCTAssertEqual(try tap.service.device.getModelName().body(), "TAP 1.10 L4 NFC BLE")
@@ -92,10 +92,10 @@ class TapNLinkTest: XCTestCase {
 		XCTAssertEqual(try tap.service.target.getFirmwareVersion().body(), "1.0 0")
 		XCTAssertEqual(try tap.service.datalog.getOptions().body(), DatalogOption(security: false, qos: false, logOnChange: false, rollingMode: false, autorun: false))
 //		XCTAssertEqual(try tap.service.target.getPageSize(), "1.0 0")
-		let uartSettings = UartSettings(
-			ctr2: UartSettings.Ctr2(slv: 0, ofs: true, baudrate: 100),
-			ctr1: UartSettings.Ctr1(physicalPort: UartSettings.PhysicalPort.USB, stopBit: UartSettings.StopBit.ONE_AND_HALF, parity: UartSettings.BitParity.NONE, dataLength: 10, handshakeDelimiter: UartSettings.HandshakeDelimiter.CR, handshakeValue: .RTS, timeout: 10)
-		)
+//		let uartSettings = UartSettings(
+//			ctr2: UartSettings.Ctr2(slv: 0, ofs: true, baudrate: 100),
+//			ctr1: UartSettings.Ctr1(physicalPort: UartSettings.PhysicalPort.USB, stopBit: UartSettings.StopBit.ONE_AND_HALF, parity: UartSettings.BitParity.NONE, dataLength: 10, handshakeDelimiter: UartSettings.HandshakeDelimiter.CR, handshakeValue: .RTS, timeout: 10)
+//		)
 //		XCTAssertEqual(try tap.service.target.getUARTSettings().body(), uartSettings)
 		XCTAssertEqual(try tap.service.target.getMaxVoltage().body(), 3500)
 		//		XCTAssertEqual(try tap.service.interface.getAvailableHostProtocols().body(), 2000)

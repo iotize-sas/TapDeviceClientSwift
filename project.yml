@@ -6,7 +6,7 @@ include:
   - Tools/XCodeGen/SocketProtocol.yml
   - Tools/XCodeGen/IotizeCore.yml
   - Tools/XCodeGen/IotizeTestCore.yml
-name: Starter
+name: TapDeviceClient
 fileGroups: [Tools/Carthage/Cartfile, Tools/Carthage/Cartfile.resolved, Tools/SwiftGen, Tools/XcodeGen, Documentation, project.yml, README.md]
 options:
   bundleIdPrefix: com.iotize

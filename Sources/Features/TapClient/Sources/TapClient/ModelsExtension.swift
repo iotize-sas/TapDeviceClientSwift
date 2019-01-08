@@ -69,7 +69,7 @@ public extension ApduRequest {
 		return apduRequest
 	}
 }
- 
+
 public extension TapRequestHeader.Path {
 	
 	public static func fromString(_ path: String) throws -> TapRequestHeader.Path  {

@@ -32,7 +32,6 @@ open class GroupAPI {
         groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/5"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -73,7 +72,6 @@ open class GroupAPI {
         groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/0"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -114,7 +112,6 @@ open class GroupAPI {
         groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/7"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -155,7 +152,6 @@ open class GroupAPI {
         groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/16"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -196,7 +192,6 @@ open class GroupAPI {
         groupId: Int8
     ) -> ApiRequest<Void>{
         var path = "/1025/{groupId}/4"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -240,7 +235,6 @@ open class GroupAPI {
         groupId: Int8, password: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1025/{groupId}/2"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -289,7 +283,6 @@ open class GroupAPI {
         groupId: Int8, value: UInt16? = nil
     ) -> ApiRequest<UInt16>{
         var path = "/1025/{groupId}/5"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -338,7 +331,6 @@ open class GroupAPI {
         groupId: Int8, name: String? = nil
     ) -> ApiRequest<String>{
         var path = "/1025/{groupId}/0"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -387,7 +379,6 @@ open class GroupAPI {
         groupId: Int8, value: UInt32? = nil
     ) -> ApiRequest<UInt32>{
         var path = "/1025/{groupId}/7"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -436,7 +427,6 @@ open class GroupAPI {
         groupId: Int8, value: UInt32? = nil
     ) -> ApiRequest<UInt32>{
         var path = "/1025/{groupId}/16"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         
@@ -485,7 +475,6 @@ open class GroupAPI {
         groupId: Int8, value: UInt16? = nil
     ) -> ApiRequest<UInt16>{
         var path = "/1025/{groupId}/4"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"groupId"+"}", with: String(groupId))
         

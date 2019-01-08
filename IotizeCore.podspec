@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "IotizeCore"
   s.version          = "0.0.1-alpha.1"
-  s.summary          = "IotizeCore "
+  s.summary          = "IotizeCore swift library"
   s.description      = <<-DESC
 This is a Swift port of [IoTize Tap Device API](http://developer.iotize.com).
 
@@ -17,7 +17,7 @@ This is a Swift port of [IoTize Tap Device API](http://developer.iotize.com).
   s.ios.deployment_target = '11.0'
   s.osx.deployment_target = '10.11'
 
-  s.source_files          = 'Sources/Features/IotizeCore/Sources/**/*.swift', 'Sources/Features/IotizeCore/Sources/*.swift'
+  s.source_files          = 'Sources/Features/IotizeCore/Sources/*.swift'
 
   s.swift_version = '4.0' 
   

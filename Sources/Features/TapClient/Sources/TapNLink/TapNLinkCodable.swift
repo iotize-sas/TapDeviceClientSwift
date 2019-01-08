@@ -308,7 +308,7 @@ public extension TapStreamReader {
         model.packetLength = self.readU2()
         model.packetId = self.readU2()
         model.configVersion = self.readU4()
-        model.messageType = SinglePacket.Type(rawValue:UInt8(self.readBitsInt(length: 4)))
+        model.messageType = SinglePacket.PacketType(rawValue:UInt8(self.readBitsInt(length: 4)))
 
         self.forwardBits(length: 2)
         model.encryption = self.readBool()
@@ -317,8 +317,8 @@ public extension TapStreamReader {
         model.salt = self.readU2()
         model.logTime = self.readU4()
         model.dataSize = self.readU2()
-        model.data = self.readBytes(length: Int(data_size))
-        model.padding = self.readBytes(length: Int((4 - ((data_size + 10) % 4)) % 4))
+        model.data = self.readBytes(length: Int(Int(model.dataSize)))
+        model.padding = self.readBytes(length: Int((4 - (( Int(model.dataSize) + 10) % 4)) % 4))
         model.crc = self.readU4()
         return model
     }
@@ -349,11 +349,11 @@ public extension TapStreamWriter {
     func writeAclEntry(_ model: AclEntry) -> TapStreamWriter{
         self.forwardBits(3)
 
-        self.writeBitsInt(model.create!, 1)
-        self.writeBitsInt(model.delete!, 1)
-        self.writeBitsInt(model.execute!, 1)
-        self.writeBitsInt(model.write!, 1)
-        self.writeBitsInt(model.read!, 1)
+        _ = self.writeBitsInt(model.create!, 1)
+        _ = self.writeBitsInt(model.delete!, 1)
+        _ = self.writeBitsInt(model.execute!, 1)
+        _ = self.writeBitsInt(model.write!, 1)
+        _ = self.writeBitsInt(model.read!, 1)
         return self
     }
 
@@ -366,9 +366,9 @@ public extension TapStreamWriter {
     }
 
     func writeMemoryInfo(_ model: MemoryInfo) -> TapStreamWriter{
-        self.writeU4(model.address!)
-        self.writeU4(model.wordCount!)
-        self.writeU1(model.wordSize!.rawValue)
+        _ = self.writeU4(model.address!)
+        _ = self.writeU4(model.wordCount!)
+        _ = self.writeU1(model.wordSize!.rawValue)
         return self
     }
 
@@ -381,8 +381,8 @@ public extension TapStreamWriter {
     }
 
     func writeMemoryWriteInfo(_ model: MemoryWriteInfo) -> TapStreamWriter{
-        self.writeMemoryInfo(model.address)
-        self.writeBytes(model.value!)
+        _ = self.writeMemoryInfo(model.address)
+        _ = self.writeBytes(model.value!)
         return self
     }
 
@@ -397,8 +397,8 @@ public extension TapStreamWriter {
     func writeReadWriteRights(_ model: ReadWriteRights) -> TapStreamWriter{
         self.forwardBits(6)
 
-        self.writeBitsInt(model.write!, 1)
-        self.writeBitsInt(model.read!, 1)
+        _ = self.writeBitsInt(model.write!, 1)
+        _ = self.writeBitsInt(model.read!, 1)
         return self
     }
 
@@ -413,13 +413,13 @@ public extension TapStreamWriter {
     func writeDatalogOption(_ model: DatalogOption) -> TapStreamWriter{
         self.forwardBits(6)
 
-        self.writeBitsInt(model.security!, 1)
-        self.writeBitsInt(model.qos!, 1)
+        _ = self.writeBitsInt(model.security!, 1)
+        _ = self.writeBitsInt(model.qos!, 1)
         self.forwardBits(5)
 
-        self.writeBitsInt(model.logOnChange!, 1)
-        self.writeBitsInt(model.rollingMode!, 1)
-        self.writeBitsInt(model.autorun!, 1)
+        _ = self.writeBitsInt(model.logOnChange!, 1)
+        _ = self.writeBitsInt(model.rollingMode!, 1)
+        _ = self.writeBitsInt(model.autorun!, 1)
         return self
     }
 
@@ -432,8 +432,8 @@ public extension TapStreamWriter {
     }
 
     func writeUartSettings(_ model: UartSettings) -> TapStreamWriter{
-        self.writeUartSettingsCtr2(model.ctr2)
-        self.writeUartSettingsCtr1(model.ctr1)
+        _ = self.writeUartSettingsCtr2(model.ctr2)
+        _ = self.writeUartSettingsCtr1(model.ctr1)
         return self
     }
 
@@ -445,13 +445,13 @@ public extension TapStreamWriter {
     func writeUartSettingsCtr1(_ model: UartSettings.Ctr1) -> TapStreamWriter{
         self.forwardBits(4)
 
-        self.writeBitsInt(model.physicalPort!.rawValue, 4)
-        self.writeBitsInt(model.stopBit!.rawValue, 2)
-        self.writeBitsInt(model.parity!.rawValue, 4)
-        self.writeBitsInt(model.dataLength!, 2)
-        self.writeBitsInt(model.handshakeDelimiter!.rawValue, 4)
-        self.writeBitsInt(model.handshakeValue!.rawValue, 4)
-        self.writeU1(model.timeout!)
+        _ = self.writeBitsInt(model.physicalPort!.rawValue, 4)
+        _ = self.writeBitsInt(model.stopBit!.rawValue, 2)
+        _ = self.writeBitsInt(model.parity!.rawValue, 4)
+        _ = self.writeBitsInt(model.dataLength!, 2)
+        _ = self.writeBitsInt(model.handshakeDelimiter!.rawValue, 4)
+        _ = self.writeBitsInt(model.handshakeValue!.rawValue, 4)
+        _ = self.writeU1(model.timeout!)
         return self
     }
     
@@ -460,11 +460,11 @@ public extension TapStreamWriter {
     }
 
     func writeUartSettingsCtr2(_ model: UartSettings.Ctr2) -> TapStreamWriter{
-        self.writeU1(model.slv!)
+        _ = self.writeU1(model.slv!)
         self.forwardBits(3)
 
-        self.writeBitsInt(model.ofs!, 1)
-        self.writeBitsInt(model.baudrate!, 20)
+        _ = self.writeBitsInt(model.ofs!, 1)
+        _ = self.writeBitsInt(model.baudrate!, 20)
         return self
     }
     
@@ -476,9 +476,9 @@ public extension TapStreamWriter {
     }
 
     func writeTapVersion(_ model: TapVersion) -> TapStreamWriter{
-        self.writeU1(model.major!)
-        self.writeU1(model.minor!)
-        self.writeU2(model.build!)
+        _ = self.writeU1(model.major!)
+        _ = self.writeU1(model.minor!)
+        _ = self.writeU2(model.build!)
         return self
     }
 
@@ -491,13 +491,13 @@ public extension TapStreamWriter {
     }
 
     func writeLwm2mTlv(_ model: Lwm2mTlv) -> TapStreamWriter{
-        self.writeBitsInt(model.identifierType!, 2)
-        self.writeBitsInt(model.identifierLength!, 1)
-        self.writeBitsInt(model.lengthType!, 2)
-        self.writeBitsInt(model.other!, 3)
-        self.writeBytes(model.identifier!)
-        self.writeU2(model.len!)
-        self.writeBytes(model.value!)
+        _ = self.writeBitsInt(model.identifierType!, 2)
+        _ = self.writeBitsInt(model.identifierLength!, 1)
+        _ = self.writeBitsInt(model.lengthType!, 2)
+        _ = self.writeBitsInt(model.other!, 3)
+        _ = self.writeBytes(model.identifier!)
+        _ = self.writeU2(model.len!)
+        _ = self.writeBytes(model.value!)
         return self
     }
 
@@ -514,11 +514,11 @@ public extension TapStreamWriter {
 
         self.forwardBits(3)
 
-        self.writeBitsInt(model.scramActivated!, 1)
-        self.writeBitsInt(model.hashPassword!, 1)
-        self.writeBitsInt(model.factoryReset!, 1)
-        self.writeBitsInt(model.resourceLogUid!, 1)
-        self.writeBitsInt(model.resouceFactory!, 1)
+        _ = self.writeBitsInt(model.scramActivated!, 1)
+        _ = self.writeBitsInt(model.hashPassword!, 1)
+        _ = self.writeBitsInt(model.factoryReset!, 1)
+        _ = self.writeBitsInt(model.resourceLogUid!, 1)
+        _ = self.writeBitsInt(model.resouceFactory!, 1)
         return self
     }
 
@@ -531,8 +531,8 @@ public extension TapStreamWriter {
     }
 
     func writeLoginCredential(_ model: LoginCredential) -> TapStreamWriter{
-        self.writeStr(model.username!, length: Int(16))
-        self.writeStr(model.password!, length: Int(16))
+        _ = self.writeStr(model.username!, length: Int(16))
+        _ = self.writeStr(model.password!, length: Int(16))
         return self
     }
 
@@ -545,8 +545,8 @@ public extension TapStreamWriter {
     }
 
     func writeLoginCredentialHashed(_ model: LoginCredentialHashed) -> TapStreamWriter{
-        self.writeStr(model.username!, length: Int(16))
-        self.writeBytes(model.password!)
+        _ = self.writeStr(model.username!, length: Int(16))
+        _ = self.writeBytes(model.password!)
         return self
     }
 
@@ -559,8 +559,8 @@ public extension TapStreamWriter {
     }
 
     func writeScramLoginParams(_ model: ScramLoginParams) -> TapStreamWriter{
-        self.writeStr(model.username!, length: Int(16))
-        self.writeU4(model.clientNonce!)
+        _ = self.writeStr(model.username!, length: Int(16))
+        _ = self.writeU4(model.clientNonce!)
         return self
     }
 
@@ -573,9 +573,9 @@ public extension TapStreamWriter {
     }
 
     func writeScramLoginResponseBody(_ model: ScramLoginResponseBody) -> TapStreamWriter{
-        self.writeU4(model.serverNonce!)
-        self.writeBytes(model.salt!)
-        self.writeU4(model.iterationNumber!)
+        _ = self.writeU4(model.serverNonce!)
+        _ = self.writeBytes(model.salt!)
+        _ = self.writeU4(model.iterationNumber!)
         return self
     }
 
@@ -588,8 +588,8 @@ public extension TapStreamWriter {
     }
 
     func writeTargetComStats(_ model: TargetComStats) -> TapStreamWriter{
-        self.writeU4(model.nbFailCom!)
-        self.writeU4(model.nbSuccessfulCom!)
+        _ = self.writeU4(model.nbFailCom!)
+        _ = self.writeU4(model.nbSuccessfulCom!)
         return self
     }
 
@@ -604,8 +604,8 @@ public extension TapStreamWriter {
     func writeAvailableFunction(_ model: AvailableFunction) -> TapStreamWriter{
         self.forwardBits(6)
 
-        self.writeBitsInt(model.debug!, 1)
-        self.writeBitsInt(model.datalog!, 1)
+        _ = self.writeBitsInt(model.debug!, 1)
+        _ = self.writeBitsInt(model.datalog!, 1)
         return self
     }
 
@@ -618,9 +618,9 @@ public extension TapStreamWriter {
     }
 
     func writeCrcCheckBody(_ model: CrcCheckBody) -> TapStreamWriter{
-        self.writeU4(model.address!)
-        self.writeU4(model.size!)
-        self.writeU4(model.crc!)
+        _ = self.writeU4(model.address!)
+        _ = self.writeU4(model.size!)
+        _ = self.writeU4(model.crc!)
         return self
     }
 
@@ -633,22 +633,22 @@ public extension TapStreamWriter {
     }
 
     func writeSinglePacket(_ model: SinglePacket) -> TapStreamWriter{
-        self.writeU4(model.sendTime!)
-        self.writeU2(model.packetLength!)
-        self.writeU2(model.packetId!)
-        self.writeU4(model.configVersion!)
-        self.writeBitsInt(model.messageType!.rawValue, 4)
+        _ = self.writeU4(model.sendTime!)
+        _ = self.writeU2(model.packetLength!)
+        _ = self.writeU2(model.packetId!)
+        _ = self.writeU4(model.configVersion!)
+        _ = self.writeBitsInt(model.messageType!.rawValue, 4)
         self.forwardBits(2)
 
-        self.writeBitsInt(model.encryption!, 1)
-        self.writeBitsInt(model.ack!, 1)
-        self.writeU1(model.senderId!)
-        self.writeU2(model.salt!)
-        self.writeU4(model.logTime!)
-        self.writeU2(model.dataSize!)
-        self.writeBytes(model.data!)
-        self.writeBytes(model.padding!)
-        self.appendCRC()
+        _ = self.writeBitsInt(model.encryption!, 1)
+        _ = self.writeBitsInt(model.ack!, 1)
+        _ = self.writeU1(model.senderId!)
+        _ = self.writeU2(model.salt!)
+        _ = self.writeU4(model.logTime!)
+        _ = self.writeU2(model.dataSize!)
+        _ = self.writeBytes(model.data!)
+        _ = self.writeBytes(model.padding!)
+        _ = self.appendCRC()
         return self
     }
 

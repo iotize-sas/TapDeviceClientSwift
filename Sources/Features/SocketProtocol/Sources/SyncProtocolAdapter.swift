@@ -25,12 +25,12 @@ public class SyncProtocolAdapter: ComProtocol {
 	}
 	
 	public func connect() throws -> Any {
-		try self.p.connect().toBlocking().first()
+		_ = try self.p.connect().toBlocking().first()
 		return 1
 	}
 	
 	public func disconnect() throws -> Any {
-		try self.p.connect().toBlocking().first()
+		_ = try self.p.connect().toBlocking().first()
 		return 1
 	}
 	
@@ -44,7 +44,7 @@ public class SyncProtocolAdapter: ComProtocol {
 	}
 	
 	public func write(data: Bytes) throws {
-		try self.p.write(data: data).toBlocking().first()
+		_ = try self.p.write(data: data).toBlocking().first()
 	}
 	
 	

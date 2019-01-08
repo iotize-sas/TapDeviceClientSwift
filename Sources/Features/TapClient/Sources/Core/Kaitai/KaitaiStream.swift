@@ -246,7 +246,7 @@ public class KaitaiStream {
             return nil
         }
 		
-		var total: UInt64 = (UInt64(value2) << 32) + (UInt64(value1) << 0)
+		let total: UInt64 = (UInt64(value2) << 32) + (UInt64(value1) << 0)
 		return total
     }
 
@@ -259,7 +259,7 @@ public class KaitaiStream {
             return nil
         }
 
-		var total: UInt64 = (UInt64(value1) << 32) + (UInt64(value2) << 0)
+		let total: UInt64 = (UInt64(value1) << 32) + (UInt64(value2) << 0)
 		return total
     }
 
