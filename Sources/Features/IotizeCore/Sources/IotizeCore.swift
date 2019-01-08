@@ -40,9 +40,3 @@ public extension UInt8 {
 		return String(format: "%02X", self)
 	}
 }
-public class TestIotizeCore{
-	
-	public init(){
-		
-	}
-}
