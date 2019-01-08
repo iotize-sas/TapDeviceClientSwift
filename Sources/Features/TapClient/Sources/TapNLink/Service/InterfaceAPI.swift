@@ -28,8 +28,7 @@ open class InterfaceAPI {
     */
     public func getAppNameRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//9"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//9"
         
 
         return ApiRequest(
@@ -60,8 +59,7 @@ open class InterfaceAPI {
     */
     public func getAppPathRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//11"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//11"
         
 
         return ApiRequest(
@@ -92,8 +90,7 @@ open class InterfaceAPI {
     */
     public func getAuthorizedHostProtocolRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//17"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//17"
         
 
         return ApiRequest(
@@ -124,8 +121,7 @@ open class InterfaceAPI {
     */
     public func getAvailableHostProtocolsRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//21"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//21"
         
 
         return ApiRequest(
@@ -156,8 +152,7 @@ open class InterfaceAPI {
     */
     public func getBleAddressRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//22"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//22"
         
 
         return ApiRequest(
@@ -188,8 +183,7 @@ open class InterfaceAPI {
     */
     public func getCloudClientIdRequest()
          -> ApiRequest<Void>{
-        var path = "/3//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//2"
         
 
         return ApiRequest(
@@ -220,8 +214,7 @@ open class InterfaceAPI {
     */
     public func getCloudConnectionModeRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//26"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//26"
         
 
         return ApiRequest(
@@ -252,8 +245,7 @@ open class InterfaceAPI {
     */
     public func getCloudGatewayUrlRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//12"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//12"
         
 
         return ApiRequest(
@@ -284,8 +276,7 @@ open class InterfaceAPI {
     */
     public func getCloudLoginRequest()
          -> ApiRequest<Void>{
-        var path = "/3//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//2"
         
 
         return ApiRequest(
@@ -316,8 +307,7 @@ open class InterfaceAPI {
     */
     public func getCloudMqttPeriodRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//33"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//33"
         
 
         return ApiRequest(
@@ -348,8 +338,7 @@ open class InterfaceAPI {
     */
     public func getCloudPasswordRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//29"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//29"
         
 
         return ApiRequest(
@@ -380,8 +369,7 @@ open class InterfaceAPI {
     */
     public func getCloudServiceNameRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//61"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//61"
         
 
         return ApiRequest(
@@ -416,8 +404,7 @@ open class InterfaceAPI {
     public func getComRequest(
         data: Bytes? = nil
     ) -> ApiRequest<Bytes>{
-        var path = "/1024//71"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//71"
         
 
         return ApiRequest(
@@ -454,8 +441,7 @@ open class InterfaceAPI {
     */
     public func getConfigFormatFirmwareVersionRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//18"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//18"
         
 
         return ApiRequest(
@@ -486,8 +472,7 @@ open class InterfaceAPI {
     */
     public func getConfigFormatVersionRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//8"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//8"
         
 
         return ApiRequest(
@@ -518,8 +503,7 @@ open class InterfaceAPI {
     */
     public func getConfigVersionRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//10"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//10"
         
 
         return ApiRequest(
@@ -550,8 +534,7 @@ open class InterfaceAPI {
     */
     public func getConfigureRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//70"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//70"
         
 
         return ApiRequest(
@@ -582,8 +565,7 @@ open class InterfaceAPI {
     */
     public func getCurrentGroupIdRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//7"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//7"
         
 
         return ApiRequest(
@@ -614,8 +596,7 @@ open class InterfaceAPI {
     */
     public func getCurrentHostProtocolRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//3"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//3"
         
 
         return ApiRequest(
@@ -646,8 +627,7 @@ open class InterfaceAPI {
     */
     public func getCurrentProfileIdRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//2"
         
 
         return ApiRequest(
@@ -678,8 +658,7 @@ open class InterfaceAPI {
     */
     public func getFunctionsRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//20"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//20"
         
 
         return ApiRequest(
@@ -710,8 +689,7 @@ open class InterfaceAPI {
     */
     public func getHostInactivityPeriodRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//34"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//34"
         
 
         return ApiRequest(
@@ -742,8 +720,7 @@ open class InterfaceAPI {
     */
     public func getLockRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//6"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//6"
         
 
         return ApiRequest(
@@ -774,8 +751,7 @@ open class InterfaceAPI {
     */
     public func getMqttRelayClientIdRequest()
          -> ApiRequest<Void>{
-        var path = "/3//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//2"
         
 
         return ApiRequest(
@@ -806,8 +782,7 @@ open class InterfaceAPI {
     */
     public func getMqttRelayLoginRequest()
          -> ApiRequest<Void>{
-        var path = "/3//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//2"
         
 
         return ApiRequest(
@@ -838,8 +813,7 @@ open class InterfaceAPI {
     */
     public func getMqttRelayNetKeyRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//55"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//55"
         
 
         return ApiRequest(
@@ -870,8 +844,7 @@ open class InterfaceAPI {
     */
     public func getMqttRelayPasswordRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//54"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//54"
         
 
         return ApiRequest(
@@ -902,8 +875,7 @@ open class InterfaceAPI {
     */
     public func getMqttRelayPortRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//51"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//51"
         
 
         return ApiRequest(
@@ -934,8 +906,7 @@ open class InterfaceAPI {
     */
     public func getMqttRelayUrlRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//50"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//50"
         
 
         return ApiRequest(
@@ -966,8 +937,7 @@ open class InterfaceAPI {
     */
     public func getNetworkGatewayIpRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//31"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//31"
         
 
         return ApiRequest(
@@ -998,8 +968,7 @@ open class InterfaceAPI {
     */
     public func getNetworkInfraIpRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//30"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//30"
         
 
         return ApiRequest(
@@ -1030,8 +999,7 @@ open class InterfaceAPI {
     */
     public func getNetworkInfraIpMaskRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//32"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//32"
         
 
         return ApiRequest(
@@ -1062,8 +1030,7 @@ open class InterfaceAPI {
     */
     public func getNetworkModeRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//15"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//15"
         
 
         return ApiRequest(
@@ -1094,8 +1061,7 @@ open class InterfaceAPI {
     */
     public func getNfcPairingModeRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//13"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//13"
         
 
         return ApiRequest(
@@ -1126,8 +1092,7 @@ open class InterfaceAPI {
     */
     public func getPowerOptimisationLevelRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//14"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//14"
         
 
         return ApiRequest(
@@ -1158,8 +1123,7 @@ open class InterfaceAPI {
     */
     public func getPublicPasswordRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//60"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//60"
         
 
         return ApiRequest(
@@ -1190,8 +1154,7 @@ open class InterfaceAPI {
     */
     public func getRandRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//49"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//49"
         
 
         return ApiRequest(
@@ -1222,8 +1185,7 @@ open class InterfaceAPI {
     */
     public func getWepKeyRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//16"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//16"
         
 
         return ApiRequest(
@@ -1254,8 +1216,7 @@ open class InterfaceAPI {
     */
     public func getWifiHostnameRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//35"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//35"
         
 
         return ApiRequest(
@@ -1286,8 +1247,7 @@ open class InterfaceAPI {
     */
     public func getWifiSSIDRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//25"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//25"
         
 
         return ApiRequest(
@@ -1318,8 +1278,7 @@ open class InterfaceAPI {
     */
     public func keepAliveRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//4"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//4"
         
 
         return ApiRequest(
@@ -1354,8 +1313,7 @@ open class InterfaceAPI {
     public func loginRequest(
         credential: LoginCredential? = nil
     ) -> ApiRequest<LoginCredential>{
-        var path = "/1024//0"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//0"
         
 
         return ApiRequest(
@@ -1396,8 +1354,7 @@ open class InterfaceAPI {
     public func loginWithHashRequest(
         credential: LoginCredentialHashed? = nil
     ) -> ApiRequest<LoginCredentialHashed>{
-        var path = "/1024//0"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//0"
         
 
         return ApiRequest(
@@ -1434,8 +1391,7 @@ open class InterfaceAPI {
     */
     public func logoutRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//1"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//1"
         
 
         return ApiRequest(
@@ -1470,8 +1426,7 @@ open class InterfaceAPI {
     public func multiCommandsRequest(
         data: TapMultiRequest? = nil
     ) -> ApiRequest<TapMultiRequest>{
-        var path = "/1024//89"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//89"
         
 
         return ApiRequest(
@@ -1512,8 +1467,7 @@ open class InterfaceAPI {
     public func postLoginUidRequest(
         uid: Bytes
     ) -> ApiRequest<Bytes>{
-        var path = "/1024//5"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//5"
         
 
         return ApiRequest(
@@ -1554,8 +1508,7 @@ open class InterfaceAPI {
     public func putAppNameRequest(
         appName: String
     ) -> ApiRequest<String>{
-        var path = "/1024//9"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//9"
         
 
         return ApiRequest(
@@ -1596,8 +1549,7 @@ open class InterfaceAPI {
     public func putAppPathRequest(
         version: String
     ) -> ApiRequest<String>{
-        var path = "/1024//11"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//11"
         
 
         return ApiRequest(
@@ -1638,8 +1590,7 @@ open class InterfaceAPI {
     public func putAuthorizedHostProtocolRequest(
         mode: ListHostProtocol? = nil
     ) -> ApiRequest<ListHostProtocol>{
-        var path = "/1024//17"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//17"
         
 
         return ApiRequest(
@@ -1680,8 +1631,7 @@ open class InterfaceAPI {
     public func putCloudConnectionModeRequest(
         key: CloudConnectionMode? = nil
     ) -> ApiRequest<CloudConnectionMode>{
-        var path = "/1024//26"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//26"
         
 
         return ApiRequest(
@@ -1722,8 +1672,7 @@ open class InterfaceAPI {
     public func putCloudGatewayUrlRequest(
         version: String
     ) -> ApiRequest<String>{
-        var path = "/1024//12"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//12"
         
 
         return ApiRequest(
@@ -1764,8 +1713,7 @@ open class InterfaceAPI {
     public func putCloudMqttPeriodRequest(
         key: UInt32? = nil
     ) -> ApiRequest<UInt32>{
-        var path = "/1024//33"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//33"
         
 
         return ApiRequest(
@@ -1806,8 +1754,7 @@ open class InterfaceAPI {
     public func putCloudPasswordRequest(
         key: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//29"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//29"
         
 
         return ApiRequest(
@@ -1848,8 +1795,7 @@ open class InterfaceAPI {
     public func putCloudServiceNameRequest(
         name: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//61"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//61"
         
 
         return ApiRequest(
@@ -1890,8 +1836,7 @@ open class InterfaceAPI {
     public func putConfigFormatVersionRequest(
         configFormat: UInt32
     ) -> ApiRequest<UInt32>{
-        var path = "/1024//8"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//8"
         
 
         return ApiRequest(
@@ -1932,8 +1877,7 @@ open class InterfaceAPI {
     public func putConfigVersionRequest(
         version: UInt32
     ) -> ApiRequest<UInt32>{
-        var path = "/1024//10"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//10"
         
 
         return ApiRequest(
@@ -1974,8 +1918,7 @@ open class InterfaceAPI {
     public func putConfigureRequest(
         conf: Bytes? = nil
     ) -> ApiRequest<Bytes>{
-        var path = "/1024//70"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//70"
         
 
         return ApiRequest(
@@ -2016,8 +1959,7 @@ open class InterfaceAPI {
     public func putCurrentHostProtocolRequest(
         hostProtocol: HostProtocol
     ) -> ApiRequest<HostProtocol>{
-        var path = "/1024//3"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//3"
         
 
         return ApiRequest(
@@ -2058,8 +2000,7 @@ open class InterfaceAPI {
     public func putHostInactivityPeriodRequest(
         key: UInt16? = nil
     ) -> ApiRequest<UInt16>{
-        var path = "/1024//34"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//34"
         
 
         return ApiRequest(
@@ -2100,8 +2041,7 @@ open class InterfaceAPI {
     public func putLockRequest(
         infos: InterfaceLock
     ) -> ApiRequest<InterfaceLock>{
-        var path = "/1024//6"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//6"
         
 
         return ApiRequest(
@@ -2142,8 +2082,7 @@ open class InterfaceAPI {
     public func putMqttRelayNetKeyRequest(
         netkey: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//55"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//55"
         
 
         return ApiRequest(
@@ -2184,8 +2123,7 @@ open class InterfaceAPI {
     public func putMqttRelayPasswordRequest(
         url: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//54"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//54"
         
 
         return ApiRequest(
@@ -2226,8 +2164,7 @@ open class InterfaceAPI {
     public func putMqttRelayPortRequest(
         url: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//51"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//51"
         
 
         return ApiRequest(
@@ -2268,8 +2205,7 @@ open class InterfaceAPI {
     public func putMqttRelayUrlRequest(
         url: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//50"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//50"
         
 
         return ApiRequest(
@@ -2310,8 +2246,7 @@ open class InterfaceAPI {
     public func putNetworkGatewayIpRequest(
         key: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//31"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//31"
         
 
         return ApiRequest(
@@ -2352,8 +2287,7 @@ open class InterfaceAPI {
     public func putNetworkInfraIpRequest(
         key: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//30"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//30"
         
 
         return ApiRequest(
@@ -2394,8 +2328,7 @@ open class InterfaceAPI {
     public func putNetworkInfraIpMaskRequest(
         key: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//32"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//32"
         
 
         return ApiRequest(
@@ -2436,8 +2369,7 @@ open class InterfaceAPI {
     public func putNetworkModeRequest(
         mode: NetworkMode? = nil
     ) -> ApiRequest<NetworkMode>{
-        var path = "/1024//15"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//15"
         
 
         return ApiRequest(
@@ -2478,8 +2410,7 @@ open class InterfaceAPI {
     public func putNfcPairingModeRequest(
         mode: NfcPairingMode? = nil
     ) -> ApiRequest<NfcPairingMode>{
-        var path = "/1024//13"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//13"
         
 
         return ApiRequest(
@@ -2520,8 +2451,7 @@ open class InterfaceAPI {
     public func putPowerOptimisationLevelRequest(
         mode: LowPowerOptimisationLevel? = nil
     ) -> ApiRequest<LowPowerOptimisationLevel>{
-        var path = "/1024//14"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//14"
         
 
         return ApiRequest(
@@ -2562,8 +2492,7 @@ open class InterfaceAPI {
     public func putWepKeyRequest(
         key: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//16"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//16"
         
 
         return ApiRequest(
@@ -2604,8 +2533,7 @@ open class InterfaceAPI {
     public func putWifiSsidRequest(
         key: String? = nil
     ) -> ApiRequest<String>{
-        var path = "/1024//25"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//25"
         
 
         return ApiRequest(
@@ -2642,8 +2570,7 @@ open class InterfaceAPI {
     */
     public func reloadConfigRequest()
          -> ApiRequest<Void>{
-        var path = "/1024//10"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1024//10"
         
 
         return ApiRequest(

@@ -33,27 +33,6 @@ public enum APIError: Error {
 //	}
 }
 
-//public class QueueComProtocol: ComProtocol, ConnectionStateAware {
-//	public func connect(timeout: UInt? = nil) {
-//
-//	}
-//
-//	public func disconnect(timeout: UInt? = nil) {
-//
-//	}
-//
-//	public func read(timeout: UInt? = nil) -> Bytes {
-//		<#code#>
-//	}
-//
-//	public func write(data: Bytes, timeout: UInt? = nil) {
-//		<#code#>
-//	}
-//
-//	public var connectionState: ConnectionState
-//}
-
-
 public enum TapClientError: Error {
 	case invalidMethodType
 	case invalidPathFormat
@@ -78,7 +57,7 @@ public class ApiRequest<BodyType> { // : Encodable
 	}
 	
 	public var description: String {
-		return "ApiRequest \(self.method) \(self.path) \(self.body)"
+		return "ApiRequest \(self.method) \(self.path) \(String(describing: self.body))"
 	}
 	
 	public func asFrame() throws -> Bytes {
@@ -86,7 +65,7 @@ public class ApiRequest<BodyType> { // : Encodable
 		request.header = TapRequestHeader()
 		request.header.path = try TapRequestHeader.Path.fromString(self.path)
 		request.header.methodType = self.method
-		request.payload = self.body as! Bytes ?? [UInt8]()
+		request.payload = (self.body as! Bytes?) ?? [UInt8]()
 		return TapStreamWriter().write(ApduRequest.from(tapRequest: request)).toBytes()
 	}
 	
@@ -129,7 +108,7 @@ public class ApiResponse<DataType>{
 		try self.successful()
 //		return try TapStreamDecoder().decode(self.dataType!, from: self.response.data)
 		if (self.converter != nil){
-			var data = self.response.data ?? [UInt8]()
+			let data = self.response.data ?? [UInt8]()
 			return self.converter!.decode(stream: TapStreamReader(withBytes: data))
 		}
 //		else if (self.response.data is Bytes){
@@ -151,7 +130,6 @@ public class TapClient {
 	
 	var comProtocol: ComProtocol
 	var _requestInterceptor: TapRequestInterceptor
-	var encoder = TapStreamEncoder()
 	
 	init(withProtocol p: ComProtocol, requestInterceptor: TapRequestInterceptor = ApduRequestInterceptor()) {
 		self.comProtocol = p
@@ -159,11 +137,11 @@ public class TapClient {
 	}
 	
 	func connect() throws {
-		try comProtocol.connect()
+		_ = try comProtocol.connect()
 	}
 	
 	func disconnect() throws {
-		try comProtocol.disconnect()
+		_ = try comProtocol.disconnect()
 	}
 	
 	func GET(path: String, body data: Bytes? = nil) throws -> TapResponse {

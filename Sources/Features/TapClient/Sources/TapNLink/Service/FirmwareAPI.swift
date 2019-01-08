@@ -29,8 +29,7 @@ open class FirmwareAPI {
     */
     public func getStateRequest()
          -> ApiRequest<Void>{
-        var path = "/5//3"
-        //var regex = "\{([\S]*)\}"
+        let path = "/5//3"
         
 
         return ApiRequest(
@@ -63,8 +62,7 @@ open class FirmwareAPI {
     */
     public func getUpdateResultRequest()
          -> ApiRequest<Void>{
-        var path = "/5//5"
-        //var regex = "\{([\S]*)\}"
+        let path = "/5//5"
         
 
         return ApiRequest(
@@ -101,8 +99,7 @@ open class FirmwareAPI {
     public func postCrcCheckRequest(
         data: CrcCheckBody
     ) -> ApiRequest<CrcCheckBody>{
-        var path = "/5//6"
-        //var regex = "\{([\S]*)\}"
+        let path = "/5//6"
         
 
         return ApiRequest(
@@ -141,8 +138,7 @@ open class FirmwareAPI {
     */
     public func postPackageRequest()
          -> ApiRequest<Void>{
-        var path = "/5//0"
-        //var regex = "\{([\S]*)\}"
+        let path = "/5//0"
         
 
         return ApiRequest(
@@ -175,8 +171,7 @@ open class FirmwareAPI {
     */
     public func postUpdateRequest()
          -> ApiRequest<Void>{
-        var path = "/5//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/5//2"
         
 
         return ApiRequest(

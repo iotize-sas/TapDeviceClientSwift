@@ -49,7 +49,7 @@ public class BlueSocketProtocol: ComProtocol {
 	public func read() throws -> Bytes {
 		try self._checkSocket()
 		var data = Data()
-		try self.socket!.read(into: &data)
+		_ = try self.socket!.read(into: &data)
 		return [UInt8](data)
 	}
 	

@@ -36,7 +36,7 @@ public class MockProtocol: ComProtocol {
 	}
 	
 	public func read() -> Bytes {
-		var response = self.responseQueue.dequeue()
+		let response = self.responseQueue.dequeue()
 		return response!
 	}
 	

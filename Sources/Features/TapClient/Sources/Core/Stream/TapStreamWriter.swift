@@ -26,7 +26,7 @@ public class TapStreamWriter: KaitaiStreamWriter {
 	
 	public func appendCRC(){
 		let crcBytes: UInt32 = TapStreamWriter.crcEngine.calculate(self.toBytes())
-		self.writeU4(crcBytes)
+		_ = self.writeU4(crcBytes)
 	}
 	
 	public func writeStr(_ string: String, length: Int){
@@ -34,7 +34,7 @@ public class TapStreamWriter: KaitaiStreamWriter {
 		if (bytes.count != length){
 			bytes.resize(length, fillWith: 0)
 		}
-		self.writeBytes(bytes)
+		_ = self.writeBytes(bytes)
 	}
 	
 	public func writeStr(_ string: String){
@@ -86,7 +86,7 @@ public class TapStreamWriter: KaitaiStreamWriter {
 	}
 	
 	func _flushBits(){
-		self.writeU1(UInt8(self.bits))
+		_ = self.writeU1(UInt8(self.bits))
 		self.bits_left = 8
 	}
 	func _flushBitsLeftIfNeeded(){

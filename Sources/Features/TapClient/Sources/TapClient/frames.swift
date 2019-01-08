@@ -196,8 +196,8 @@ public extension TapStreamWriter {
     }
 
     func writeTapRequestHeader(_ model: TapRequestHeader) -> TapStreamWriter{
-        self.writeU1(model.methodType!.rawValue)
-        self.writeTapRequestHeaderPath(model.path)
+        _ = self.writeU1(model.methodType!.rawValue)
+        _ = self.writeTapRequestHeaderPath(model.path)
         return self
     }
 
@@ -207,9 +207,9 @@ public extension TapStreamWriter {
     }
 
     func writeTapRequestHeaderPath(_ model: TapRequestHeader.Path) -> TapStreamWriter{
-        self.writeU2(model.objectId)
-        self.writeU2(model.objectInstanceId)
-        self.writeU2(model.resourceId)
+        _ = self.writeU2(model.objectId)
+        _ = self.writeU2(model.objectInstanceId)
+        _ = self.writeU2(model.resourceId)
         return self
     }
     
@@ -221,8 +221,8 @@ public extension TapStreamWriter {
     }
 
     func writeTapRequest(_ model: TapRequest) -> TapStreamWriter{
-        self.writeTapRequestHeader(model.header)
-        self.writeBytes(model.payload!)
+        _ = self.writeTapRequestHeader(model.header)
+        _ = self.writeBytes(model.payload!)
         return self
     }
 
@@ -235,8 +235,8 @@ public extension TapStreamWriter {
     }
 
     func writeTapResponse(_ model: TapResponse) -> TapStreamWriter{
-        self.writeU1(model.codeRet!)
-        self.writeBytes(model.data!)
+        _ = self.writeU1(model.codeRet!)
+        _ = self.writeBytes(model.data!)
         return self
     }
 
@@ -249,8 +249,8 @@ public extension TapStreamWriter {
     }
 
     func writeTapApduRequest(_ model: TapApduRequest) -> TapStreamWriter{
-        self.writeTapApduRequestHeader(model.header)
-        self.writeTapRequest(model.request)
+        _ = self.writeTapApduRequestHeader(model.header)
+        _ = self.writeTapRequest(model.request)
         return self
     }
 
@@ -260,11 +260,11 @@ public extension TapStreamWriter {
     }
 
     func writeTapApduRequestHeader(_ model: TapApduRequest.Header) -> TapStreamWriter{
-        self.writeU1(model.cla!)
-        self.writeU1(model.ins!)
-        self.writeU1(model.p1!)
-        self.writeU1(model.p2!)
-        self.writeU1(model.lc!)
+        _ = self.writeU1(model.cla!)
+        _ = self.writeU1(model.ins!)
+        _ = self.writeU1(model.p1!)
+        _ = self.writeU1(model.p2!)
+        _ = self.writeU1(model.lc!)
         return self
     }
     
@@ -276,7 +276,7 @@ public extension TapStreamWriter {
     }
 
     func writeTapMultiRequest(_ model: TapMultiRequest) -> TapStreamWriter{
-        self.writeTapMultiRequestRequestItem(model.requests)
+        _ = self.writeTapMultiRequestRequestItem(model.requests)
         return self
     }
 
@@ -286,9 +286,9 @@ public extension TapStreamWriter {
     }
 
     func writeTapMultiRequestRequestItem(_ model: TapMultiRequest.RequestItem) -> TapStreamWriter{
-        self.writeU2(model.requestLen!)
-        self.writeTapRequest(model.request)
-        self.writeU1(model.expectedCodeRet!)
+        _ = self.writeU2(model.requestLen!)
+        _ = self.writeTapRequest(model.request)
+        _ = self.writeU1(model.expectedCodeRet!)
         return self
     }
     
@@ -300,7 +300,7 @@ public extension TapStreamWriter {
     }
 
     func writeTapMultiResponse(_ model: TapMultiResponse) -> TapStreamWriter{
-        self.writeTapMultiResponseResponseItem(model.responses)
+        _ = self.writeTapMultiResponseResponseItem(model.responses)
         return self
     }
 
@@ -310,8 +310,8 @@ public extension TapStreamWriter {
     }
 
     func writeTapMultiResponseResponseItem(_ model: TapMultiResponse.ResponseItem) -> TapStreamWriter{
-        self.writeU2(model.responseLen!)
-        self.writeTapResponse(model.response)
+        _ = self.writeU2(model.responseLen!)
+        _ = self.writeTapResponse(model.response)
         return self
     }
     
@@ -323,8 +323,8 @@ public extension TapStreamWriter {
     }
 
     func writeApduResponse(_ model: ApduResponse) -> TapStreamWriter{
-        self.writeBytes(model.data!)
-        self.writeU2(model.status!)
+        _ = self.writeBytes(model.data!)
+        _ = self.writeU2(model.status!)
         return self
     }
 
@@ -337,8 +337,8 @@ public extension TapStreamWriter {
     }
 
     func writeApduRequest(_ model: ApduRequest) -> TapStreamWriter{
-        self.writeApduRequestHeader(model.header)
-        self.writeBytes(model.data!)
+        _ = self.writeApduRequestHeader(model.header)
+        _ = self.writeBytes(model.data!)
         return self
     }
 
@@ -351,11 +351,11 @@ public extension TapStreamWriter {
     }
 
     func writeApduRequestHeader(_ model: ApduRequestHeader) -> TapStreamWriter{
-        self.writeU1(model.cla!)
-        self.writeU1(model.ins!)
-        self.writeU1(model.p1!)
-        self.writeU1(model.p2!)
-        self.writeU1(model.lc!)
+        _ = self.writeU1(model.cla!)
+        _ = self.writeU1(model.ins!)
+        _ = self.writeU1(model.p1!)
+        _ = self.writeU1(model.p2!)
+        _ = self.writeU1(model.lc!)
         return self
     }
 
@@ -368,11 +368,11 @@ public extension TapStreamWriter {
     }
 
     func writeIotizeEncryptedFrame(_ model: IotizeEncryptedFrame) -> TapStreamWriter{
-        self.writeU2(model.id!)
-        self.writeU2(model.len!)
-        self.writeBytes(model.payload!)
-        self.writeBytes(model.padding!)
-        self.appendCRC()
+        _ = self.writeU2(model.id!)
+        _ = self.writeU2(model.len!)
+        _ = self.writeBytes(model.payload!)
+        _ = self.writeBytes(model.padding!)
+        _ = self.appendCRC()
         return self
     }
 

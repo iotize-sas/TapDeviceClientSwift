@@ -28,8 +28,7 @@ open class AdpAPI {
     */
     public func getAdpStatusRequest()
          -> ApiRequest<Void>{
-        var path = "/1027//36"
-        //var regex = "\{([\S]*)\}"
+        let path = "/1027//36"
         
 
         return ApiRequest(

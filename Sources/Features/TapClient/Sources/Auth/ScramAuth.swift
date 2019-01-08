@@ -223,7 +223,7 @@ public class ScramAuth: AuthApi {
 	
 	static func computeSessionKey(clientNonce: UInt32, serverNonce: UInt32, userSalt: Bytes, serverKey: Bytes, storedKey: Bytes) throws -> Bytes {
 		let buffer = KaitaiStreamWriter()
-		buffer
+		_ = buffer
 			.writeU4(clientNonce)
 			.writeBytes(serverKey)
 			.writeBytes(userSalt)

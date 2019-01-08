@@ -150,7 +150,7 @@ public class BytesToStringConverter: TapConverter {
 		let bytes = parts.map({ (part) -> UInt8 in
 			return self.encoder(String(part))
 		})
-		stream.writeBytes(bytes)
+		_ = stream.writeBytes(bytes)
 		return stream
 	}
 	
@@ -190,7 +190,7 @@ extension Float : TapCodable {}
 public class BytesConverter: TapConverter {
 	
 	public func encode<T>(mymodel: T, stream: TapStreamWriter) -> TapStreamWriter {
-		stream.writeBytes(mymodel as! Bytes)
+		_ = stream.writeBytes(mymodel as! Bytes)
 		return stream
 	}
 	

@@ -19,14 +19,14 @@ class ByteBufferTest: XCTestCase {
 		// Put teardown code here. This method is called after the invocation of each test method in the class.
 	}
 	
-	func testWrite() throws {
+	func testWriteBytes() throws {
 		let buffer = ByteBuffer(size: 100)
 		
-		buffer
+		_ = buffer
 			.put([0xAA, 0xBB, 0xCC])
 			.put([0xDD, 0xEE, 0xFF])
 		
-		print(buffer.bytes().hexstr)
+		XCTAssertEqual("AABBCCDDEEFF", buffer.bytes().hexstr)
 		
 	}
 	

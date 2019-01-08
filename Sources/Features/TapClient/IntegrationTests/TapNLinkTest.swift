@@ -69,10 +69,10 @@ class TapNLinkTest: XCTestCase {
 		let uartSettings: UartSettings = try self.device.service.target.getUARTSettings().body()
 		
 		// Read all bytes
-		var response = try self.device.service.target.readBytes().body()
+		let readBytes = try self.device.service.target.readBytes().body()
 	
 		// Read output
-		response = try self.device.service.target.readBytes(nbBytes: 10).body()
+		let read10Bytes = try self.device.service.target.readBytes(nbBytes: 10).body()
 		
 		
 		// Send data
@@ -114,7 +114,7 @@ class TapNLinkTest: XCTestCase {
 
 	}
 	
-	func commands(){
+	func testCreateApiRequest(){
 		var request = ApiRequest<Bytes>.GET(path: "/3//3")
 		request = ApiRequest<Bytes>.POST(path: "/3//3")
 		request = ApiRequest<Bytes>.PUT(path: "/3//3", body: "hello".bytes)

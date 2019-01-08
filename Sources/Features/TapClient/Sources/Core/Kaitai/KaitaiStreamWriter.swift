@@ -108,46 +108,46 @@ public class KaitaiStreamWriter : KaitaiWritableStream{
 	}
 	
 	public func write(_ bytes: [UInt8]) {
-		self.stream.put(bytes)
+		_ = self.stream.put(bytes)
 	}
 	
 	public func write(_ value: UInt16) {
-		self.stream.put(toByteArray(value.bigEndian))
+		_ = self.stream.put(toByteArray(value.bigEndian))
 	}
 	
 	public func write(_ value: UInt32) {
-		self.stream.put(toByteArray(value.bigEndian))
+		_ = self.stream.put(toByteArray(value.bigEndian))
 	}
 	
 	public func write(_ value: UInt64) {
-		self.stream.put(toByteArray(value.bigEndian))
+		_ = self.stream.put(toByteArray(value.bigEndian))
 	}
 	
 	public func write(_ value: UInt) {
-		self.stream.put(toByteArray(value.bigEndian))
+		_ = self.stream.put(toByteArray(value.bigEndian))
 	}
 	
 	public func write(_ value: Int16) {
-		self.stream.put(toByteArray(value.bigEndian))
+		_ = self.stream.put(toByteArray(value.bigEndian))
 	}
 	
 	public func write(_ value: Int32) {
-		self.stream.put(toByteArray(value.bigEndian))
+		_ = self.stream.put(toByteArray(value.bigEndian))
 	}
 	
 	public func write(_ value: Int64) {
-		self.stream.put(toByteArray(value.bigEndian))
+		_ = self.stream.put(toByteArray(value.bigEndian))
 	}
 	
 	public func write(_ value: Int) {
-		self.stream.put(toByteArray(value.bigEndian))
+		_ = self.stream.put(toByteArray(value.bigEndian))
 	}
 	
 	public func write(_ value: String) {
-		self.writeBytes(value.bytes)
+		_ = self.writeBytes(value.bytes)
 	}
 	
 	public func write<T>(_ value: T) {
-		self.stream.put(toByteArray(value))
+		_ = self.stream.put(toByteArray(value))
 	}
 }

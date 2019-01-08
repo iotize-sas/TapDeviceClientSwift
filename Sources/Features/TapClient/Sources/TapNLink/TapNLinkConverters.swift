@@ -263,11 +263,11 @@ public class AclEntryConverter: TapConverter {
         let model = mymodel as! AclEntry
         stream.forwardBits(3)
 
-        stream.writeBitsInt(model.create!, 1)
-        stream.writeBitsInt(model.delete!, 1)
-        stream.writeBitsInt(model.execute!, 1)
-        stream.writeBitsInt(model.write!, 1)
-        stream.writeBitsInt(model.read!, 1)
+        _ = stream.writeBitsInt(model.create!, 1)
+        _ = stream.writeBitsInt(model.delete!, 1)
+        _ = stream.writeBitsInt(model.execute!, 1)
+        _ = stream.writeBitsInt(model.write!, 1)
+        _ = stream.writeBitsInt(model.read!, 1)
         return stream
     }
 
@@ -289,9 +289,9 @@ public class MemoryInfoConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! MemoryInfo
-        stream.writeU4(model.address!)
-        stream.writeU4(model.wordCount!)
-        stream.writeU1(model.wordSize!.rawValue)
+        _ = stream.writeU4(model.address!)
+        _ = stream.writeU4(model.wordCount!)
+        _ = stream.writeU1(model.wordSize!.rawValue)
         return stream
     }
 
@@ -311,8 +311,8 @@ public class MemoryWriteInfoConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! MemoryWriteInfo
-        stream.writeMemoryInfo(model.address)
-        stream.writeBytes(model.value!)
+        _ = stream.writeMemoryInfo(model.address)
+        _ = stream.writeBytes(model.value!)
         return stream
     }
 
@@ -335,8 +335,8 @@ public class ReadWriteRightsConverter: TapConverter {
         let model = mymodel as! ReadWriteRights
         stream.forwardBits(6)
 
-        stream.writeBitsInt(model.write!, 1)
-        stream.writeBitsInt(model.read!, 1)
+        _ = stream.writeBitsInt(model.write!, 1)
+        _ = stream.writeBitsInt(model.read!, 1)
         return stream
     }
 
@@ -363,13 +363,13 @@ public class DatalogOptionConverter: TapConverter {
         let model = mymodel as! DatalogOption
         stream.forwardBits(6)
 
-        stream.writeBitsInt(model.security!, 1)
-        stream.writeBitsInt(model.qos!, 1)
+        _ = stream.writeBitsInt(model.security!, 1)
+        _ = stream.writeBitsInt(model.qos!, 1)
         stream.forwardBits(5)
 
-        stream.writeBitsInt(model.logOnChange!, 1)
-        stream.writeBitsInt(model.rollingMode!, 1)
-        stream.writeBitsInt(model.autorun!, 1)
+        _ = stream.writeBitsInt(model.logOnChange!, 1)
+        _ = stream.writeBitsInt(model.rollingMode!, 1)
+        _ = stream.writeBitsInt(model.autorun!, 1)
         return stream
     }
 
@@ -389,8 +389,8 @@ public class UartSettingsConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! UartSettings
-        stream.writeUartSettingsCtr2(model.ctr2)
-        stream.writeUartSettingsCtr1(model.ctr1)
+        _ = stream.writeUartSettingsCtr2(model.ctr2)
+        _ = stream.writeUartSettingsCtr1(model.ctr1)
         return stream
     }
 
@@ -411,9 +411,9 @@ public class TapVersionConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! TapVersion
-        stream.writeU1(model.major!)
-        stream.writeU1(model.minor!)
-        stream.writeU2(model.build!)
+        _ = stream.writeU1(model.major!)
+        _ = stream.writeU1(model.minor!)
+        _ = stream.writeU2(model.build!)
         return stream
     }
 
@@ -438,13 +438,13 @@ public class Lwm2mTlvConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! Lwm2mTlv
-        stream.writeBitsInt(model.identifierType!, 2)
-        stream.writeBitsInt(model.identifierLength!, 1)
-        stream.writeBitsInt(model.lengthType!, 2)
-        stream.writeBitsInt(model.other!, 3)
-        stream.writeBytes(model.identifier!)
-        stream.writeU2(model.len!)
-        stream.writeBytes(model.value!)
+        _ = stream.writeBitsInt(model.identifierType!, 2)
+        _ = stream.writeBitsInt(model.identifierLength!, 1)
+        _ = stream.writeBitsInt(model.lengthType!, 2)
+        _ = stream.writeBitsInt(model.other!, 3)
+        _ = stream.writeBytes(model.identifier!)
+        _ = stream.writeU2(model.len!)
+        _ = stream.writeBytes(model.value!)
         return stream
     }
 
@@ -473,11 +473,11 @@ public class InterfaceLockConverter: TapConverter {
 
         stream.forwardBits(3)
 
-        stream.writeBitsInt(model.scramActivated!, 1)
-        stream.writeBitsInt(model.hashPassword!, 1)
-        stream.writeBitsInt(model.factoryReset!, 1)
-        stream.writeBitsInt(model.resourceLogUid!, 1)
-        stream.writeBitsInt(model.resouceFactory!, 1)
+        _ = stream.writeBitsInt(model.scramActivated!, 1)
+        _ = stream.writeBitsInt(model.hashPassword!, 1)
+        _ = stream.writeBitsInt(model.factoryReset!, 1)
+        _ = stream.writeBitsInt(model.resourceLogUid!, 1)
+        _ = stream.writeBitsInt(model.resouceFactory!, 1)
         return stream
     }
 
@@ -497,8 +497,8 @@ public class LoginCredentialConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! LoginCredential
-        stream.writeStr(model.username!, length: Int(16))
-        stream.writeStr(model.password!, length: Int(16))
+        _ = stream.writeStr(model.username!, length: Int(16))
+        _ = stream.writeStr(model.password!, length: Int(16))
         return stream
     }
 
@@ -518,8 +518,8 @@ public class LoginCredentialHashedConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! LoginCredentialHashed
-        stream.writeStr(model.username!, length: Int(16))
-        stream.writeBytes(model.password!)
+        _ = stream.writeStr(model.username!, length: Int(16))
+        _ = stream.writeBytes(model.password!)
         return stream
     }
 
@@ -539,8 +539,8 @@ public class ScramLoginParamsConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! ScramLoginParams
-        stream.writeStr(model.username!, length: Int(16))
-        stream.writeU4(model.clientNonce!)
+        _ = stream.writeStr(model.username!, length: Int(16))
+        _ = stream.writeU4(model.clientNonce!)
         return stream
     }
 
@@ -561,9 +561,9 @@ public class ScramLoginResponseBodyConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! ScramLoginResponseBody
-        stream.writeU4(model.serverNonce!)
-        stream.writeBytes(model.salt!)
-        stream.writeU4(model.iterationNumber!)
+        _ = stream.writeU4(model.serverNonce!)
+        _ = stream.writeBytes(model.salt!)
+        _ = stream.writeU4(model.iterationNumber!)
         return stream
     }
 
@@ -583,8 +583,8 @@ public class TargetComStatsConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! TargetComStats
-        stream.writeU4(model.nbFailCom!)
-        stream.writeU4(model.nbSuccessfulCom!)
+        _ = stream.writeU4(model.nbFailCom!)
+        _ = stream.writeU4(model.nbSuccessfulCom!)
         return stream
     }
 
@@ -607,8 +607,8 @@ public class AvailableFunctionConverter: TapConverter {
         let model = mymodel as! AvailableFunction
         stream.forwardBits(6)
 
-        stream.writeBitsInt(model.debug!, 1)
-        stream.writeBitsInt(model.datalog!, 1)
+        _ = stream.writeBitsInt(model.debug!, 1)
+        _ = stream.writeBitsInt(model.datalog!, 1)
         return stream
     }
 
@@ -629,9 +629,9 @@ public class CrcCheckBodyConverter: TapConverter {
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! CrcCheckBody
-        stream.writeU4(model.address!)
-        stream.writeU4(model.size!)
-        stream.writeU4(model.crc!)
+        _ = stream.writeU4(model.address!)
+        _ = stream.writeU4(model.size!)
+        _ = stream.writeU4(model.crc!)
         return stream
     }
 
@@ -648,7 +648,7 @@ public class SinglePacketConverter: TapConverter {
         model.packetLength = stream.readU2()
         model.packetId = stream.readU2()
         model.configVersion = stream.readU4()
-        model.messageType = SinglePacket.Type(rawValue:UInt8(stream.readBitsInt(length: 4)))
+        model.messageType = SinglePacket.PacketType(rawValue:UInt8(stream.readBitsInt(length: 4)))
 
         stream.forwardBits(length: 2)
         model.encryption = stream.readBool()
@@ -657,30 +657,30 @@ public class SinglePacketConverter: TapConverter {
         model.salt = stream.readU2()
         model.logTime = stream.readU4()
         model.dataSize = stream.readU2()
-        model.data = stream.readBytes(length: Int(data_size))
-        model.padding = stream.readBytes(length: Int((4 - ((data_size + 10) % 4)) % 4))
+        model.data = stream.readBytes(length: Int(Int(model.dataSize)))
+        model.padding = stream.readBytes(length: Int((4 - (( Int(model.dataSize) + 10) % 4)) % 4))
         model.crc = stream.readU4()
         return model as! T
     }
 
     public func encode<T>(mymodel: T, stream: TapStreamWriter = TapStreamWriter()) -> TapStreamWriter {
         let model = mymodel as! SinglePacket
-        stream.writeU4(model.sendTime!)
-        stream.writeU2(model.packetLength!)
-        stream.writeU2(model.packetId!)
-        stream.writeU4(model.configVersion!)
-        stream.writeBitsInt(model.messageType!.rawValue, 4)
+        _ = stream.writeU4(model.sendTime!)
+        _ = stream.writeU2(model.packetLength!)
+        _ = stream.writeU2(model.packetId!)
+        _ = stream.writeU4(model.configVersion!)
+        _ = stream.writeBitsInt(model.messageType!.rawValue, 4)
         stream.forwardBits(2)
 
-        stream.writeBitsInt(model.encryption!, 1)
-        stream.writeBitsInt(model.ack!, 1)
-        stream.writeU1(model.senderId!)
-        stream.writeU2(model.salt!)
-        stream.writeU4(model.logTime!)
-        stream.writeU2(model.dataSize!)
-        stream.writeBytes(model.data!)
-        stream.writeBytes(model.padding!)
-        stream.appendCRC()
+        _ = stream.writeBitsInt(model.encryption!, 1)
+        _ = stream.writeBitsInt(model.ack!, 1)
+        _ = stream.writeU1(model.senderId!)
+        _ = stream.writeU2(model.salt!)
+        _ = stream.writeU4(model.logTime!)
+        _ = stream.writeU2(model.dataSize!)
+        _ = stream.writeBytes(model.data!)
+        _ = stream.writeBytes(model.padding!)
+        _ = stream.appendCRC()
         return stream
     }
 

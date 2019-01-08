@@ -128,14 +128,14 @@ public class TapResponse: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "TapResponse[codeRet:\(self.codeRet)data:\(self.data?.hexstr)]"
+    return "TapResponse[codeRet: \(self.codeRet)data: \(self.data?.hexstr)]"
 }
 
 /*
 public var debugDescription : String  {
     return "TapResponse"
-        + "; codeRet=" +  \(self.codeRet)
-        + "; data=" +  \(self.data?.hexstr)
+        + "; codeRet=" +  self.codeRet
+        + "; data=" +  self.data?.hexstr
 }
 */
 
@@ -177,14 +177,14 @@ public class TapApduRequest: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "TapApduRequest[header:\(self.header.description)request:\(self.request.description)]"
+    return "TapApduRequest[header: \(self.header.description)request: \(self.request.description)]"
 }
 
 /*
 public var debugDescription : String  {
     return "TapApduRequest"
-        + "; header=" +  \(self.header.description)
-        + "; request=" +  \(self.request.description)
+        + "; header=" +  self.header.description
+        + "; request=" +  self.request.description
 }
 */
 
@@ -223,17 +223,17 @@ public var debugDescription : String  {
 
         
 public var description : String  {
-    return "Header[cla:\(self.cla)ins:\(self.ins)p1:\(self.p1)p2:\(self.p2)lc:\(self.lc)]"
+    return "Header[cla: \(self.cla)ins: \(self.ins)p1: \(self.p1)p2: \(self.p2)lc: \(self.lc)]"
 }
 
 /*
 public var debugDescription : String  {
     return "Header"
-        + "; cla=" +  \(self.cla)
-        + "; ins=" +  \(self.ins)
-        + "; p1=" +  \(self.p1)
-        + "; p2=" +  \(self.p2)
-        + "; lc=" +  \(self.lc)
+        + "; cla=" +  self.cla
+        + "; ins=" +  self.ins
+        + "; p1=" +  self.p1
+        + "; p2=" +  self.p2
+        + "; lc=" +  self.lc
 }
 */
 
@@ -285,13 +285,13 @@ public class TapMultiRequest: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "TapMultiRequest[requests:\(self.requests.description)]"
+    return "TapMultiRequest[requests: \(self.requests.description)]"
 }
 
 /*
 public var debugDescription : String  {
     return "TapMultiRequest"
-        + "; requests=" +  \(self.requests.description)
+        + "; requests=" +  self.requests.description
 }
 */
 
@@ -326,15 +326,15 @@ public var debugDescription : String  {
 
         
 public var description : String  {
-    return "RequestItem[requestLen:\(self.requestLen)request:\(self.request.description)expectedCodeRet:\(self.expectedCodeRet)]"
+    return "RequestItem[requestLen: \(self.requestLen)request: \(self.request.description)expectedCodeRet: \(self.expectedCodeRet)]"
 }
 
 /*
 public var debugDescription : String  {
     return "RequestItem"
-        + "; requestLen=" +  \(self.requestLen)
-        + "; request=" +  \(self.request.description)
-        + "; expectedCodeRet=" +  \(self.expectedCodeRet)
+        + "; requestLen=" +  self.requestLen
+        + "; request=" +  self.request.description
+        + "; expectedCodeRet=" +  self.expectedCodeRet
 }
 */
 
@@ -373,13 +373,13 @@ public class TapMultiResponse: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "TapMultiResponse[responses:\(self.responses.description)]"
+    return "TapMultiResponse[responses: \(self.responses.description)]"
 }
 
 /*
 public var debugDescription : String  {
     return "TapMultiResponse"
-        + "; responses=" +  \(self.responses.description)
+        + "; responses=" +  self.responses.description
 }
 */
 
@@ -413,14 +413,14 @@ public var debugDescription : String  {
 
         
 public var description : String  {
-    return "ResponseItem[responseLen:\(self.responseLen)response:\(self.response.description)]"
+    return "ResponseItem[responseLen: \(self.responseLen)response: \(self.response.description)]"
 }
 
 /*
 public var debugDescription : String  {
     return "ResponseItem"
-        + "; responseLen=" +  \(self.responseLen)
-        + "; response=" +  \(self.response.description)
+        + "; responseLen=" +  self.responseLen
+        + "; response=" +  self.response.description
 }
 */
 
@@ -458,14 +458,14 @@ public class ApduResponse: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "ApduResponse[data:\(self.data?.hexstr)status:\(self.status)]"
+    return "ApduResponse[data: \(self.data?.hexstr)status: \(self.status)]"
 }
 
 /*
 public var debugDescription : String  {
     return "ApduResponse"
-        + "; data=" +  \(self.data?.hexstr)
-        + "; status=" +  \(self.status)
+        + "; data=" +  self.data?.hexstr
+        + "; status=" +  self.status
 }
 */
 
@@ -507,14 +507,14 @@ public class ApduRequest: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "ApduRequest[header:\(self.header.description)data:\(self.data?.hexstr)]"
+    return "ApduRequest[header: \(self.header.description)data: \(self.data?.hexstr)]"
 }
 
 /*
 public var debugDescription : String  {
     return "ApduRequest"
-        + "; header=" +  \(self.header.description)
-        + "; data=" +  \(self.data?.hexstr)
+        + "; header=" +  self.header.description
+        + "; data=" +  self.data?.hexstr
 }
 */
 
@@ -559,17 +559,17 @@ public class ApduRequestHeader: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "ApduRequestHeader[cla:\(self.cla)ins:\(self.ins)p1:\(self.p1)p2:\(self.p2)lc:\(self.lc)]"
+    return "ApduRequestHeader[cla: \(self.cla)ins: \(self.ins)p1: \(self.p1)p2: \(self.p2)lc: \(self.lc)]"
 }
 
 /*
 public var debugDescription : String  {
     return "ApduRequestHeader"
-        + "; cla=" +  \(self.cla)
-        + "; ins=" +  \(self.ins)
-        + "; p1=" +  \(self.p1)
-        + "; p2=" +  \(self.p2)
-        + "; lc=" +  \(self.lc)
+        + "; cla=" +  self.cla
+        + "; ins=" +  self.ins
+        + "; p1=" +  self.p1
+        + "; p2=" +  self.p2
+        + "; lc=" +  self.lc
 }
 */
 
@@ -620,17 +620,17 @@ public class IotizeEncryptedFrame: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "IotizeEncryptedFrame[id:\(self.id)len:\(self.len)payload:\(self.payload?.hexstr)padding:\(self.padding?.hexstr)crc:\(self.crc)]"
+    return "IotizeEncryptedFrame[id: \(self.id)len: \(self.len)payload: \(self.payload?.hexstr)padding: \(self.padding?.hexstr)crc: \(self.crc)]"
 }
 
 /*
 public var debugDescription : String  {
     return "IotizeEncryptedFrame"
-        + "; id=" +  \(self.id)
-        + "; len=" +  \(self.len)
-        + "; payload=" +  \(self.payload?.hexstr)
-        + "; padding=" +  \(self.padding?.hexstr)
-        + "; crc=" +  \(self.crc)
+        + "; id=" +  self.id
+        + "; len=" +  self.len
+        + "; payload=" +  self.payload?.hexstr
+        + "; padding=" +  self.padding?.hexstr
+        + "; crc=" +  self.crc
 }
 */
 

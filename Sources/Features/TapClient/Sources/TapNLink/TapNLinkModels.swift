@@ -162,17 +162,17 @@ public class AclEntry: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "AclEntry[create:\(self.create)delete:\(self.delete)execute:\(self.execute)write:\(self.write)read:\(self.read)]"
+    return "AclEntry[create: \(self.create)delete: \(self.delete)execute: \(self.execute)write: \(self.write)read: \(self.read)]"
 }
 
 /*
 public var debugDescription : String  {
     return "AclEntry"
-        + "; create=" +  \(self.create)
-        + "; delete=" +  \(self.delete)
-        + "; execute=" +  \(self.execute)
-        + "; write=" +  \(self.write)
-        + "; read=" +  \(self.read)
+        + "; create=" +  self.create
+        + "; delete=" +  self.delete
+        + "; execute=" +  self.execute
+        + "; write=" +  self.write
+        + "; read=" +  self.read
 }
 */
 
@@ -222,15 +222,15 @@ public class MemoryInfo: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "MemoryInfo[address:\(self.address)wordCount:\(self.wordCount)wordSize:\(self.wordSize.rawValue)]"
+    return "MemoryInfo[address: \(self.address)wordCount: \(self.wordCount)wordSize: \(self.wordSize.rawValue)]"
 }
 
 /*
 public var debugDescription : String  {
     return "MemoryInfo"
-        + "; address=" +  \(self.address)
-        + "; wordCount=" +  \(self.wordCount)
-        + "; wordSize=" +  \(self.wordSize.rawValue)
+        + "; address=" +  self.address
+        + "; wordCount=" +  self.wordCount
+        + "; wordSize=" +  self.wordSize.rawValue
 }
 */
 
@@ -281,14 +281,14 @@ public class MemoryWriteInfo: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "MemoryWriteInfo[address:\(self.address.description)value:\(self.value?.hexstr)]"
+    return "MemoryWriteInfo[address: \(self.address.description)value: \(self.value?.hexstr)]"
 }
 
 /*
 public var debugDescription : String  {
     return "MemoryWriteInfo"
-        + "; address=" +  \(self.address.description)
-        + "; value=" +  \(self.value?.hexstr)
+        + "; address=" +  self.address.description
+        + "; value=" +  self.value?.hexstr
 }
 */
 
@@ -332,14 +332,14 @@ public class ReadWriteRights: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "ReadWriteRights[write:\(self.write)read:\(self.read)]"
+    return "ReadWriteRights[write: \(self.write)read: \(self.read)]"
 }
 
 /*
 public var debugDescription : String  {
     return "ReadWriteRights"
-        + "; write=" +  \(self.write)
-        + "; read=" +  \(self.read)
+        + "; write=" +  self.write
+        + "; read=" +  self.read
 }
 */
 
@@ -389,17 +389,17 @@ public class DatalogOption: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "DatalogOption[security:\(self.security)qos:\(self.qos)logOnChange:\(self.logOnChange)rollingMode:\(self.rollingMode)autorun:\(self.autorun)]"
+    return "DatalogOption[security: \(self.security)qos: \(self.qos)logOnChange: \(self.logOnChange)rollingMode: \(self.rollingMode)autorun: \(self.autorun)]"
 }
 
 /*
 public var debugDescription : String  {
     return "DatalogOption"
-        + "; security=" +  \(self.security)
-        + "; qos=" +  \(self.qos)
-        + "; logOnChange=" +  \(self.logOnChange)
-        + "; rollingMode=" +  \(self.rollingMode)
-        + "; autorun=" +  \(self.autorun)
+        + "; security=" +  self.security
+        + "; qos=" +  self.qos
+        + "; logOnChange=" +  self.logOnChange
+        + "; rollingMode=" +  self.rollingMode
+        + "; autorun=" +  self.autorun
 }
 */
 
@@ -449,14 +449,14 @@ public class UartSettings: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "UartSettings[ctr2:\(self.ctr2.description)ctr1:\(self.ctr1.description)]"
+    return "UartSettings[ctr2: \(self.ctr2.description)ctr1: \(self.ctr1.description)]"
 }
 
 /*
 public var debugDescription : String  {
     return "UartSettings"
-        + "; ctr2=" +  \(self.ctr2.description)
-        + "; ctr1=" +  \(self.ctr1.description)
+        + "; ctr2=" +  self.ctr2.description
+        + "; ctr1=" +  self.ctr1.description
 }
 */
 
@@ -499,19 +499,19 @@ public var debugDescription : String  {
 
         
 public var description : String  {
-    return "Ctr1[physicalPort:\(self.physicalPort.rawValue)stopBit:\(self.stopBit.rawValue)parity:\(self.parity.rawValue)dataLength:\(self.dataLength)handshakeDelimiter:\(self.handshakeDelimiter.rawValue)handshakeValue:\(self.handshakeValue.rawValue)timeout:\(self.timeout)]"
+    return "Ctr1[physicalPort: \(self.physicalPort.rawValue)stopBit: \(self.stopBit.rawValue)parity: \(self.parity.rawValue)dataLength: \(self.dataLength)handshakeDelimiter: \(self.handshakeDelimiter.rawValue)handshakeValue: \(self.handshakeValue.rawValue)timeout: \(self.timeout)]"
 }
 
 /*
 public var debugDescription : String  {
     return "Ctr1"
-        + "; physicalPort=" +  \(self.physicalPort.rawValue)
-        + "; stopBit=" +  \(self.stopBit.rawValue)
-        + "; parity=" +  \(self.parity.rawValue)
-        + "; dataLength=" +  \(self.dataLength)
-        + "; handshakeDelimiter=" +  \(self.handshakeDelimiter.rawValue)
-        + "; handshakeValue=" +  \(self.handshakeValue.rawValue)
-        + "; timeout=" +  \(self.timeout)
+        + "; physicalPort=" +  self.physicalPort.rawValue
+        + "; stopBit=" +  self.stopBit.rawValue
+        + "; parity=" +  self.parity.rawValue
+        + "; dataLength=" +  self.dataLength
+        + "; handshakeDelimiter=" +  self.handshakeDelimiter.rawValue
+        + "; handshakeValue=" +  self.handshakeValue.rawValue
+        + "; timeout=" +  self.timeout
 }
 */
 
@@ -557,15 +557,15 @@ public var debugDescription : String  {
 
         
 public var description : String  {
-    return "Ctr2[slv:\(self.slv)ofs:\(self.ofs)baudrate:\(self.baudrate)]"
+    return "Ctr2[slv: \(self.slv)ofs: \(self.ofs)baudrate: \(self.baudrate)]"
 }
 
 /*
 public var debugDescription : String  {
     return "Ctr2"
-        + "; slv=" +  \(self.slv)
-        + "; ofs=" +  \(self.ofs)
-        + "; baudrate=" +  \(self.baudrate)
+        + "; slv=" +  self.slv
+        + "; ofs=" +  self.ofs
+        + "; baudrate=" +  self.baudrate
 }
 */
 
@@ -686,19 +686,19 @@ public class Lwm2mTlv: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "Lwm2mTlv[identifierType:\(self.identifierType)identifierLength:\(self.identifierLength)lengthType:\(self.lengthType)other:\(self.other)identifier:\(self.identifier?.hexstr)len:\(self.len)value:\(self.value?.hexstr)]"
+    return "Lwm2mTlv[identifierType: \(self.identifierType)identifierLength: \(self.identifierLength)lengthType: \(self.lengthType)other: \(self.other)identifier: \(self.identifier?.hexstr)len: \(self.len)value: \(self.value?.hexstr)]"
 }
 
 /*
 public var debugDescription : String  {
     return "Lwm2mTlv"
-        + "; identifierType=" +  \(self.identifierType)
-        + "; identifierLength=" +  \(self.identifierLength)
-        + "; lengthType=" +  \(self.lengthType)
-        + "; other=" +  \(self.other)
-        + "; identifier=" +  \(self.identifier?.hexstr)
-        + "; len=" +  \(self.len)
-        + "; value=" +  \(self.value?.hexstr)
+        + "; identifierType=" +  self.identifierType
+        + "; identifierLength=" +  self.identifierLength
+        + "; lengthType=" +  self.lengthType
+        + "; other=" +  self.other
+        + "; identifier=" +  self.identifier?.hexstr
+        + "; len=" +  self.len
+        + "; value=" +  self.value?.hexstr
 }
 */
 
@@ -757,17 +757,17 @@ public class InterfaceLock: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "InterfaceLock[scramActivated:\(self.scramActivated)hashPassword:\(self.hashPassword)factoryReset:\(self.factoryReset)resourceLogUid:\(self.resourceLogUid)resouceFactory:\(self.resouceFactory)]"
+    return "InterfaceLock[scramActivated: \(self.scramActivated)hashPassword: \(self.hashPassword)factoryReset: \(self.factoryReset)resourceLogUid: \(self.resourceLogUid)resouceFactory: \(self.resouceFactory)]"
 }
 
 /*
 public var debugDescription : String  {
     return "InterfaceLock"
-        + "; scramActivated=" +  \(self.scramActivated)
-        + "; hashPassword=" +  \(self.hashPassword)
-        + "; factoryReset=" +  \(self.factoryReset)
-        + "; resourceLogUid=" +  \(self.resourceLogUid)
-        + "; resouceFactory=" +  \(self.resouceFactory)
+        + "; scramActivated=" +  self.scramActivated
+        + "; hashPassword=" +  self.hashPassword
+        + "; factoryReset=" +  self.factoryReset
+        + "; resourceLogUid=" +  self.resourceLogUid
+        + "; resouceFactory=" +  self.resouceFactory
 }
 */
 
@@ -817,14 +817,14 @@ public class LoginCredential: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "LoginCredential[username:\(self.username)password:\(self.password)]"
+    return "LoginCredential[username: \(self.username)password: \(self.password)]"
 }
 
 /*
 public var debugDescription : String  {
     return "LoginCredential"
-        + "; username=" +  \(self.username)
-        + "; password=" +  \(self.password)
+        + "; username=" +  self.username
+        + "; password=" +  self.password
 }
 */
 
@@ -866,14 +866,14 @@ public class LoginCredentialHashed: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "LoginCredentialHashed[username:\(self.username)password:\(self.password?.hexstr)]"
+    return "LoginCredentialHashed[username: \(self.username)password: \(self.password?.hexstr)]"
 }
 
 /*
 public var debugDescription : String  {
     return "LoginCredentialHashed"
-        + "; username=" +  \(self.username)
-        + "; password=" +  \(self.password?.hexstr)
+        + "; username=" +  self.username
+        + "; password=" +  self.password?.hexstr
 }
 */
 
@@ -915,14 +915,14 @@ public class ScramLoginParams: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "ScramLoginParams[username:\(self.username)clientNonce:\(self.clientNonce)]"
+    return "ScramLoginParams[username: \(self.username)clientNonce: \(self.clientNonce)]"
 }
 
 /*
 public var debugDescription : String  {
     return "ScramLoginParams"
-        + "; username=" +  \(self.username)
-        + "; clientNonce=" +  \(self.clientNonce)
+        + "; username=" +  self.username
+        + "; clientNonce=" +  self.clientNonce
 }
 */
 
@@ -965,15 +965,15 @@ public class ScramLoginResponseBody: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "ScramLoginResponseBody[serverNonce:\(self.serverNonce)salt:\(self.salt?.hexstr)iterationNumber:\(self.iterationNumber)]"
+    return "ScramLoginResponseBody[serverNonce: \(self.serverNonce)salt: \(self.salt?.hexstr)iterationNumber: \(self.iterationNumber)]"
 }
 
 /*
 public var debugDescription : String  {
     return "ScramLoginResponseBody"
-        + "; serverNonce=" +  \(self.serverNonce)
-        + "; salt=" +  \(self.salt?.hexstr)
-        + "; iterationNumber=" +  \(self.iterationNumber)
+        + "; serverNonce=" +  self.serverNonce
+        + "; salt=" +  self.salt?.hexstr
+        + "; iterationNumber=" +  self.iterationNumber
 }
 */
 
@@ -1017,14 +1017,14 @@ public class TargetComStats: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "TargetComStats[nbFailCom:\(self.nbFailCom)nbSuccessfulCom:\(self.nbSuccessfulCom)]"
+    return "TargetComStats[nbFailCom: \(self.nbFailCom)nbSuccessfulCom: \(self.nbSuccessfulCom)]"
 }
 
 /*
 public var debugDescription : String  {
     return "TargetComStats"
-        + "; nbFailCom=" +  \(self.nbFailCom)
-        + "; nbSuccessfulCom=" +  \(self.nbSuccessfulCom)
+        + "; nbFailCom=" +  self.nbFailCom
+        + "; nbSuccessfulCom=" +  self.nbSuccessfulCom
 }
 */
 
@@ -1068,14 +1068,14 @@ public class AvailableFunction: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "AvailableFunction[debug:\(self.debug)datalog:\(self.datalog)]"
+    return "AvailableFunction[debug: \(self.debug)datalog: \(self.datalog)]"
 }
 
 /*
 public var debugDescription : String  {
     return "AvailableFunction"
-        + "; debug=" +  \(self.debug)
-        + "; datalog=" +  \(self.datalog)
+        + "; debug=" +  self.debug
+        + "; datalog=" +  self.datalog
 }
 */
 
@@ -1119,15 +1119,15 @@ public class CrcCheckBody: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "CrcCheckBody[address:\(self.address)size:\(self.size)crc:\(self.crc)]"
+    return "CrcCheckBody[address: \(self.address)size: \(self.size)crc: \(self.crc)]"
 }
 
 /*
 public var debugDescription : String  {
     return "CrcCheckBody"
-        + "; address=" +  \(self.address)
-        + "; size=" +  \(self.size)
-        + "; crc=" +  \(self.crc)
+        + "; address=" +  self.address
+        + "; size=" +  self.size
+        + "; crc=" +  self.crc
 }
 */
 
@@ -1165,7 +1165,7 @@ public class SinglePacket: Codable, TapCodable, Equatable {
     var packetLength: UInt16!
     var packetId: UInt16!
     var configVersion: UInt32!
-    var messageType: Type!
+    var messageType: PacketType!
     // unamed
 
     var encryption: Bool!
@@ -1185,26 +1185,26 @@ public class SinglePacket: Codable, TapCodable, Equatable {
 
     
 public var description : String  {
-    return "SinglePacket[sendTime:\(self.sendTime)packetLength:\(self.packetLength)packetId:\(self.packetId)configVersion:\(self.configVersion)messageType:\(self.messageType.rawValue)encryption:\(self.encryption)ack:\(self.ack)senderId:\(self.senderId)salt:\(self.salt)logTime:\(self.logTime)dataSize:\(self.dataSize)data:\(self.data?.hexstr)padding:\(self.padding?.hexstr)crc:\(self.crc)]"
+    return "SinglePacket[sendTime: \(self.sendTime)packetLength: \(self.packetLength)packetId: \(self.packetId)configVersion: \(self.configVersion)messageType: \(self.messageType.rawValue)encryption: \(self.encryption)ack: \(self.ack)senderId: \(self.senderId)salt: \(self.salt)logTime: \(self.logTime)dataSize: \(self.dataSize)data: \(self.data?.hexstr)padding: \(self.padding?.hexstr)crc: \(self.crc)]"
 }
 
 /*
 public var debugDescription : String  {
     return "SinglePacket"
-        + "; sendTime=" +  \(self.sendTime)
-        + "; packetLength=" +  \(self.packetLength)
-        + "; packetId=" +  \(self.packetId)
-        + "; configVersion=" +  \(self.configVersion)
-        + "; messageType=" +  \(self.messageType.rawValue)
-        + "; encryption=" +  \(self.encryption)
-        + "; ack=" +  \(self.ack)
-        + "; senderId=" +  \(self.senderId)
-        + "; salt=" +  \(self.salt)
-        + "; logTime=" +  \(self.logTime)
-        + "; dataSize=" +  \(self.dataSize)
-        + "; data=" +  \(self.data?.hexstr)
-        + "; padding=" +  \(self.padding?.hexstr)
-        + "; crc=" +  \(self.crc)
+        + "; sendTime=" +  self.sendTime
+        + "; packetLength=" +  self.packetLength
+        + "; packetId=" +  self.packetId
+        + "; configVersion=" +  self.configVersion
+        + "; messageType=" +  self.messageType.rawValue
+        + "; encryption=" +  self.encryption
+        + "; ack=" +  self.ack
+        + "; senderId=" +  self.senderId
+        + "; salt=" +  self.salt
+        + "; logTime=" +  self.logTime
+        + "; dataSize=" +  self.dataSize
+        + "; data=" +  self.data?.hexstr
+        + "; padding=" +  self.padding?.hexstr
+        + "; crc=" +  self.crc
 }
 */
 
@@ -1228,7 +1228,7 @@ public var debugDescription : String  {
             && lhs.crc == rhs.crc
 	}
 
-    public init(sendTime: UInt32, packetLength: UInt16, packetId: UInt16, configVersion: UInt32, messageType: Type, encryption: Bool, ack: Bool, senderId: UInt8, salt: UInt16, logTime: UInt32, dataSize: UInt16, data: Bytes, padding: Bytes, crc: UInt32){
+    public init(sendTime: UInt32, packetLength: UInt16, packetId: UInt16, configVersion: UInt32, messageType: PacketType, encryption: Bool, ack: Bool, senderId: UInt8, salt: UInt16, logTime: UInt32, dataSize: UInt16, data: Bytes, padding: Bytes, crc: UInt32){
         self.sendTime = sendTime
         self.packetLength = packetLength
         self.packetId = packetId
@@ -1255,7 +1255,7 @@ public var debugDescription : String  {
 
     
 
-    public enum Type: UInt8, Codable {
+    public enum PacketType: UInt8, Codable {
     case MASK = 0x7
     case DATALOG = 0x1
     case COMMAND = 0x2

@@ -28,8 +28,7 @@ open class DeviceAPI {
     */
     public func factoryResetRequest()
          -> ApiRequest<Void>{
-        var path = "/3//5"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//5"
         
 
         return ApiRequest(
@@ -60,8 +59,7 @@ open class DeviceAPI {
     */
     public func getAvailablePowerSourceRequest()
          -> ApiRequest<Void>{
-        var path = "/3//6"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//6"
         
 
         return ApiRequest(
@@ -92,8 +90,7 @@ open class DeviceAPI {
     */
     public func getCurrentTimeRequest()
          -> ApiRequest<Void>{
-        var path = "/3//13"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//13"
         
 
         return ApiRequest(
@@ -124,8 +121,7 @@ open class DeviceAPI {
     */
     public func getFirmwareVersionRequest()
          -> ApiRequest<Void>{
-        var path = "/3//3"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//3"
         
 
         return ApiRequest(
@@ -156,8 +152,7 @@ open class DeviceAPI {
     */
     public func getLastErrorCodeRequest()
          -> ApiRequest<Void>{
-        var path = "/3//11"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//11"
         
 
         return ApiRequest(
@@ -188,8 +183,7 @@ open class DeviceAPI {
     */
     public func getManufacturerRequest()
          -> ApiRequest<Void>{
-        var path = "/3//0"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//0"
         
 
         return ApiRequest(
@@ -220,8 +214,7 @@ open class DeviceAPI {
     */
     public func getMemoryFreeRequest()
          -> ApiRequest<Void>{
-        var path = "/3//10"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//10"
         
 
         return ApiRequest(
@@ -252,8 +245,7 @@ open class DeviceAPI {
     */
     public func getModelNameRequest()
          -> ApiRequest<Void>{
-        var path = "/3//1"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//1"
         
 
         return ApiRequest(
@@ -284,8 +276,7 @@ open class DeviceAPI {
     */
     public func getPowerSourceVoltageRequest()
          -> ApiRequest<Void>{
-        var path = "/3//7"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//7"
         
 
         return ApiRequest(
@@ -316,8 +307,7 @@ open class DeviceAPI {
     */
     public func getPublicPasswordRequest()
          -> ApiRequest<Void>{
-        var path = "/3//17"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//17"
         
 
         return ApiRequest(
@@ -348,8 +338,7 @@ open class DeviceAPI {
     */
     public func getSerialNumberRequest()
          -> ApiRequest<Void>{
-        var path = "/3//2"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//2"
         
 
         return ApiRequest(
@@ -380,8 +369,7 @@ open class DeviceAPI {
     */
     public func postLastErrorCodeRequest()
          -> ApiRequest<Void>{
-        var path = "/3//11"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//11"
         
 
         return ApiRequest(
@@ -412,8 +400,7 @@ open class DeviceAPI {
     */
     public func putCurrentTimeRequest()
          -> ApiRequest<Void>{
-        var path = "/3//13"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//13"
         
 
         return ApiRequest(
@@ -444,8 +431,7 @@ open class DeviceAPI {
     */
     public func rebootRequest()
          -> ApiRequest<Void>{
-        var path = "/3//4"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//4"
         
 
         return ApiRequest(
@@ -476,8 +462,7 @@ open class DeviceAPI {
     */
     public func resetLastErrorCodeRequest()
          -> ApiRequest<Void>{
-        var path = "/3//12"
-        //var regex = "\{([\S]*)\}"
+        let path = "/3//12"
         
 
         return ApiRequest(

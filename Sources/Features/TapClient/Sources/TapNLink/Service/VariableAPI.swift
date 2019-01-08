@@ -32,7 +32,6 @@ open class VariableAPI {
         variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/0"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -73,7 +72,6 @@ open class VariableAPI {
         variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/6"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -114,7 +112,6 @@ open class VariableAPI {
         variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/7"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -155,7 +152,6 @@ open class VariableAPI {
         variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/3"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -196,7 +192,6 @@ open class VariableAPI {
         variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/1"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -237,7 +232,6 @@ open class VariableAPI {
         variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/2"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -278,7 +272,6 @@ open class VariableAPI {
         variableId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/1029/{variableId}/4"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -322,7 +315,6 @@ open class VariableAPI {
         variableId: UInt8, address: UInt32
     ) -> ApiRequest<UInt32>{
         var path = "/1029/{variableId}/0"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -371,7 +363,6 @@ open class VariableAPI {
         variableId: UInt8, value: UInt32
     ) -> ApiRequest<UInt32>{
         var path = "/1029/{variableId}/6"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -420,7 +411,6 @@ open class VariableAPI {
         variableId: UInt8, value: UInt8
     ) -> ApiRequest<UInt8>{
         var path = "/1029/{variableId}/1"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -469,7 +459,6 @@ open class VariableAPI {
         variableId: UInt8, value: UInt8
     ) -> ApiRequest<UInt8>{
         var path = "/1029/{variableId}/2"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -518,7 +507,6 @@ open class VariableAPI {
         variableId: UInt8, value: Bytes
     ) -> ApiRequest<Bytes>{
         var path = "/1029/{variableId}/4"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         
@@ -567,7 +555,6 @@ open class VariableAPI {
         variableId: UInt8, value: Bytes
     ) -> ApiRequest<Bytes>{
         var path = "/1029/{variableId}/5"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"variableId"+"}", with: String(variableId))
         

@@ -32,7 +32,6 @@ open class AclAPI {
         objectId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/2/{objectId}/1"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"objectId"+"}", with: String(objectId))
         
@@ -73,7 +72,6 @@ open class AclAPI {
         objectId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/2/{objectId}/2"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"objectId"+"}", with: String(objectId))
         
@@ -114,7 +112,6 @@ open class AclAPI {
         objectId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/2/{objectId}/0"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"objectId"+"}", with: String(objectId))
         
@@ -155,7 +152,6 @@ open class AclAPI {
         objectId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/2/{objectId}/3"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"objectId"+"}", with: String(objectId))
         
@@ -196,7 +192,6 @@ open class AclAPI {
         objectId: UInt8
     ) -> ApiRequest<Void>{
         var path = "/2/{objectId}/2"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"objectId"+"}", with: String(objectId))
         
@@ -240,7 +235,6 @@ open class AclAPI {
         objectId: UInt8, ownerId: UInt32
     ) -> ApiRequest<UInt32>{
         var path = "/2/{objectId}/3"
-        //var regex = "\{([\S]*)\}"
         
         path = path.replacingOccurrences(of: "{"+"objectId"+"}", with: String(objectId))
         
