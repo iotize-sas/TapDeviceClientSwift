@@ -13,7 +13,7 @@ targets:
       - target: TapClientApi
       - target: BLEProtocol_iOS
       - target: TapClient
-      - target: SocketProtocol
+      - target: TapSocketProtocol
       - carthage: RxSwift
 #      - carthage: RxCocoa
 #      - carthage: RxReduce

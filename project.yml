@@ -3,7 +3,8 @@ include:
   - Tools/XCodeGen/TapClientApi.yml
   - Tools/XCodeGen/BLEProtocol_iOS.yml
   - Tools/XCodeGen/TapClient.yml
-  - Tools/XCodeGen/SocketProtocol.yml
+  - Tools/XCodeGen/TapSocketProtocol.yml
+  - Tools/XCodeGen/TapWebSocketProtocol.yml
   - Tools/XCodeGen/IotizeCore.yml
   - Tools/XCodeGen/IotizeTestCore.yml
 name: TapDeviceClient

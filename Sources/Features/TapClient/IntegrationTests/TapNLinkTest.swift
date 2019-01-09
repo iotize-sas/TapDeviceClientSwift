@@ -18,7 +18,6 @@ class TapNLinkTest: XCTestCase {
 	var device: TapDevice!
 	
 	override func setUp() {
-		// let p = SyncProtocolAdapter(protocol: RxWebSocketProtocol(url: URL(string: SERVER_URL)!))
 		let p = BlueSocketProtocol(url: URL(string: SERVER_URL)!)
 		self.device = TapDevice.createFrom(protocol: p)
 		try! self.device.connect()

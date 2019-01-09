@@ -9,11 +9,19 @@ import Foundation
 import Socket
 import TapClientApi
 
-public class BlueSocketProtocol: ComProtocol {
+public class TapSocketProtocol: BlueSocketProtocol {
+
+}
+
+/*!
+ * Tap device socket protocol adapter using IBM blue socket
+ */
+class BlueSocketProtocol: ComProtocol {
 	
 	var socket: Socket?
 	var url: URL
 	var connectionState: ConnectionState
+	
 	
 	public init(url: URL){
 		self.url = url
@@ -28,8 +36,16 @@ public class BlueSocketProtocol: ComProtocol {
 	}
 	
 	public func connect() throws -> Any {
+		return try self.connect(timeout: 3000)
+	}
+	
+	public func connect(timeout: UInt) throws -> Any {
 		self.socket = try Socket.create()
-		try self.socket!.connect(to: self.url.host ?? "localhost", port: Int32(self.url.port ?? 2000))
+		try self.socket!.connect(
+			to: self.url.host ?? "localhost",
+			port: Int32(self.url.port ?? 2000),
+			timeout: timeout
+		)
 		self.connectionState = ConnectionState.CONNECTED
 		return 1
 	}
@@ -59,9 +75,8 @@ public class BlueSocketProtocol: ComProtocol {
 	}
 	
 	func _checkSocket() throws {
-		if (self.socket == nil) {
-			// TODO through
-			print("Socket is not connected yet")
+		if (self.socket == nil || !self.socket!.isConnected) {
+			throw TapComProtocolError.notConnected
 		}
 	}
 }

@@ -1,0 +1,28 @@
+targets: 
+  TapSocketProtocol:
+    type: framework
+    platform: iOS
+    sources: [Sources/Features/TapSocketProtocol/Sources]
+    info:
+      path: Sources/Features/TapSocketProtocol/SupportingFiles/Info.plist
+    dependencies:
+      - target: IotizeCore
+      - target: TapClientApi
+#     - carthage: RxSwift
+#      - carthage: SocketIO
+#      - carthage: BlueSocket
+#      - carthage: Starscream
+      - carthage: Socket
+    scheme:
+      testTargets:
+        - TapSocketProtocolUnitTests
+      gatherCoverageData: true
+  TapSocketProtocolUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Features/TapSocketProtocol/Tests]
+    info:
+      path: Sources/Features/TapSocketProtocol/SupportingFiles/InfoUnitTests.plist
+    dependencies:
+      - target: TapSocketProtocol
+#     - carthage: RxBlocking

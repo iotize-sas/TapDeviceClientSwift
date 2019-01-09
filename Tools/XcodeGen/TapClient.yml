@@ -33,5 +33,5 @@ targets:
       path: Sources/Features/TapClient/SupportingFiles/InfoIntegrationTests.plist
     dependencies:
       - target: TapClient
-      - target: SocketProtocol
+      - target: TapSocketProtocol
       - carthage: RxBlocking

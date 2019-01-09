@@ -15,6 +15,14 @@ public enum TapCodableError: Error{
 	case noDecoder
 }
 
+public enum TapComProtocolError: Error{
+	case notConnected
+}
+
+/*!
+ * Tap device communication protocol
+ *
+ */
 public protocol ComProtocol{
 	
 	func getConnectionState() -> ConnectionState

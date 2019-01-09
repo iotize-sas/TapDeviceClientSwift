@@ -1,0 +1,24 @@
+targets: 
+  TapWebSocketProtocol:
+    type: framework
+    platform: iOS
+    sources: [Sources/Features/TapWebSocketProtocol/Sources]
+    info:
+      path: Sources/Features/TapWebSocketProtocol/SupportingFiles/Info.plist
+    dependencies:
+      - target: IotizeCore
+      - target: TapClientApi
+      - carthage: Starscream
+    scheme:
+      testTargets:
+        - TapWebSocketProtocolUnitTests
+      gatherCoverageData: true
+  TapWebSocketProtocolUnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Sources/Features/TapWebSocketProtocol/Tests]
+    info:
+      path: Sources/Features/TapWebSocketProtocol/SupportingFiles/InfoUnitTests.plist
+    dependencies:
+      - target: TapWebSocketProtocol
+      - carthage: RxBlocking

@@ -17,15 +17,12 @@ This is a Swift port Socket protocol [IoTize Tap Device API](http://developer.io
   s.ios.deployment_target = '11.0'
   s.osx.deployment_target = '10.11'
 
-  s.source_files          = 'Sources/Features/SocketProtocol/Sources/**/*.swift'
+  s.source_files          = 'Sources/Features/TapSocketProtocol/Sources/*.swift'
 
   s.swift_version = '4.0' 
     
-  s.dependency 'RxSwift', '~> 4.0'
-  s.dependency 'Socket', '~> 1'
-  s.dependency 'SocketIO', '~> 1'
-  s.dependency 'Starscream', '~> 1'
-  s.dependency 'IotizeCore', s.version.to_s
-  s.dependency 'TapClientApi', s.version.to_s
+  s.dependency 'BlueSocket', '~> 1.0'
+  s.dependency 'IotizeCore', '~> 0.0.1-alpha.1'
+  s.dependency 'TapClientApi', '~> 0.0.1-alpha.1'
 
 end

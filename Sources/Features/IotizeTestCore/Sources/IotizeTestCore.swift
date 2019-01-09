@@ -1,6 +1,5 @@
 import Foundation
 
-
 public extension Collection where Element == UInt8 {
 	public var data: Data {
 		return Data(self)
@@ -19,12 +18,5 @@ public extension String {
 			.compactMap {
 				UInt8(String(hexa[$0...$0.advanced(by: 1)]), radix: 16)
 		}
-	}
-}
-
-public class TestIotizeCore{
-	
-	public init(){
-		
 	}
 }

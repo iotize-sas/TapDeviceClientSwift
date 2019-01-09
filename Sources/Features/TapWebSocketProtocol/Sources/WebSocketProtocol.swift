@@ -1,10 +1,8 @@
 import Foundation
 import IotizeCore
-import SocketIO
 import RxSwift
 import TapClientApi
 import Starscream
-import RxBlocking
 
 
 public class RxWebSocketProtocol: RxComProtocol {

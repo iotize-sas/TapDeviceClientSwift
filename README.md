@@ -42,12 +42,13 @@ end
 - [ ] BLE protocol implementation
 - [ ] Improve error managment
 - [ ] Increase test coverage
-- [ ] Add an iOS demo application
-- [ ] Target lower iOS and OSX version
+- [ ] Add an iOS demo applicationss
+- [ ] Target lower iOS and OSX versions
+- [ ] Documentation
 
 ## Contribute
 
-This project use Xcodegen tool to setup xcode project
+This project use Xcodegen tool to setup xcode projects
 
 ### SwiftGen
 
