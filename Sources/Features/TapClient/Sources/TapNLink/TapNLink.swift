@@ -54,7 +54,7 @@ public class TapDevice {
 				self.sessionKey = try self.service.scram.initialize().body()
 			}
 			let algo = try AesCBBC128Encryption(key: self.sessionKey!)
-			self.client._requestInterceptor = EncryptedRequestBuilder(encryptionAlgo: algo)
+			self.client._requestInterceptor = EncryptedRequestInterceptor(encryptionAlgo: algo)
 		}
 		else {
 			self.sessionKey = nil
@@ -66,15 +66,15 @@ public class TapDevice {
      *
      */
 	public func isEncryptionEnabled() -> Bool {
-		return self.client._requestInterceptor is EncryptedRequestBuilder
+		return self.client._requestInterceptor is EncryptedRequestInterceptor
 	}
 	
-	public func connect() throws {
-		return try self.client.connect()
+	public func connect(timeout: UInt? = nil) throws {
+		return try self.client.connect(timeout: timeout)
 	}
 	
-	public func disconnect() throws {
-		return try self.client.disconnect()
+	public func disconnect(timeout: UInt? = nil) throws {
+		return try self.client.disconnect(timeout: timeout)
 	}
 	
 	public func getConnectionState() -> ConnectionState {

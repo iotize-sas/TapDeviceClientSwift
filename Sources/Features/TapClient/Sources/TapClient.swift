@@ -45,6 +45,7 @@ public class ApiRequest<BodyType> { // : Encodable
 	public var body : BodyType?
 	public var bodyEncoder: TapConverterContainer<BodyType>?
 //	public var returnType: ReturnType.Type?
+	// TODO add tiemout ?
 	
 	init(method: TapRequestHeader.MethodType
 		, path: String
@@ -85,6 +86,7 @@ public class ApiRequest<BodyType> { // : Encodable
 public enum TapError<T>: Error {
 	case tapRespondedWithError(response: ApiResponse<T>)
 }
+
 public class ApiResponse<DataType>{
 	
 	var response: TapResponse
@@ -136,12 +138,32 @@ public class TapClient {
 		self._requestInterceptor = requestInterceptor
 	}
 	
-	func connect() throws {
+	public func connect(timeout: UInt? = nil) throws {
 		_ = try comProtocol.connect()
 	}
 	
-	func disconnect() throws {
+	public func disconnect(timeout: UInt? = nil) throws {
 		_ = try comProtocol.disconnect()
+	}
+	
+	/*!
+	* Execute ApiRequest
+	*
+	*/
+	public func execute<BodyType, ReturnType>(request: ApiRequest<BodyType>, converter: TapConverterContainer<ReturnType>? = nil) throws -> ApiResponse<ReturnType> {
+		print("Execute request: \(request.description)")
+		var rawBody: Bytes? = nil
+		if (request.body != nil && request.bodyEncoder != nil){
+			rawBody = request.bodyEncoder!.encode(model: request.body!).toBytes()
+		}
+		let response = try self.COMMAND(type: request.method, path: request.path, body: rawBody)
+		let apiResponse = ApiResponse(response: response, converter: converter)
+		print("Received response: \(apiResponse.description)")
+		return apiResponse
+	}
+	
+	public func setProtocol(_ p: ComProtocol){
+		self.comProtocol = p
 	}
 	
 	func GET(path: String, body data: Bytes? = nil) throws -> TapResponse {
@@ -160,29 +182,10 @@ public class TapClient {
 		return try self.send(self.createRequest(type, path, body)).response
 	}
 	
-	func execute<BodyType, ReturnType>(request: ApiRequest<BodyType>, converter: TapConverterContainer<ReturnType>? = nil) throws -> ApiResponse<ReturnType> {
-		print("Execute request: \(request.description)")
-		var rawBody: Bytes? = nil
-		if (request.body != nil && request.bodyEncoder != nil){
-//			rawBody = try encoder.encode(request.body!)
-			rawBody = request.bodyEncoder!.encode(model: request.body!).toBytes()
-		}
-		let response = try self.COMMAND(type: request.method, path: request.path, body: rawBody)
-		let apiResponse = ApiResponse(response: response, converter: converter)
-		print("Received response: \(apiResponse.description)")
-		return apiResponse
-		
-	}
 	
 	func send(_ request: TapRequest) throws -> ApiResponse<Any> {
 		let baseInterceptor = SendFrameHandler(client: self)
 		return try self._requestInterceptor.intercept(request: request, next: baseInterceptor)
-//		_protocol.write(data: requestBytes)
-//		let responseBytes = _protocol.read()
-//		let responseBytes = _protocol.send(data: requestBytes)
-//		let tapResponse = self._decodeResponse(responseBytes)
-//		return tapResponse
-//		throw IotizeError.notImplemented
 	}
 	
 	
@@ -193,10 +196,6 @@ public class TapClient {
 		request.header.methodType = method
 		request.payload = data ?? [UInt8]()
 		return request
-	}
-	
-	func setProtocol(_ p: ComProtocol){
-		self.comProtocol = p
 	}
 	
 	

@@ -17,20 +17,9 @@ public protocol TapRequestInterceptor {
 	
 }
 
-public protocol TapRequestHandler {
-	func handle(bytes: Bytes) throws -> Bytes
-}
-
-public class TapRequestEvent<Type>{
-	
-}
-
-//public protocol TapRequestBuilder {
-//
-//	func build(request: TapRequest) throws -> Bytes
-//}
-
-// Wrap request with APDU request format and unwrap result from APDU response
+///
+/// Wrap request with APDU request format and unwrap result from APDU response
+/// 
 public class ApduRequestInterceptor: TapRequestInterceptor {
 	public init(){
 		
@@ -63,53 +52,8 @@ public class ApduRequestInterceptor: TapRequestInterceptor {
 	
 }
 
-//public protocol TypeConverter<T> {
-//	
-//	public func encode(v: T) throws  -> Bytes
-//	
-//	public func decode(bytes: Bytes) throws -> T
-//	
-//}
 
-public protocol EncryptionAlgo {
-
-	func encode(bytes: Bytes) throws -> Bytes;
-
-	func  decode(bytes: Bytes) throws -> Bytes;
-
-}
-
-public class AesCBBC128Encryption: EncryptionAlgo {
-	
-	var aesEngine: AES
-	
-	public init(key: Bytes, iv: Bytes = [UInt8](repeating: 0, count: 16)) throws {
-		if (key.count != 16){
-			// TODO throw key must be 16 bytes for AES 128 bits
-			throw IotizeError.runtimeError("Expected key to have a size of 16 bytes. Found " + String(key.count) + " bytes")
-		}
-		let blockMode = CBC(iv: iv)
-		self.aesEngine = try AES(key: key, blockMode: blockMode, padding: CryptoSwift.Padding.zeroPadding)
-	}
-	
-	public func encode(bytes: Bytes) throws -> Bytes {
-		if bytes.count == 0 {
-			return bytes
-		}
-		var encoded = try self.aesEngine.encrypt(bytes)
-		if encoded.count > bytes.count {
-			encoded = Array(encoded[0...bytes.count-1])
-		}
-		return encoded
-	}
-	
-	public func decode(bytes: Bytes) throws -> Bytes {
-		return try self.aesEngine.decrypt(bytes)
-	}
-}
-
-
-public class EncryptedRequestBuilder: TapRequestInterceptor {
+public class EncryptedRequestInterceptor: TapRequestInterceptor {
 	
 	var requestId: UInt16
 	var innerRequestBuilder: TapRequestInterceptor

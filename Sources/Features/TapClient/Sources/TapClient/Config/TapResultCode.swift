@@ -1,3 +1,4 @@
+{% include '../GeneratedFileHeaderWarning.mustache' %}
 
 public struct TapResultCode {
 
